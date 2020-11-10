@@ -7,25 +7,14 @@ const fileLoaderConfig = {
   },
 };
 
-const pdfLoader = {
-  test: /\.(pdf)$/,
+const fileLoader = {
+  test: /\.(pdf|gif|png|jpe?g|svg)$/,
   use: [fileLoaderConfig],
-};
-
-const imageOptimizerLoader = {
-  test: /\.(gif|png|jpe?g|svg)$/i,
-  use: [
-    fileLoaderConfig,
-    {
-      loader: 'image-webpack-loader',
-    },
-  ],
 };
 
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.module.rules.push(pdfLoader);
-    config.module.rules.push(imageOptimizerLoader);
+    config.module.rules.push(fileLoader);
     return config;
   },
 };
