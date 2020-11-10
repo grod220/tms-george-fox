@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 const NavItem = ({ children, path, action }) => (
   <li>
-    <Link href={path} onClick={action}>
-      {children}
+    <Link href={path}>
+      <a onClick={action}>{children}</a>
     </Link>
   </li>
 );
