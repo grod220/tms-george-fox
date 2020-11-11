@@ -18,17 +18,18 @@ const StyledButton = styled.button`
   }
 `;
 
-export const BlueButton = ({ href, linkTo, children }) => (
-  <>
-    {linkTo && (
-      <Link to={linkTo}>
+export const BlueButton = ({ href, internal = false, children }) => {
+  if (internal) {
+    return (
+      <Link href={href}>
         <StyledButton>{children}</StyledButton>
       </Link>
-    )}
-    {href && (
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        <StyledButton>{children}</StyledButton>
-      </a>
-    )}
-  </>
-);
+    );
+  }
+
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <StyledButton>{children}</StyledButton>
+    </a>
+  );
+};

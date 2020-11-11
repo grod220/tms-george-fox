@@ -79,7 +79,9 @@ const OrderOnline = () => (
       <BoxHeader color="#84bf5b">Pickup</BoxHeader>Want to pickup your order directly from the Stoppe? Orders typically
       ready in ~30mins.
       <PushDown>
-        <BlueButton linkTo="/order/pickup">Pickup Order</BlueButton>
+        <BlueButton href="/order/pickup" internal>
+          Pickup Order
+        </BlueButton>
       </PushDown>
     </Box>
     <Box color="#eea34c">
