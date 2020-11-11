@@ -74,7 +74,7 @@ const TestimonialTaster = () => (
         <Highlight>Yelp (★★★★½ stars)</Highlight>
       </a>{' '}
       or our{' '}
-      <Link to="/media">
+      <Link href="/media">
         <Highlight>Media page</Highlight>
       </Link>
     </LearnMore>

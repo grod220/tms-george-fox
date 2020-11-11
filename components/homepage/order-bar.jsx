@@ -87,10 +87,10 @@ const OrderBar = () => (
   <RedBar>
     <Container>
       {/*<Announcement>⚠️ Closed for July 4th</Announcement>*/}
-      <Link to="/order">
+      <Link href="/order">
         <WhiteButton>Order Online</WhiteButton>
       </Link>
-      <Link to="/order/catering">
+      <Link href="/order/catering">
         <RedButton>Order Catering</RedButton>
       </Link>
     </Container>
