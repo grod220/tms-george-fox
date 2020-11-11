@@ -28,9 +28,9 @@ export default function Index() {
       <LazyLoad height={100}>
         <YelpReservations />
       </LazyLoad>
-      {/*<LazyLoad height={350}>*/}
-      {/*  <SocialBar />*/}
-      {/*</LazyLoad>*/}
+      <LazyLoad height={350}>
+        <SocialBar />
+      </LazyLoad>
       {/*<LazyLoad height={400}>*/}
       {/*  <MenuPreview />*/}
       {/*</LazyLoad>*/}

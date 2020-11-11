@@ -88,10 +88,14 @@ const OrderBar = () => (
     <Container>
       {/*<Announcement>⚠️ Closed for July 4th</Announcement>*/}
       <Link href="/order">
-        <WhiteButton>Order Online</WhiteButton>
+        <a>
+          <WhiteButton>Order Online</WhiteButton>
+        </a>
       </Link>
       <Link href="/order/catering">
-        <RedButton>Order Catering</RedButton>
+        <a>
+          <RedButton>Order Catering</RedButton>
+        </a>
       </Link>
     </Container>
   </RedBar>

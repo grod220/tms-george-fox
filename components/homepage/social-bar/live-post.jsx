@@ -123,10 +123,7 @@ const loadImageIntoMemory = (imageUrl, setLoaded) => {
 };
 
 const LivePost = () => {
-  const { data = {} } = useFetch(
-    'https://us-central1-tms-f-f-bruce.cloudfunctions.net/function/facebook/most-recent-post',
-    [],
-  );
+  const { data = {} } = useFetch('/api/facebook/most-recent-post', []);
   const [imageLoaded, setImageLoaded] = useState(false);
   useEffect(() => loadImageIntoMemory(data.full_picture, setImageLoaded), [data.full_picture]);
 
