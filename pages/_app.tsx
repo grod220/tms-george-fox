@@ -10,7 +10,6 @@ Sentry.init({ dsn: 'https://37c553e6cb9c4d7b91443519ccd448a9@sentry.io/1514998' 
 
 initializeGoogleAnalytics();
 
-// This default export is required in a new `pages/_app.js` file.
 export default class MyApp extends App {
   componentDidCatch(error, errorInfo) {
     Sentry.withScope((scope) => {
