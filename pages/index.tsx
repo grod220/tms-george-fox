@@ -24,31 +24,31 @@ export default function Index() {
       </Helmet>
       {/*<Overlay />*/}
       <BigHero />
-      {/*<OrderBar />*/}
-      {/*<LazyLoad height={100}>*/}
-      {/*  <YelpReservations />*/}
-      {/*</LazyLoad>*/}
+      <OrderBar />
+      <LazyLoad height={100}>
+        <YelpReservations />
+      </LazyLoad>
       {/*<LazyLoad height={350}>*/}
       {/*  <SocialBar />*/}
       {/*</LazyLoad>*/}
       {/*<LazyLoad height={400}>*/}
       {/*  <MenuPreview />*/}
       {/*</LazyLoad>*/}
-      {/*<LazyLoad height={350}>*/}
-      {/*  <TestimonialTaster />*/}
-      {/*</LazyLoad>*/}
-      {/*<LazyLoad height={400}>*/}
-      {/*  <LaDifferenzaPromo />*/}
-      {/*</LazyLoad>*/}
-      {/*<LazyLoad height={450}>*/}
-      {/*  <Map />*/}
-      {/*</LazyLoad>*/}
-      {/*<LazyLoad height={400}>*/}
-      {/*  <Passion />*/}
-      {/*</LazyLoad>*/}
-      {/*<LazyLoad height={160}>*/}
-      {/*  <Footer />*/}
-      {/*</LazyLoad>*/}
+      <LazyLoad height={350}>
+        <TestimonialTaster />
+      </LazyLoad>
+      <LazyLoad height={400}>
+        <LaDifferenzaPromo />
+      </LazyLoad>
+      <LazyLoad height={450}>
+        <Map />
+      </LazyLoad>
+      <LazyLoad height={400}>
+        <Passion />
+      </LazyLoad>
+      <LazyLoad height={160}>
+        <Footer />
+      </LazyLoad>
     </>
   );
 }
