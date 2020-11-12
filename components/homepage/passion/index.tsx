@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 import CouplePic from './jeff-isabella.jpg';
 
@@ -46,14 +47,11 @@ const SectionTitle = styled.span`
 const RightImage = styled.div`
   flex: 1;
   height: 40rem;
-  background-image: url(${CouplePic});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
   position: relative;
 
   @media (max-width: ${700 / 16}em) {
     height: 25rem;
+    flex: unset;
   }
 `;
 
@@ -65,7 +63,9 @@ const Passion = () => (
       traditions, uniqueness, freshness all in a non-traditional Italian style. The Meatball Stoppe has been Awarded the
       'Best of the Best Meatballs' in Central Florida for 2016 and is a top 10 rated Orlando restaurant.
     </LeftSide>
-    <RightImage />
+    <RightImage>
+      <Image src={CouplePic} layout="fill" objectFit="cover" />
+    </RightImage>
   </Container>
 );
 

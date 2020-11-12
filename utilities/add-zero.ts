@@ -1,4 +1,4 @@
-export default (price: number | null | undefined): string => {
+const addZero = (price: number | null | undefined): string => {
   if (price === null || price === undefined) {
     return '';
   }
@@ -9,3 +9,5 @@ export default (price: number | null | undefined): string => {
   }
   return price.toString();
 };
+
+export default addZero;

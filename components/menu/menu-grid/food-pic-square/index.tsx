@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const Box = styled.div`
   width: 100%;
   height: 0;
   padding-top: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-image: url(${(props) => props.path});
   position: relative;
   text-align: right;
 `;
@@ -23,7 +20,8 @@ const InnerText = styled.div`
 `;
 
 const FoodPicSquare = ({ imagePath, name }) => (
-  <Box path={imagePath}>
+  <Box>
+    <Image src={imagePath} layout="fill" objectFit="cover" />
     <InnerText>{name}</InnerText>
   </Box>
 );

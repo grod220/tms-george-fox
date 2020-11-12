@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
+import Image from 'next/image';
 
 import allSocialIcons from './social-icons-info';
 import LivePost from './live-post';
@@ -30,16 +31,6 @@ const TwoItemHolder = styled.div`
 const LeftSide = styled.div`
   font-size: 2.4rem;
   padding: 4rem 2%;
-
-  img {
-    margin-right: 2.4rem;
-
-    ${media.tablet`
-      margin-right: 0;`}
-
-    ${media.phone`
-      margin-right: 0;`};
-  }
 `;
 
 const Highlight = styled.span`
@@ -62,6 +53,16 @@ const Connect = styled.div`
 `;
 
 const SocialIcons = styled.div`
+  a {
+    margin-right: 2.4rem;
+
+    ${media.tablet`
+      margin-right: 0;`}
+
+    ${media.phone`
+      margin-right: 0;`};
+  }
+
   ${media.desktop`
     min-width: 35.5rem;`}
 
@@ -88,7 +89,7 @@ const SocialBar = () => (
         <SocialIcons>
           {allSocialIcons.map((service, i) => (
             <a href={service.linkTo} target="_blank" rel="noopener noreferrer" key={i}>
-              <img src={service.url} key={i} alt={service.name + ' icon'} />
+              <Image src={service.url} height="64" width="64" key={i} alt={service.name + ' icon'} />
             </a>
           ))}
         </SocialIcons>

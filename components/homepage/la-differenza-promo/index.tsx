@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
+import Image from 'next/image';
 
 import StrawberryCakeImg from './strawberry-cake.jpg';
 
 const CakeHero = styled.div`
-  background: url(${StrawberryCakeImg}) no-repeat center 0;
-  background-size: cover;
+  position: relative;
   height: 28rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   flex-direction: column;
+`;
+
+const HeroText = styled.div`
+  z-index: 100;
 `;
 
 const BigText = styled.div`
@@ -48,10 +52,11 @@ const RedLink = styled.a`
 const LaDifferenzaPromo = () => (
   <div>
     <CakeHero>
-      <div>
+      <HeroText>
         <BigText>La Differenza</BigText>
         <Subtext>An Artisanal Bakery</Subtext>
-      </div>
+      </HeroText>
+      <Image src={StrawberryCakeImg} layout="fill" objectFit="cover" />
     </CakeHero>
     <DetailsTextContainer>
       <div>
