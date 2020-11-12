@@ -43,7 +43,7 @@ const BigHero = () => (
         <em>with Guy Fieri, Food Network</em>
       </div>
     </HeroText>
-    <Image src={generateHeroImage()} layout="fill" objectFit="cover" />
+    <Image src={generateHeroImage()} layout="fill" objectFit="cover" quality="100" />
   </HeroBackground>
 );
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
+import Image from 'next/image';
 
 import GuyFieriRays from './images/guyFieriRays.jpg';
 import dddLogo from './images/dddLogo.png';
@@ -42,14 +43,18 @@ const TripleDHero = styled.div`
       img:first-child {
           width: 55%;
       }
-      img:nth-child(2) {
-          width: 75%;
-      }
-      `};
+  `};
 `;
 
-const GroupPic = styled.img`
+const GroupPic = styled.div`
   border: 0.6rem solid #902e2d;
+  position: relative;
+  height: 100%;
+
+  ${media.phone`
+     width: 75%;
+     height: 300px;
+  `};
 `;
 
 const SupplementalPics = styled.div`
@@ -129,7 +134,9 @@ const TripleD = () => (
     <TopTwo>
       <TripleDHero>
         <img src={dddLogo} width="60%" alt="TripleD logo" />
-        <GroupPic src={groupPic} width="97%" alt="Group pic with Guy Fieri" />
+        <GroupPic>
+          <Image src={groupPic} layout="fill" objectFit="cover" alt="Group pic with Guy Fieri" />
+        </GroupPic>
         <a
           href="https://www.amazon.com/gp/product/B06ZZF8MJP/ref=oh_aui_d_detailpage_o01_?ie=UTF8&psc=1"
           target="_blank"

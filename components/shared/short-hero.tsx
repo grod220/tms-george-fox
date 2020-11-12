@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Image from 'next/image';
+
 import { media } from '../../utilities/media';
 
 const TopImage = styled.div`
-  background: url(${(props) => props.image}) no-repeat center 0;
-  background-size: cover;
   height: 28rem;
-  background-position: 50%;
   background-color: #674c4d;
+  position: relative;
+  z-index: -100;
 `;
 
 const RedBar = styled.div`
@@ -45,7 +46,9 @@ const HeadlineText = styled.h1`
 
 const ShortHero = ({ image, headline }) => (
   <div>
-    <TopImage image={image} />
+    <TopImage>
+      <Image src={image} layout="fill" objectFit="cover" />
+    </TopImage>
     <RedBar>
       <HeadlineText>{headline}</HeadlineText>
     </RedBar>
