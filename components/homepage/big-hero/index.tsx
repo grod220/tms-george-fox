@@ -1,21 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media } from '../../../utilities/media';
+import Image from 'next/image';
 
+import { media } from '../../../utilities/media';
 import { generateHeroImage } from './generate-hero';
 
-const HeroImage = styled.div`
+const HeroBackground = styled.div`
+  position: relative;
   height: 40rem;
-  background-size: cover;
-  background-position: 50% 0;
+  z-index: -100;
   background-color: #674c4d;
-  background-image: url('${generateHeroImage()}');
   display: flex;
   align-items: flex-end;
   justify-content: center;
 `;
 
 const HeroText = styled.div`
+  z-index: 1000;
+  position: relative;
   color: white;
   display: flex;
   flex-direction: column;
@@ -34,14 +36,15 @@ const HeroText = styled.div`
 `;
 
 const BigHero = () => (
-  <HeroImage>
+  <HeroBackground>
     <HeroText>
       <div>As featured on Diners, Drive-Ins & Dives</div>
       <div>
         <em>with Guy Fieri, Food Network</em>
       </div>
     </HeroText>
-  </HeroImage>
+    <Image src={generateHeroImage()} layout="fill" objectFit="cover" />
+  </HeroBackground>
 );
 
 export default BigHero;
