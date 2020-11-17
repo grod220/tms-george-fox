@@ -12,7 +12,7 @@ import Passion from '../components/homepage/passion';
 import Footer from '../components/homepage/footer';
 import { YelpReservations } from '../components/homepage/yelp-reservations';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { getFullMenu } from '../utilities/contentful';
+import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 
 export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetStaticPropsType<typeof getStaticProps> {
@@ -59,7 +59,7 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      fullMenu: await getFullMenu(),
+      fullMenu: await getFullMenuPreview(),
     },
   };
 };
