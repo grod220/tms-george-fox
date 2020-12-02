@@ -7,6 +7,7 @@ import { removeHashes } from '../../../../../utilities/contentful-formatter';
 import OrderStore from '../../../stores/order-store';
 import { MenuItem as MenuItemType } from '../../../../../utilities/contentful-types';
 import Image from 'next/image';
+import MenuItemModal from './modal';
 
 const ItemContainer = styled.div<{ hasItem: boolean }>`
   border: ${({ hasItem }) => (hasItem ? '3px solid #84bf5b' : '1px solid #cecece')};
@@ -68,7 +69,7 @@ const MenuItem = ({ itemData }: { itemData: MenuItemType }) => {
   // const itemCount = OrderStore.shoppingCart.filter((item) => item.dishName === itemData.title).length;
   return (
     <>
-      {/*{modal && <MenuItemModal itemData={itemData} closeFunc={() => setModal(false)} />}*/}
+      {modal && <MenuItemModal itemData={itemData} closeFunc={() => setModal(false)} />}
       <ItemContainer
         // hasItem={OrderStore.shoppingCart.map((item) => item.dishName).includes(itemData.title)}
         onClick={() => setModal(!modal)}
