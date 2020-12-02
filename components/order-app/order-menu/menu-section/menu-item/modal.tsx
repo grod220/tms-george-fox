@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import ReactModal from 'react-modal';
 import { observer } from 'mobx-react-lite';
 
-import OrderStore from '../../../stores/order-store';
-
 import { MenuItem } from '../../../../../utilities/contentful-types';
 import Image from 'next/image';
 import ItemStore from '../../../stores/item-store';
@@ -19,6 +17,7 @@ const Content = styled.div`
 
 const ImageContainer = styled.div`
   height: 250px;
+  position: relative;
 `;
 
 const Dismiss = styled.div`
@@ -65,12 +64,7 @@ interface ModalProps {
 
 const Modal = observer(({ itemData, closeFunc }: ModalProps) => {
   ReactModal.setAppElement('#__next');
-  const itemStoreInstance = new ItemStore(
-    itemData.title,
-    itemData.price,
-    [],
-    // itemData.optionsCollection.items | [],
-  );
+  const itemStoreInstance = new ItemStore(itemData.title, itemData.price, itemData.optionsCollection.items);
 
   return (
     <ReactModal

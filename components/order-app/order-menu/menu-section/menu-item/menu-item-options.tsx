@@ -5,6 +5,7 @@ import ItemStore from '../../../stores/item-store';
 
 import AddZero from '../../../../../utilities/add-zero';
 import { removeHashes } from '../../../../../utilities/contentful-formatter';
+import { MenuItem, Option } from '../../../../../utilities/contentful-types';
 
 const SectionHeader = styled.div`
   font-size: 22px;
@@ -85,6 +86,18 @@ interface MenuItemOptionsProps {
   itemStore: ItemStore;
 }
 
+type CombinedOptionItem = MenuItem & { isFree: boolean };
+
+const combineOptionItems = (
+  freeOptionItems: Option['freeOptionItemCollection'],
+  pricedOptionItems: Option['pricedOptionItemsCollection'],
+): CombinedOptionItem[] => {
+  const returnArr: CombinedOptionItem[] = [];
+  freeOptionItems.items.forEach((optionItem) => returnArr.push({ ...optionItem, isFree: true }));
+  pricedOptionItems.items.forEach((optionItem) => returnArr.push({ ...optionItem, isFree: false }));
+  return returnArr;
+};
+
 const MenuItemOptions = observer(({ itemStore }: MenuItemOptionsProps) => {
   if (!itemStore.options.length) return <></>;
 
@@ -96,29 +109,31 @@ const MenuItemOptions = observer(({ itemStore }: MenuItemOptionsProps) => {
             {option.title}
             {option.maximum && option.maximum > 1 && <MaxNotify>Choose {option.maximum} maximum</MaxNotify>}
           </SectionHeader>
-          {/*<OptionsContainer>*/}
-          {/*  {combineOptionItems(option.freeOptionItem, option.pricedOptionItems).map((optionItem, i) => (*/}
-          {/*    <SingleOption key={i} onClick={() => itemStore.handleChoice(option, optionItem, optionItem.isFree)}>*/}
-          {/*      <SelectWrapper>*/}
-          {/*        {option.maximum === 1 ? (*/}
-          {/*          <SelectionBox>*/}
-          {/*            <InnerSelect selected={itemStore.isSelected(option.title, optionItem.title)} />*/}
-          {/*          </SelectionBox>*/}
-          {/*        ) : (*/}
-          {/*          <AdditionsCheckbox>*/}
-          {/*            <InnerCheck selected={itemStore.isSelected(option.title, optionItem.title)} />*/}
-          {/*          </AdditionsCheckbox>*/}
-          {/*        )}*/}
-          {/*        {removeHashes(optionItem?.title)}*/}
-          {/*      </SelectWrapper>*/}
-          {/*      {!optionItem.isFree && (*/}
-          {/*        <ExtraCost>*/}
-          {/*          <span>add: ${AddZero(optionItem?.price)}</span>*/}
-          {/*        </ExtraCost>*/}
-          {/*      )}*/}
-          {/*    </SingleOption>*/}
-          {/*  ))}*/}
-          {/*</OptionsContainer>*/}
+          <OptionsContainer>
+            {combineOptionItems(option.freeOptionItemCollection, option.pricedOptionItemsCollection).map(
+              (optionItem, i) => (
+                <SingleOption key={i} onClick={() => itemStore.handleChoice(option, optionItem, optionItem.isFree)}>
+                  <SelectWrapper>
+                    {option.maximum === 1 ? (
+                      <SelectionBox>
+                        <InnerSelect selected={itemStore.isSelected(option.title, optionItem.title)} />
+                      </SelectionBox>
+                    ) : (
+                      <AdditionsCheckbox>
+                        <InnerCheck selected={itemStore.isSelected(option.title, optionItem.title)} />
+                      </AdditionsCheckbox>
+                    )}
+                    {removeHashes(optionItem?.title)}
+                  </SelectWrapper>
+                  {!optionItem.isFree && (
+                    <ExtraCost>
+                      <span>add: ${AddZero(optionItem?.price)}</span>
+                    </ExtraCost>
+                  )}
+                </SingleOption>
+              ),
+            )}
+          </OptionsContainer>
         </div>
       ))}
     </>

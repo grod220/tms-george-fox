@@ -13,7 +13,7 @@ export interface MenuItem extends BaseItem {
   image: { url: string } | null;
   submitImageToUber: boolean;
   temperature: string[];
-  optionsCollection?: Collection<Option>;
+  optionsCollection: Collection<Option>;
 }
 
 export interface Category extends BaseItem {

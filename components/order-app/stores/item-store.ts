@@ -59,8 +59,7 @@ class ItemStore {
     const allOcurrencesCount = array.filter((o) => o.title === option.title).length;
     const firstOccurrenceIndex = array.findIndex((o) => o.title === option.title);
     if (allOcurrencesCount === 1) return option;
-    console.log('more than one', allOcurrencesCount);
-    // TODO: investigate this
+
     const copy = { ...option };
     copy.title = `${copy.title} #${index - firstOccurrenceIndex + 1}`;
     return copy;
