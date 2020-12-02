@@ -3,10 +3,10 @@ import { distanceFromTMS } from './order-utils';
 
 class FulfillmentStore {
   option: 'pickup' | 'delivery';
-  contactName: string;
-  contactNumber: string;
+  contactName: string = '';
+  contactNumber: string = '';
   numberOfGuests: number;
-  specialInstructions: string;
+  specialInstructions: string = '';
 
   deliveryLocation: google.maps.places.PlaceResult;
   errorFromGoogle: boolean;

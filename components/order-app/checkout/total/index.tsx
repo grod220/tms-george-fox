@@ -34,20 +34,22 @@ const Total = observer(() => {
     <>
       <Container>
         <div>subtotal</div>
-        <div>${OrderStore.subTotal}</div>
+        <div>${OrderStore.registerStore.subTotal}</div>
         <div>tax (7%)</div>
-        <div>${OrderStore.tax}</div>
+        <div>${OrderStore.registerStore.tax}</div>
         {OrderStore.fulfillment.option === 'delivery' && (
           <>
             <div>delivery fee</div>
-            <Fee error={typeof OrderStore.deliveryFee === 'string'}>
-              {typeof OrderStore.deliveryFee === 'number' ? `$${OrderStore.deliveryFee}` : OrderStore.deliveryFee}
+            <Fee error={typeof OrderStore.registerStore.deliveryFee === 'string'}>
+              {typeof OrderStore.registerStore.deliveryFee === 'number'
+                ? `$${OrderStore.registerStore.deliveryFee}`
+                : OrderStore.registerStore.deliveryFee}
             </Fee>
           </>
         )}
         <Tip />
         <GrandTotal>Order Total</GrandTotal>
-        <GrandTotal>${OrderStore.grandTotal}</GrandTotal>
+        <GrandTotal>${OrderStore.registerStore.grandTotal}</GrandTotal>
       </Container>
     </>
   );

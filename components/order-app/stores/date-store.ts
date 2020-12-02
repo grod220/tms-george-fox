@@ -8,15 +8,26 @@ import {
   withinLeadTime,
   withinOpeningHours,
 } from './date-utils';
+import FulfillmentStore from './fulfillment-store';
 
 class DateStore {
   fulfillmentDate: string;
   fulfillmentDateError: string;
   fulfillmentTime: string;
   fulfillmentTimeError: string;
+  fulfillmentStore: FulfillmentStore;
 
-  constructor() {
+  constructor(fulfillmentStore: FulfillmentStore) {
     makeAutoObservable(this);
+    this.fulfillmentStore = fulfillmentStore;
+
+    reaction(
+      () => this.fulfillmentStore?.option,
+      () => {
+        if (this.fulfillmentTime) this.validateTime();
+      },
+    );
+
     reaction(
       () => this.fulfillmentDate,
       (htmlDateStr) => {
@@ -33,7 +44,6 @@ class DateStore {
         } else {
           this.fulfillmentDateError = undefined;
         }
-
         this.validateTime();
       },
     );

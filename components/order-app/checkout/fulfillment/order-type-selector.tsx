@@ -10,7 +10,7 @@ const OrderTypeSelector = () => {
       <>
         <OrderInfoSectionHeader>order type</OrderInfoSectionHeader>
         <OrderPickupOptionButton text="delivery" />
-        <OrderPickupOptionButton text="pickup" func={() => (OrderStore.fulfillment.deliveryLocation = undefined)} />
+        <OrderPickupOptionButton text="pickup" func={() => OrderStore.fulfillment.setDeliveryLocation(undefined)} />
       </>
     )
   );

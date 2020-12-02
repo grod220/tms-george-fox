@@ -14,21 +14,21 @@ const Input = styled.input`
   font-size: 20px;
 `;
 
-const Tip = observer(() => {
-  return (
-    <>
-      <div>support the staff with a tip {OrderStore.tip > 0 && <>({OrderStore.tipPercent}%)</>}</div>
-      <div>
-        <Input
-          onChange={(e) => OrderStore.setTip(e.target.value)}
-          value={OrderStore.tip}
-          type="number"
-          min="0.00"
-          step="0.1"
-        />
-      </div>
-    </>
-  );
-});
+const Tip = observer(() => (
+  <>
+    <div>
+      support the staff with a tip {OrderStore.registerStore.tip > 0 && <>({OrderStore.registerStore.tipPercent}%)</>}
+    </div>
+    <div>
+      <Input
+        onChange={(e) => OrderStore.registerStore.setTip(e.target.value)}
+        value={OrderStore.registerStore.tip}
+        type="number"
+        min="0.00"
+        step="0.1"
+      />
+    </div>
+  </>
+));
 
 export default Tip;
