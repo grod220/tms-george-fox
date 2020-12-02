@@ -4,10 +4,12 @@ import ReactModal from 'react-modal';
 import { observer } from 'mobx-react-lite';
 
 import OrderStore from '../../../stores/order-store';
-import AddToCart from './add-to-cart';
 
 import { MenuItem } from '../../../../../utilities/contentful-types';
 import Image from 'next/image';
+import ItemStore from '../../../stores/item-store';
+import MenuItemOptions from './menu-item-options';
+import { AddToCart } from './add-to-cart';
 
 const Content = styled.div`
   width: 100%;
@@ -58,16 +60,17 @@ const Name = styled.div`
 
 interface ModalProps {
   itemData: MenuItem;
-  closeFunc: () => any;
+  closeFunc: () => void;
 }
 
 const Modal = observer(({ itemData, closeFunc }: ModalProps) => {
   ReactModal.setAppElement('#__next');
-  // const itemStoreInstance = new ItemStore(
-  //   itemData.title as string,
-  //   itemData.price as number,
-  //   itemData.optionsCollection.items | undefined,
-  // );
+  const itemStoreInstance = new ItemStore(
+    itemData.title,
+    itemData.price,
+    [],
+    // itemData.optionsCollection.items | [],
+  );
 
   return (
     <ReactModal
@@ -100,9 +103,8 @@ const Modal = observer(({ itemData, closeFunc }: ModalProps) => {
           </Name>
           <div>{itemData.description}</div>
         </Description>
-        {/*<MenuItemOptions itemStore={itemStoreInstance} />*/}
-        {/* @ts-ignore */}
-        {/*<AddToCart shoppingCart={OrderStore.shoppingCart} itemStore={itemStoreInstance} closeFunc={closeFunc} />*/}
+        <MenuItemOptions itemStore={itemStoreInstance} />
+        <AddToCart itemStore={itemStoreInstance} closeFunc={closeFunc} />
       </Content>
       <style global jsx>{`
         .modal-box {

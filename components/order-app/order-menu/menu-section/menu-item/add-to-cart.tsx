@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
 
 import addZero from '../../../../../utilities/add-zero';
+import ItemStore from '../../../stores/item-store';
+import OrderStore from '../../../stores/order-store';
 
 const Container = styled.div`
   position: sticky;
@@ -59,7 +61,12 @@ const Number = styled.span`
   margin: 0 10px;
 `;
 
-const AddToCart = observer(({ shoppingCart, itemStore, closeFunc }) => {
+interface AddToCartProps {
+  itemStore: ItemStore;
+  closeFunc: () => void;
+}
+
+export const AddToCart = observer(({ itemStore, closeFunc }: AddToCartProps) => {
   const [cartCount, setCartCount] = useState(1);
   const [highlightColor, setHighlightColor] = useState('#ae3635');
   const itemTotal = itemStore.total * cartCount;
@@ -67,7 +74,7 @@ const AddToCart = observer(({ shoppingCart, itemStore, closeFunc }) => {
   const addItemsToCart = () => {
     if (itemStore.readyForCart) {
       for (let i = 0; i < cartCount; i++) {
-        shoppingCart.push(itemStore);
+        OrderStore.addToCart(itemStore);
       }
       closeFunc();
     }
@@ -89,9 +96,7 @@ const AddToCart = observer(({ shoppingCart, itemStore, closeFunc }) => {
         </CountBtn>
       </CartCountContainer>
       <span>{itemStore.readyForCart ? 'Add to Cart' : <i>Make selections</i>}</span>
-      <Price>${addZero(itemTotal.toFixed(2))}</Price>
+      <Price>${addZero(parseFloat(itemTotal.toFixed(2)))}</Price>
     </Container>
   );
 });
-
-export default AddToCart;

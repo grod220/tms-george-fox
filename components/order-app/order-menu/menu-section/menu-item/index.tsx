@@ -8,6 +8,7 @@ import OrderStore from '../../../stores/order-store';
 import { MenuItem as MenuItemType } from '../../../../../utilities/contentful-types';
 import Image from 'next/image';
 import MenuItemModal from './modal';
+import { observer } from 'mobx-react-lite';
 
 const ItemContainer = styled.div<{ hasItem: boolean }>`
   border: ${({ hasItem }) => (hasItem ? '3px solid #84bf5b' : '1px solid #cecece')};
@@ -32,6 +33,7 @@ const ItemCounter = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  z-index: 100;
 `;
 
 const ItemTitle = styled.h5`
@@ -64,17 +66,18 @@ const RightSide = styled.div`
   position: relative;
 `;
 
-const MenuItem = ({ itemData }: { itemData: MenuItemType }) => {
+const MenuItem = observer(({ itemData }: { itemData: MenuItemType }) => {
   const [modal, setModal] = useState(false);
-  // const itemCount = OrderStore.shoppingCart.filter((item) => item.dishName === itemData.title).length;
+  const itemCount = OrderStore.shoppingCart.filter((item) => item.dishName === itemData.title).length;
+
   return (
     <>
       {modal && <MenuItemModal itemData={itemData} closeFunc={() => setModal(false)} />}
       <ItemContainer
-        // hasItem={OrderStore.shoppingCart.map((item) => item.dishName).includes(itemData.title)}
+        hasItem={OrderStore.shoppingCart.map((item) => item.dishName).includes(itemData.title)}
         onClick={() => setModal(!modal)}
       >
-        {/*{itemCount > 0 && <ItemCounter>{itemCount}</ItemCounter>}*/}
+        {itemCount > 0 && <ItemCounter>{itemCount}</ItemCounter>}
         <LeftSide>
           <ItemTitle>{(removeHashes(itemData.title) ?? '').replace(/\b\S/g, (t) => t.toUpperCase())}</ItemTitle>
           <Description>{itemData.description}</Description>
@@ -90,6 +93,6 @@ const MenuItem = ({ itemData }: { itemData: MenuItemType }) => {
       </ItemContainer>
     </>
   );
-};
+});
 
 export default MenuItem;

@@ -1,4 +1,7 @@
 import { makeAutoObservable } from 'mobx';
+import ItemStore from './item-store';
+import { AddToCart } from '../order-menu/menu-section/menu-item/add-to-cart';
+import * as React from 'react';
 
 export type ActiveTab = 'Full menu' | 'Vegetarian' | 'Vegan' | 'Gluten Free' | 'Catering Menu';
 
@@ -6,6 +9,7 @@ class OrderStore {
   activeTab: ActiveTab;
   orderType: string;
   fulfillmentOption: string;
+  shoppingCart: ItemStore[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -38,6 +42,10 @@ class OrderStore {
     }
     // OrderStore.dateStore.fulfillmentDate = getNextAvailableFulfillmentDateStr();
     // OrderStore.dateStore.fulfillmentTime = getNextAvailableFulfillmentTimeStr();
+  }
+
+  addToCart(itemStore: ItemStore) {
+    this.shoppingCart.push(itemStore);
   }
 }
 
