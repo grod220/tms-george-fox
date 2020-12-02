@@ -6,27 +6,27 @@ export interface Option extends BaseItem {
   pricedOptionItemsCollection: Collection<MenuItem>;
 }
 
-export interface Image {
-  title: string;
-  file: {
-    url: string;
-    details: {
-      size: number;
-      image: {
-        width: number;
-        height: number;
-      };
-    };
-    fileName: string;
-    contentType: string;
-  };
-}
+// export interface Image {
+//   title: string;
+//   file: {
+//     url: string;
+//     details: {
+//       size: number;
+//       image: {
+//         width: number;
+//         height: number;
+//       };
+//     };
+//     fileName: string;
+//     contentType: string;
+//   };
+// }
 
 export interface MenuItem extends BaseItem {
   title: string;
   price: number;
   description: string;
-  image: Image;
+  image: { url: string } | null;
   submitImageToUber: boolean;
   temperature: string[];
   optionsCollection?: Collection<Option>;

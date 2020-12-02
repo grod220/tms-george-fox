@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import SectionTab from './section-tab';
 import { MenuVersion } from '../../../utilities/contentful-types';
+import { ActiveTab } from '../stores/order-store';
 
 const Container = styled.div`
   height: 7rem;
@@ -52,7 +53,7 @@ const OrderNav = observer(({ catering, menus }: OrderNavProps) => {
             .filter((version) => menuVersions.includes(version))
             .sort((a, b) => menuComparator(menuVersions, a, b))
             .map((menuVersion) => (
-              <SectionTab key={menuVersion} menuVersion={menuVersion} />
+              <SectionTab key={menuVersion} menuVersion={menuVersion as ActiveTab} />
             ))}
         </MenuNavItemsWrapper>
         {/*<CheckoutTab />*/}

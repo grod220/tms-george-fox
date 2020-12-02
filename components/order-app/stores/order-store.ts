@@ -1,7 +1,9 @@
 import { makeAutoObservable } from 'mobx';
 
+export type ActiveTab = 'Full menu' | 'Vegetarian' | 'Vegan' | 'Gluten Free' | 'Catering Menu';
+
 class OrderStore {
-  activeTab: string;
+  activeTab: ActiveTab;
   orderType: string;
   fulfillmentOption: string;
 
@@ -9,7 +11,7 @@ class OrderStore {
     makeAutoObservable(this);
   }
 
-  setActiveTab(tab: string): void {
+  setActiveTab(tab: ActiveTab): void {
     this.activeTab = tab;
   }
 

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
 
-import OrderStore from '../stores/order-store';
+import OrderStore, { ActiveTab } from '../stores/order-store';
 import { removeHashes } from '../../../utilities/contentful-formatter';
 
 export const Section = styled.div`
@@ -27,7 +27,7 @@ export const Section = styled.div`
   `}
 `;
 
-const SectionTab = observer(({ menuVersion }: { menuVersion: string }) => {
+const SectionTab = observer(({ menuVersion }: { menuVersion: ActiveTab }) => {
   return (
     <Section onClick={() => OrderStore.setActiveTab(menuVersion)} active={OrderStore.activeTab === menuVersion}>
       {removeHashes(menuVersion)}
