@@ -17,4 +17,7 @@ module.exports = {
     config.module.rules.push(fileLoader);
     return config;
   },
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
 };

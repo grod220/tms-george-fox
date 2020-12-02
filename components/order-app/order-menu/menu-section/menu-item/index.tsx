@@ -6,6 +6,7 @@ import formatPrice from '../../../../../utilities/add-zero';
 import { removeHashes } from '../../../../../utilities/contentful-formatter';
 import OrderStore from '../../../stores/order-store';
 import { MenuItem as MenuItemType } from '../../../../../utilities/contentful-types';
+import Image from 'next/image';
 
 const ItemContainer = styled.div<{ hasItem: boolean }>`
   border: ${({ hasItem }) => (hasItem ? '3px solid #84bf5b' : '1px solid #cecece')};
@@ -57,12 +58,9 @@ const LeftSide = styled.div`
   padding: 12px;
 `;
 
-const RightSide = styled.div<{ image: string }>`
+const RightSide = styled.div`
   flex: 0 0 160px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-image: url(${({ image }) => image});
+  position: relative;
 `;
 
 const MenuItem = ({ itemData }: { itemData: MenuItemType }) => {
@@ -83,7 +81,11 @@ const MenuItem = ({ itemData }: { itemData: MenuItemType }) => {
             <Price>${formatPrice(itemData.price)}</Price>
           </Details>
         </LeftSide>
-        {itemData.image && <RightSide image={itemData.image?.url} />}
+        {itemData.image && (
+          <RightSide image={itemData.image.url}>
+            <Image src={itemData.image.url} layout="fill" objectFit="cover" />
+          </RightSide>
+        )}
       </ItemContainer>
     </>
   );
