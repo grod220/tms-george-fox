@@ -5,6 +5,7 @@ import OrderStore from './stores/order-store';
 import OrderNav from './order-nav';
 import { MenuVersion } from '../../utilities/contentful-types';
 import OrderMenu from './order-menu';
+import Checkout from './checkout';
 
 interface OrderAppProps {
   catering?: boolean;
@@ -17,8 +18,11 @@ const OrderApp = observer(({ catering, menus }: OrderAppProps) => {
   return (
     <>
       <OrderNav catering={catering} menus={menus} />
-      <OrderMenu activeTab={OrderStore.activeTab} menus={menus} />
-      {/*{OrderStore.activeTab === 'Checkout' ? <Checkout /> : <OrderMenu activeTab={OrderStore.activeTab} />}*/}
+      {OrderStore.activeTab === 'Checkout' ? (
+        <Checkout />
+      ) : (
+        <OrderMenu activeTab={OrderStore.activeTab} menus={menus} />
+      )}
     </>
   );
 });

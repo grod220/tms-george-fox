@@ -30,7 +30,7 @@ const CHECKOUT_TAB = 'Checkout';
 const CheckoutTab = observer(() => {
   return (
     <Wrapper>
-      <Section onClick={() => (OrderStore.activeTab = CHECKOUT_TAB)} active={OrderStore.activeTab === CHECKOUT_TAB}>
+      <Section onClick={() => OrderStore.setActiveTab(CHECKOUT_TAB)} active={OrderStore.activeTab === CHECKOUT_TAB}>
         Checkout
       </Section>
       {OrderStore.shoppingCart.length > 0 && <CartCount>{OrderStore.shoppingCart.length}</CartCount>}

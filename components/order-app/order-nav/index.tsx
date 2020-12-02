@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite';
 import SectionTab from './section-tab';
 import { MenuVersion } from '../../../utilities/contentful-types';
 import { ActiveTab } from '../stores/order-store';
+import CheckoutTab from './checkout-tab';
 
 const Container = styled.div`
   height: 7rem;
@@ -56,7 +57,7 @@ const OrderNav = observer(({ catering, menus }: OrderNavProps) => {
               <SectionTab key={menuVersion} menuVersion={menuVersion as ActiveTab} />
             ))}
         </MenuNavItemsWrapper>
-        {/*<CheckoutTab />*/}
+        <CheckoutTab />
       </Content>
     </Container>
   );

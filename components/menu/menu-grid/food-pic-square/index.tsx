@@ -19,10 +19,10 @@ const InnerText = styled.div`
   bottom: 1.4rem;
 `;
 
-const FoodPicSquare = ({ imagePath, name }) => (
+const FoodPicSquare = ({ imagePath, name }: { imagePath: string; name?: string }) => (
   <Box>
     <Image src={imagePath} layout="fill" objectFit="cover" />
-    <InnerText>{name}</InnerText>
+    {name && <InnerText>{name}</InnerText>}
   </Box>
 );
 

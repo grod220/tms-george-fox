@@ -1,0 +1,5 @@
+/* removes powered-by-Google */
+.pac-container:after {
+  background-image: none !important;
+  height: 0px;
+}
