@@ -37,7 +37,9 @@ const DeliveryAutocomplete = observer(() => {
       <LabelHelper>Deliver to location</LabelHelper>
       <InputEl
         id="location-input"
-        placeholder={OrderStore.deliveryLocation ? formatGooglePlacesObj(OrderStore.deliveryLocation) : ''}
+        placeholder={
+          OrderStore.fulfillment.deliveryLocation ? formatGooglePlacesObj(OrderStore.fulfillment.deliveryLocation) : ''
+        }
         required
       />
     </WidgetWrapper>

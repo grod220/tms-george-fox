@@ -4,7 +4,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import MapStyles from './map-styles.json';
 import CustomMarker from './marker.png';
 
-export const MAPS_API_KEY = 'AIzaSyCDKIcbVdcrstjcpUtcW8qmppkfTD2mRC8';
+export const MAPS_API_KEY = 'AIzaSyD8OpUj47fZKd_9vwU_igtd3xdoAPsFKyI';
 
 const directionsLink = () => {
   window.open(
@@ -18,7 +18,7 @@ const Map = () => (
     <GoogleMap
       zoom={16}
       center={{ lat: 28.5394327, lng: -81.2868005 }}
-      options={{ styles: MapStyles, disableDefaultUI: true, scrollwheel: false }}
+      options={{ styles: MapStyles as google.maps.MapTypeStyle[], disableDefaultUI: true, scrollwheel: false }}
       mapContainerStyle={{ height: '46rem', marginTop: '6rem' }}
     >
       <Marker position={{ lat: 28.5394327, lng: -81.2868005 }} icon={CustomMarker} onClick={directionsLink} />

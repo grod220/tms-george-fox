@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { observer } from 'mobx-react-lite';
 import OrderStore from '../../stores/order-store';
 import styled from 'styled-components';
@@ -21,18 +21,23 @@ const OrderPickupOption = styled.button`
   }
 `;
 
-const OrderPickupOptionButton = observer(({ children: buttonName, func }) => {
+interface OrderPickupOptionButtonProps {
+  text: 'pickup' | 'delivery';
+  func?: () => void;
+}
+
+const OrderPickupOptionButton = observer(({ text, func }: OrderPickupOptionButtonProps) => {
   return (
     <OrderPickupOption
-      selected={OrderStore.fulfillment.option === buttonName}
+      selected={OrderStore.fulfillment.option === text}
       onClick={() => {
         if (func) {
           func();
         }
-        OrderStore.fulfillment.setFulfillmentOption(buttonName);
+        OrderStore.fulfillment.setFulfillmentOption(text);
       }}
     >
-      {buttonName}
+      {text}
     </OrderPickupOption>
   );
 });

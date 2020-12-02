@@ -9,7 +9,7 @@ import FulfillmentOptions from './fulfillment-options';
 const Fulfillment = observer(() => {
   return (
     <>
-      {/*<OrderTypeSelector />*/}
+      <OrderTypeSelector />
       <CheckoutSectionHeader>{OrderStore.fulfillment.option} info</CheckoutSectionHeader>
       <FulfillmentOptions />
     </>

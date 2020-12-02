@@ -66,7 +66,7 @@ const FulfillmentOptions = observer(() => {
           <FulfillmentInput
             title="Number of guests"
             type="number"
-            value={OrderStore.fulfillment.numberOfGuests}
+            value={String(OrderStore.fulfillment.numberOfGuests)}
             setFunc={(val) => OrderStore.fulfillment.setNumberOfGuests(val)}
           />
           <DeliveryAutocomplete />

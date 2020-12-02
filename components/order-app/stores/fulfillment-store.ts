@@ -1,4 +1,5 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, reaction } from 'mobx';
+import { distanceFromTMS } from './order-utils';
 
 class FulfillmentStore {
   option: 'pickup' | 'delivery';
@@ -7,8 +8,31 @@ class FulfillmentStore {
   numberOfGuests: number;
   specialInstructions: string;
 
+  deliveryLocation: google.maps.places.PlaceResult;
+  errorFromGoogle: boolean;
+  loadingMiles: boolean;
+  deliveryMiles: number;
+
   constructor() {
     makeAutoObservable(this);
+    reaction(
+      () => this.deliveryLocation,
+      (googlePlacesObj) => this.handleDeliverLocationUpdate(googlePlacesObj),
+    );
+  }
+
+  handleDeliverLocationUpdate(googlePlacesObj) {
+    this.loadingMiles = true;
+    distanceFromTMS(googlePlacesObj)
+      .then((miles) => {
+        this.deliveryMiles = miles;
+        this.loadingMiles = false;
+      })
+      .catch((e) => {
+        console.log(e);
+        this.loadingMiles = false;
+        this.errorFromGoogle = true;
+      });
   }
 
   setFulfillmentOption(type: 'pickup' | 'delivery') {
@@ -29,6 +53,14 @@ class FulfillmentStore {
 
   setSpecialInstructions(str: string) {
     this.specialInstructions = str;
+  }
+
+  setDeliveryLocation(location: google.maps.places.PlaceResult) {
+    this.deliveryLocation = location;
+  }
+
+  setErrorFromGoogle(bool: boolean) {
+    this.errorFromGoogle = bool;
   }
 }
 

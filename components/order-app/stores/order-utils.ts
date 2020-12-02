@@ -1,13 +1,13 @@
 import { insertGoogleMapsScript } from '../checkout/fulfillment/delivery-autocomplete/autocomplete';
 
-const getDistance = (TMS, deliveryLocation) =>
+const getDistance = (TMS, deliveryLocation): Promise<google.maps.DistanceMatrixResponse> =>
   new Promise((resolve, reject) => {
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
         origins: [TMS],
         destinations: [deliveryLocation],
-        travelMode: 'DRIVING',
+        travelMode: google.maps.TravelMode.DRIVING,
         unitSystem: google.maps.UnitSystem.IMPERIAL,
       },
       (result) => {
@@ -16,7 +16,7 @@ const getDistance = (TMS, deliveryLocation) =>
     );
   });
 
-export const distanceFromTMS = async (googlePlacesObj) => {
+export const distanceFromTMS = async (googlePlacesObj: google.maps.places.PlaceResult) => {
   await insertGoogleMapsScript();
 
   const TMSLocation = new google.maps.LatLng(28.539307, -81.286839);
@@ -25,7 +25,7 @@ export const distanceFromTMS = async (googlePlacesObj) => {
   return distanceInMiles;
 };
 
-export const formatGooglePlacesObj = ({ name, formatted_address }) => {
+export const formatGooglePlacesObj = ({ name, formatted_address }: google.maps.places.PlaceResult) => {
   if (formatted_address.includes(name)) {
     return formatted_address;
   } else {

@@ -9,14 +9,8 @@ const OrderTypeSelector = () => {
     OrderStore.orderType === 'catering' && (
       <>
         <OrderInfoSectionHeader>order type</OrderInfoSectionHeader>
-        <OrderPickupOptionButton>delivery</OrderPickupOptionButton>
-        <OrderPickupOptionButton
-          func={() => {
-            OrderStore.deliveryLocation = undefined;
-          }}
-        >
-          pickup
-        </OrderPickupOptionButton>
+        <OrderPickupOptionButton text="delivery" />
+        <OrderPickupOptionButton text="pickup" func={() => (OrderStore.fulfillment.deliveryLocation = undefined)} />
       </>
     )
   );

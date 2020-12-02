@@ -4,7 +4,7 @@ import { MAPS_API_KEY } from '../../../../homepage/map';
 export const insertGoogleMapsScript = () =>
   new Promise((resolve, reject) => {
     if (document.getElementById('autocomplete-script')) {
-      resolve();
+      resolve(true);
       return;
     }
     const script = document.createElement('script');
@@ -17,7 +17,7 @@ export const insertGoogleMapsScript = () =>
   });
 
 const attachAutoCompleteEl = () => {
-  const input = document.getElementById('location-input');
+  const input = document.getElementById('location-input') as HTMLInputElement;
   const autocomplete = new google.maps.places.Autocomplete(input, {
     bounds: new google.maps.LatLngBounds(
       new google.maps.LatLng({ lat: 27.9999932635, lng: -81.9420167728 }), // southwest corner of bound
@@ -27,8 +27,8 @@ const attachAutoCompleteEl = () => {
     strictBounds: true,
   });
   autocomplete.addListener('place_changed', function () {
-    OrderStore._errorFromGoogle = false;
-    OrderStore.deliveryLocation = autocomplete.getPlace();
+    OrderStore.fulfillment.setErrorFromGoogle(false);
+    OrderStore.fulfillment.setDeliveryLocation(autocomplete.getPlace());
   });
 };
 

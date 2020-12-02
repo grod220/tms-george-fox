@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, reaction } from 'mobx';
 import ItemStore from './item-store';
 import { getNextAvailableFulfillmentDateStr, getNextAvailableFulfillmentTimeStr } from './date-utils';
 import DateStore from './date-store';
@@ -17,6 +17,12 @@ class OrderStore {
 
   constructor() {
     makeAutoObservable(this);
+    reaction(
+      () => this.fulfillment.option,
+      () => {
+        if (this.dateStore.fulfillmentTime) this.dateStore.validateTime();
+      },
+    );
   }
 
   setActiveTab(tab: ActiveTab): void {
@@ -81,7 +87,7 @@ class OrderStore {
     } else {
       return (
         baseQualificationsSatisfied &&
-        Boolean(this.deliveryLocation) &&
+        Boolean(this.fulfillment.deliveryLocation) &&
         typeof this.deliveryFee === 'number' &&
         Number(this.fulfillment.numberOfGuests) > 0
       );
@@ -90,6 +96,42 @@ class OrderStore {
 
   setTip(str: string) {
     this.tip = Number(str);
+  }
+
+  get deliveryFee(): string | number {
+    if (this.fulfillment.loadingMiles) {
+      return 'Calculating cost ⌛';
+    }
+
+    if (!this.fulfillment.deliveryLocation) {
+      return 'Select delivery location';
+    }
+
+    if (this.fulfillment.errorFromGoogle) {
+      return '🚫 error with Google Maps';
+    }
+
+    if (this.fulfillment.deliveryMiles < 10) {
+      if (Number(this.subTotal) >= 150) {
+        return 20;
+      } else {
+        return '⚠️ Minimum cart total for this distance is $150';
+      }
+    } else if (this.fulfillment.deliveryMiles < 15) {
+      if (Number(this.subTotal) >= 175) {
+        return 25;
+      } else {
+        return '⚠️ Minimum cart total for this distance is $175';
+      }
+    } else if (this.fulfillment.deliveryMiles < 21) {
+      if (Number(this.subTotal) >= 200) {
+        return 40;
+      } else {
+        return '⚠️ Minimum cart total for this distance is $200';
+      }
+    } else {
+      return 'Distance beyond 20 miles. Call 📞 the Meatball Stoppe to place order.';
+    }
   }
 }
 
