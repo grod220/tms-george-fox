@@ -1,5 +1,6 @@
 import { makeAutoObservable, reaction } from 'mobx';
 import { distanceFromTMS } from './order-utils';
+import DateStore from './date-store';
 
 class FulfillmentStore {
   option: 'pickup' | 'delivery';
@@ -13,8 +14,12 @@ class FulfillmentStore {
   loadingMiles: boolean;
   deliveryMiles: number;
 
+  dateStore: DateStore;
+
   constructor() {
     makeAutoObservable(this);
+    this.dateStore = new DateStore(this);
+
     reaction(
       () => this.deliveryLocation,
       (googlePlacesObj) => this.handleDeliverLocationUpdate(googlePlacesObj),

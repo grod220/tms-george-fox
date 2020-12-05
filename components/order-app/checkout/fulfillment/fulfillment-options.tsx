@@ -47,18 +47,18 @@ const FulfillmentOptions = observer(() => {
       <FulfillmentInput
         title={`${OrderStore.fulfillment.option} date`}
         type="date"
-        value={OrderStore.dateStore.fulfillmentDate}
-        setFunc={(val) => OrderStore.dateStore.setFulfillmentDate(val)}
-        error={OrderStore.dateStore.fulfillmentDateError}
+        value={OrderStore.fulfillment.dateStore.fulfillmentDate}
+        setFunc={(val) => OrderStore.fulfillment.dateStore.setFulfillmentDate(val)}
+        error={OrderStore.fulfillment.dateStore.fulfillmentDateError}
         min={getNextAvailableFulfillmentDateStr()}
         max={getOneYearFromTodayStr()}
       />
       <FulfillmentInput
         title={`${OrderStore.fulfillment.option} time`}
         type="time"
-        error={OrderStore.dateStore.fulfillmentTimeError}
-        value={OrderStore.dateStore.fulfillmentTime}
-        setFunc={(val) => OrderStore.dateStore.setFulfillmentTime(val)}
+        error={OrderStore.fulfillment.dateStore.fulfillmentTimeError}
+        value={OrderStore.fulfillment.dateStore.fulfillmentTime}
+        setFunc={(val) => OrderStore.fulfillment.dateStore.setFulfillmentTime(val)}
         step="300"
       />
       {OrderStore.fulfillment.option === 'delivery' && (

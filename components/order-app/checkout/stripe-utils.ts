@@ -10,8 +10,8 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
   const orderRequest: OrderRequest = {
     orderType: orderStore.orderType,
     contactName: orderStore.fulfillment.contactName,
-    fulfillmentTime: convert24HourTo12Format(orderStore.dateStore.fulfillmentTime),
-    fulfillmentDate: extendedDateFormat(orderStore.dateStore.fulfillmentDate),
+    fulfillmentTime: convert24HourTo12Format(OrderStore.fulfillment.dateStore.fulfillmentTime),
+    fulfillmentDate: extendedDateFormat(OrderStore.fulfillment.dateStore.fulfillmentDate),
     contactNumber: orderStore.fulfillment.contactNumber,
     specialInstructions: orderStore.fulfillment.specialInstructions,
     fulfillmentOption: orderStore.fulfillment.option,

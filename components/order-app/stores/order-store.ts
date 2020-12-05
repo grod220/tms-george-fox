@@ -1,7 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import ItemStore from './item-store';
 import { getNextAvailableFulfillmentDateStr, getNextAvailableFulfillmentTimeStr } from './date-utils';
-import DateStore from './date-store';
 import FulfillmentStore from './fulfillment-store';
 import RegisterStore from './register-store';
 
@@ -12,14 +11,12 @@ class OrderStore {
   orderType: string;
   shoppingCart: ItemStore[];
   fulfillment: FulfillmentStore;
-  dateStore: DateStore;
   registerStore: RegisterStore;
 
   constructor() {
     makeAutoObservable(this);
     this.shoppingCart = [];
     this.fulfillment = new FulfillmentStore();
-    this.dateStore = new DateStore(this.fulfillment);
     this.registerStore = new RegisterStore(this.fulfillment, this.shoppingCart);
   }
 
@@ -44,8 +41,8 @@ class OrderStore {
       this.fulfillment.setFulfillmentOption('pickup');
       this.setActiveTab('Full menu');
     }
-    this.dateStore.fulfillmentDate = getNextAvailableFulfillmentDateStr();
-    this.dateStore.fulfillmentTime = getNextAvailableFulfillmentTimeStr();
+    this.fulfillment.dateStore.fulfillmentDate = getNextAvailableFulfillmentDateStr();
+    this.fulfillment.dateStore.fulfillmentTime = getNextAvailableFulfillmentTimeStr();
   }
 
   addToCart(itemStore: ItemStore) {
@@ -56,10 +53,10 @@ class OrderStore {
     const baseQualificationsSatisfied =
       Boolean(this.fulfillment.contactName) &&
       Boolean(this.fulfillment.contactNumber) &&
-      Boolean(this.dateStore.fulfillmentDate) &&
-      !this.dateStore.fulfillmentDateError &&
-      Boolean(this.dateStore.fulfillmentTime) &&
-      !this.dateStore.fulfillmentTimeError;
+      Boolean(this.fulfillment.dateStore.fulfillmentDate) &&
+      !this.fulfillment.dateStore.fulfillmentDateError &&
+      Boolean(this.fulfillment.dateStore.fulfillmentTime) &&
+      !this.fulfillment.dateStore.fulfillmentTimeError;
     if (this.orderType === 'normal' || (this.orderType === 'catering' && this.fulfillment.option === 'pickup')) {
       return baseQualificationsSatisfied;
     } else {
