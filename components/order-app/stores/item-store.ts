@@ -2,8 +2,8 @@ import { makeAutoObservable } from 'mobx';
 import { MenuItem, Option } from '../../../utilities/contentful-types';
 import { removeHashes } from '../../../utilities/contentful-formatter';
 
-type OptionChoice = { title: string; price: number };
-type OptionWithChoices = Option & { choices: OptionChoice[] };
+export type OptionChoice = { title: string; price: number };
+export type OptionWithChoices = Option & { choices: OptionChoice[] };
 
 class ItemStore {
   dishName: string;

@@ -4,46 +4,52 @@ import { formatGooglePlacesObj } from '../stores/order-utils';
 import { convert24HourTo12Format, extendedDateFormat } from '../stores/date-utils';
 import { loadStripe } from '@stripe/stripe-js';
 import * as Sentry from '@sentry/browser';
+import { OrderRequest } from '../../../pages/api/stripe/order-utils';
 
-const serializeOrderStore = (orderStore) => {
-  const baseObj = toJS(orderStore);
-  baseObj.shoppingCart = baseObj.shoppingCart.map((item, index) => {
-    item.total = orderStore.shoppingCart[index].total;
-    return item;
-  });
-  baseObj.tax = orderStore.tax;
-
-  baseObj.fulfillmentTime = convert24HourTo12Format(orderStore.dateStore.fulfillmentTime);
-  baseObj.fulfillmentDate = extendedDateFormat(orderStore.dateStore.fulfillmentDate);
+const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
+  const orderRequest: OrderRequest = {
+    orderType: orderStore.orderType,
+    contactName: orderStore.fulfillment.contactName,
+    fulfillmentTime: convert24HourTo12Format(orderStore.dateStore.fulfillmentTime),
+    fulfillmentDate: extendedDateFormat(orderStore.dateStore.fulfillmentDate),
+    contactNumber: orderStore.fulfillment.contactNumber,
+    specialInstructions: orderStore.fulfillment.specialInstructions,
+    fulfillmentOption: orderStore.fulfillment.option,
+    shoppingCart: toJS(orderStore.shoppingCart).map((item, index) => {
+      // @ts-ignore --- toJS does not resolve computed properties
+      item.total = orderStore.shoppingCart[index].total;
+      return item;
+    }),
+    tip: orderStore.registerStore.tip,
+    tax: orderStore.registerStore.tax,
+  };
 
   if (OrderStore.fulfillment.option === 'delivery') {
-    baseObj.deliveryLocation = formatGooglePlacesObj(baseObj.deliveryLocation);
-    baseObj.deliveryFee = orderStore.deliveryFee;
-    baseObj.numberOfGuests = orderStore.numberOfGuests;
+    orderRequest.deliveryLocation = formatGooglePlacesObj(orderStore.fulfillment.deliveryLocation);
+    orderRequest.deliveryFee = orderStore.registerStore.deliveryFee as number;
+    orderRequest.numberOfGuests = orderStore.fulfillment.numberOfGuests;
   }
-  return baseObj;
+
+  console.log(orderRequest);
+  return orderRequest;
 };
 
 export default async function handleCheckoutRequest(showSpinner, showError) {
   showSpinner(true);
   try {
-    const res = await fetch(
-      // 'http://localhost:5001/tms-f-f-bruce/us-central1/function/stripe/order',
-      'https://us-central1-tms-f-f-bruce.cloudfunctions.net/function/stripe/order',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'post',
-        body: JSON.stringify(serializeOrderStore(OrderStore)),
+    const res = await fetch('/api/stripe/order', {
+      headers: {
+        'Content-Type': 'application/json',
       },
-    );
+      method: 'post',
+      body: JSON.stringify(serializeOrderStore(OrderStore)),
+    });
     const jsonResponse = await res.json();
     if (!res.ok) {
       throw Error(`Error from Firebase Func: ${jsonResponse.error}`);
     }
-    const stripe = await loadStripe('pk_live_ivfkFrzhLuZbUiZRVkvsBwI3');
-    // const stripe = await loadStripe('pk_test_OaDvLsgEGQbshVWpSFMQMm1k');
+    // const stripe = await loadStripe('pk_live_ivfkFrzhLuZbUiZRVkvsBwI3');
+    const stripe = await loadStripe('pk_test_OaDvLsgEGQbshVWpSFMQMm1k');
     const result = await stripe.redirectToCheckout({
       sessionId: jsonResponse.id,
     });
