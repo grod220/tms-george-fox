@@ -6,13 +6,14 @@ import Summit from './images/summit.png';
 import TheGame from './images/the-game.jpg';
 import SummitPDF from './files/summit.pdf';
 import UniqueEatsPDF from './files/unique-eats.pdf';
+import WygmAudio from './files/wygm.mp3';
+import PrimetimeKitchenInterview from './files/PrimetimeKitchenInterview.mp3';
 
 export default [
   {
     name: 'fm96.9: The Game',
     image: TheGame,
-    audio:
-      'https://firebasestorage.googleapis.com/v0/b/tms-f-f-bruce.appspot.com/o/wygm.mp3?alt=media&token=0824e69b-e237-4654-b9c9-b63bb7e5b3a6',
+    audio: WygmAudio,
     text: "You know it's real italian when the lady gives you a hug and a kiss on the cheek.",
   },
   {
@@ -40,8 +41,7 @@ export default [
   {
     name: 'Real Radio 104.1',
     image: RealRadio,
-    audio:
-      'https://firebasestorage.googleapis.com/v0/b/tms-f-f-bruce.appspot.com/o/PrimetimeKitchenInterview.mp3?alt=media&token=fe7413a5-23ac-479d-a35b-618fa91151d4',
+    audio: PrimetimeKitchenInterview,
     text:
       'The chicken meatball, buffalo style, balanced with blue cheese on top––that with the white-bean ragout is crazy killer.',
   },
