@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
-import OrderStore from '../../stores/order-store';
 
-const WidgetWrapper = styled.div`
+export const WidgetWrapper = styled.div`
   position: relative;
   margin: 30px 5px 0 5px;
 `;
@@ -18,7 +17,7 @@ const ErrorMessage = styled.span`
   user-select: none;
 `;
 
-const LabelHelper = styled.label`
+export const LabelHelper = styled.label`
   position: absolute;
   color: #484848;
   font-size: 16px;
@@ -28,7 +27,7 @@ const LabelHelper = styled.label`
   text-transform: capitalize;
 `;
 
-const InputEl = styled.input`
+export const InputEl = styled.input`
   padding: 10px;
   font-size: 18px;
   font-family: vollkorn;
