@@ -48,8 +48,8 @@ export default async function handleCheckoutRequest(showSpinner, showError) {
     if (!res.ok) {
       throw Error(`Error from Firebase Func: ${jsonResponse.error}`);
     }
-    // const stripe = await loadStripe('pk_live_ivfkFrzhLuZbUiZRVkvsBwI3');
-    const stripe = await loadStripe('pk_test_OaDvLsgEGQbshVWpSFMQMm1k');
+    const stripe = await loadStripe('pk_live_ivfkFrzhLuZbUiZRVkvsBwI3');
+    // const stripe = await loadStripe('pk_test_OaDvLsgEGQbshVWpSFMQMm1k');
     const result = await stripe.redirectToCheckout({
       sessionId: jsonResponse.id,
     });

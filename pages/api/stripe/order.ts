@@ -4,8 +4,8 @@ import * as Sentry from '@sentry/node';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // For testing
-const stripe = new Stripe(process.env.STRIPE_DEV_SECRET, { apiVersion: '2020-08-27' });
-// const stripe = new Stripe(process.env.STRIPE_PROD_SECRET, { apiVersion: '2020-08-27' });
+// const stripe = new Stripe(process.env.STRIPE_DEV_SECRET, { apiVersion: '2020-08-27' });
+const stripe = new Stripe(process.env.STRIPE_PROD_SECRET, { apiVersion: '2020-08-27' });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
