@@ -15,10 +15,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-left: -5px;
-
-  > div {
-    margin: 0 5px 10px 5px;
-  }
+  margin-top: -10px;
 `;
 
 const PickupLocation = styled.div`
@@ -26,6 +23,7 @@ const PickupLocation = styled.div`
   font-style: italic;
   color: #902e2d;
   font-size: 16px;
+  margin-top: 10px;
 `;
 
 const RedAnchor = styled.a`

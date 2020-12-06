@@ -5,6 +5,7 @@ import OrderStore from '../../stores/order-store';
 
 const WidgetWrapper = styled.div`
   position: relative;
+  margin: 30px 5px 0 5px;
 `;
 
 const ErrorMessage = styled.span`
@@ -12,7 +13,8 @@ const ErrorMessage = styled.span`
   color: #ff1310;
   font-size: 16px;
   font-style: italic;
-  top: -16px;
+  top: -18px;
+  right: 0;
   user-select: none;
 `;
 
@@ -20,14 +22,14 @@ const LabelHelper = styled.label`
   position: absolute;
   color: #484848;
   font-size: 16px;
-  left: 10px;
-  top: 2px;
+  left: 0px;
+  top: -18px;
   user-select: none;
   text-transform: capitalize;
 `;
 
 const InputEl = styled.input`
-  padding: 26px 25px 0 10px;
+  padding: 10px;
   font-size: 18px;
   font-family: vollkorn;
   ${({ hasError }) => hasError && 'border: 2px #ff1310 dotted;'}
