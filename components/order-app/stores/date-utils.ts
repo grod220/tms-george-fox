@@ -63,9 +63,7 @@ const leadTimesInMinutes = {
 
 export const convert24HourTo12Format = (date: Date) => format(date, 'h:mm aa');
 
-export const extendedDateFormat = (htmlDate) => format(parseHTMLDateStr(htmlDate), 'EEEE, MMMM do y');
-
-export const parseHTMLDateStr = (htmlDate) => parse(htmlDate, 'yyyy-MM-dd', startOfToday());
+export const extendedDateFormat = (date: Date) => format(date, 'EEEE, MMMM do y');
 
 const getDayOfWeekStr = (dateObj) => format(dateObj, 'EEEE');
 
