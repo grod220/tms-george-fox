@@ -1,83 +1,40 @@
-import { makeAutoObservable, reaction } from 'mobx';
-import { isBefore, isSunday } from 'date-fns';
-import {
-  getNextAvailableFulfillmentDate,
-  isDateInPast,
-  parseHTMLDateAndTime,
-  parseHTMLDateStr,
-  withinLeadTime,
-  withinOpeningHours,
-} from './date-utils';
+import { makeAutoObservable } from 'mobx';
+import { isInPast, isOnASunday, parseHTMLDateAndTime, withinLeadTime, withinOpeningHours } from './date-utils';
 import FulfillmentStore from './fulfillment-store';
 
 class DateStore {
-  fulfillmentDate: string;
-  fulfillmentDateError: string;
-  fulfillmentTime: string;
-  fulfillmentTimeError: string;
+  fulfillmentTimeAndDate: Date;
   fulfillmentStore: FulfillmentStore;
 
   constructor(fulfillmentStore: FulfillmentStore) {
     makeAutoObservable(this);
     this.fulfillmentStore = fulfillmentStore;
-
-    reaction(
-      () => this.fulfillmentStore?.option,
-      () => {
-        if (this.fulfillmentTime) this.validateTime();
-      },
-    );
-
-    reaction(
-      () => this.fulfillmentDate,
-      (htmlDateStr) => {
-        const proposedDate = parseHTMLDateStr(htmlDateStr);
-
-        if (!this.fulfillmentDate) {
-          this.fulfillmentDateError = 'Date is invalid';
-        } else if (isDateInPast(proposedDate)) {
-          this.fulfillmentDateError = 'Date is in past';
-        } else if (isSunday(proposedDate)) {
-          this.fulfillmentDateError = 'Not open on Sundays';
-        } else if (isBefore(proposedDate, getNextAvailableFulfillmentDate())) {
-          this.fulfillmentDateError = 'Pick later date';
-        } else {
-          this.fulfillmentDateError = undefined;
-        }
-        this.validateTime();
-      },
-    );
-
-    reaction(
-      () => this.fulfillmentTime,
-      () => this.validateTime(),
-    );
   }
 
-  validateTime() {
-    // Not showing error messages if there is a date error message
-    if (!this.fulfillmentDate || !this.fulfillmentTime || this.fulfillmentDateError) {
-      this.fulfillmentTimeError = ' ';
-      return;
+  get fulfillmentTimeAndDateError(): string {
+    if (!this.fulfillmentTimeAndDate) {
+      return 'Date is invalid';
     }
 
-    const proposedDateObj = parseHTMLDateAndTime(this.fulfillmentDate, this.fulfillmentTime);
+    if (isInPast(this.fulfillmentTimeAndDate)) {
+      return 'Date is in past';
+    }
 
-    if (!withinOpeningHours(proposedDateObj)) {
-      this.fulfillmentTimeError = 'Not open';
-    } else if (!withinLeadTime(proposedDateObj)) {
-      this.fulfillmentTimeError = 'Too early';
-    } else {
-      this.fulfillmentTimeError = undefined;
+    if (isOnASunday(this.fulfillmentTimeAndDate)) {
+      return 'Not open on Sundays';
+    }
+
+    if (!withinOpeningHours(this.fulfillmentTimeAndDate)) {
+      return 'Not within opening hours';
+    }
+
+    if (!withinLeadTime(this.fulfillmentTimeAndDate)) {
+      return 'Need lead time';
     }
   }
 
-  setFulfillmentDate(str: string) {
-    this.fulfillmentDate = str;
-  }
-
-  setFulfillmentTime(str: string) {
-    this.fulfillmentTime = str;
+  setFulfillmentDateAndTime(str: string) {
+    this.fulfillmentTimeAndDate = parseHTMLDateAndTime(str);
   }
 }
 

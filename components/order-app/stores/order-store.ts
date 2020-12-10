@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import ItemStore from './item-store';
-import { getNextAvailableFulfillmentDateStr, getNextAvailableFulfillmentTimeStr } from './date-utils';
+import { getNextAvailableFulfillmentDateAndTime } from './date-utils';
 import FulfillmentStore from './fulfillment-store';
 import RegisterStore from './register-store';
 
@@ -41,8 +41,7 @@ class OrderStore {
       this.fulfillment.setFulfillmentOption('pickup');
       this.setActiveTab('Full menu');
     }
-    this.fulfillment.dateStore.fulfillmentDate = getNextAvailableFulfillmentDateStr();
-    this.fulfillment.dateStore.fulfillmentTime = getNextAvailableFulfillmentTimeStr();
+    this.fulfillment.dateStore.fulfillmentTimeAndDate = getNextAvailableFulfillmentDateAndTime();
   }
 
   addToCart(itemStore: ItemStore) {
@@ -53,10 +52,8 @@ class OrderStore {
     const baseQualificationsSatisfied =
       Boolean(this.fulfillment.contactName) &&
       Boolean(this.fulfillment.contactNumber) &&
-      Boolean(this.fulfillment.dateStore.fulfillmentDate) &&
-      !this.fulfillment.dateStore.fulfillmentDateError &&
-      Boolean(this.fulfillment.dateStore.fulfillmentTime) &&
-      !this.fulfillment.dateStore.fulfillmentTimeError;
+      Boolean(this.fulfillment.dateStore.fulfillmentTimeAndDate) &&
+      !this.fulfillment.dateStore.fulfillmentTimeAndDateError;
     if (this.orderType === 'normal' || (this.orderType === 'catering' && this.fulfillment.option === 'pickup')) {
       return baseQualificationsSatisfied;
     } else {

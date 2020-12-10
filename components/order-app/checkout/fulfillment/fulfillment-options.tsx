@@ -5,7 +5,11 @@ import { observer } from 'mobx-react-lite';
 
 import FulfillmentInput from './fulfillment-input';
 import DeliveryAutocomplete from './delivery-autocomplete';
-import { getNextAvailableFulfillmentDateStr, getOneYearFromTodayStr } from '../../stores/date-utils';
+import {
+  convertToHTMLDateAndTimeStr,
+  getNextAvailableFulfillmentDateAndTime,
+  getOneYearFromTodayStr,
+} from '../../stores/date-utils';
 
 const Container = styled.div`
   display: flex;
@@ -45,20 +49,13 @@ const FulfillmentOptions = observer(() => {
         setFunc={(val) => OrderStore.fulfillment.setContactNumber(val)}
       />
       <FulfillmentInput
-        title={`${OrderStore.fulfillment.option} date`}
-        type="date"
-        value={OrderStore.fulfillment.dateStore.fulfillmentDate}
-        setFunc={(val) => OrderStore.fulfillment.dateStore.setFulfillmentDate(val)}
-        error={OrderStore.fulfillment.dateStore.fulfillmentDateError}
-        min={getNextAvailableFulfillmentDateStr()}
+        type="datetime-local"
+        value={convertToHTMLDateAndTimeStr(OrderStore.fulfillment.dateStore.fulfillmentTimeAndDate)}
+        error={OrderStore.fulfillment.dateStore.fulfillmentTimeAndDateError}
+        min={convertToHTMLDateAndTimeStr(getNextAvailableFulfillmentDateAndTime())}
         max={getOneYearFromTodayStr()}
-      />
-      <FulfillmentInput
+        setFunc={(val) => OrderStore.fulfillment.dateStore.setFulfillmentDateAndTime(val)}
         title={`${OrderStore.fulfillment.option} time`}
-        type="time"
-        error={OrderStore.fulfillment.dateStore.fulfillmentTimeError}
-        value={OrderStore.fulfillment.dateStore.fulfillmentTime}
-        setFunc={(val) => OrderStore.fulfillment.dateStore.setFulfillmentTime(val)}
         step="300"
       />
       {OrderStore.fulfillment.option === 'delivery' && (
