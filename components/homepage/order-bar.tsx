@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../utilities/media';
 import Link from 'next/link';
+import { isSameDay, set } from 'date-fns';
 
 const RedBar = styled.div`
   background: #902e2d;
@@ -76,27 +77,67 @@ const RedButton = styled(OrderButton)`
   box-shadow: -0.5rem 0.1rem 1rem 0 rgba(0, 0, 0, 0.3);
 `;
 
-// const Announcement = styled.h3`
-//   font-size: 31px;
-//   font-style: italic;
-//   font-weight: normal;
-//   color: white;
-// `;
+const Announcement = styled.div`
+  width: 50%;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  font-style: italic;
+  color: white;
+
+  ${media.phone`
+    width: 100%;
+  `};
+`;
+
+const MainText = styled.h3`
+  font-size: 31px;
+  font-weight: normal;
+  margin-top: 15px;
+  margin-bottom: 40px;
+`;
+
+const MiniSubtext = styled.h4`
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 19px;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0;
+`;
+
+const isClosedForHoliday = (): boolean => {
+  const closedDates = [
+    set(new Date(), { year: 2020, month: 11, date: 24 }),
+    set(new Date(), { year: 2020, month: 11, date: 25 }),
+    set(new Date(), { year: 2020, month: 11, date: 26 }),
+  ];
+  return closedDates.some((d) => isSameDay(new Date(), d));
+};
 
 const OrderBar = () => (
   <RedBar>
     <Container>
-      {/*<Announcement>⚠️ Closed for July 4th</Announcement>*/}
-      <Link href="/order">
-        <a>
-          <WhiteButton>Order Online</WhiteButton>
-        </a>
-      </Link>
-      <Link href="/order/catering">
-        <a>
-          <RedButton>Order Catering</RedButton>
-        </a>
-      </Link>
+      {isClosedForHoliday() ? (
+        <Announcement>
+          <MainText>⚠️ Closed for holiday 🎄️</MainText>
+          <MiniSubtext>Back on the 27th</MiniSubtext>
+        </Announcement>
+      ) : (
+        <>
+          <Link href="/order">
+            <a>
+              <WhiteButton>Order Online</WhiteButton>
+            </a>
+          </Link>
+          <Link href="/order/catering">
+            <a>
+              <RedButton>Order Catering</RedButton>
+            </a>
+          </Link>
+        </>
+      )}
     </Container>
   </RedBar>
 );
