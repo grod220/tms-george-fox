@@ -112,6 +112,7 @@ const isClosedForHoliday = (): boolean => {
     set(new Date(), { year: 2020, month: 11, date: 24 }),
     set(new Date(), { year: 2020, month: 11, date: 25 }),
     set(new Date(), { year: 2020, month: 11, date: 26 }),
+    set(new Date(), { year: 2020, month: 11, date: 27 }),
   ];
   return closedDates.some((d) => isSameDay(new Date(), d));
 };
@@ -121,8 +122,8 @@ const OrderBar = () => (
     <Container>
       {isClosedForHoliday() ? (
         <Announcement>
-          <MainText>⚠️ Closed for holiday 🎄️</MainText>
-          <MiniSubtext>Back on the 27th</MiniSubtext>
+          <MainText>⚠️ Closed for Christmas 🎄️</MainText>
+          <MiniSubtext>Back on the 28th</MiniSubtext>
         </Announcement>
       ) : (
         <>
