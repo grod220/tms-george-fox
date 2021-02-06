@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -22,9 +22,9 @@ const Headline = styled.div`
 export default function Cancelled() {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Order Cancelled :: The Meatball Stoppe</title>
-      </Helmet>
+      </Head>
       <ShortHero image={FamilyStorePic} headline="Order cancelled" />
       <Container>
         <div>
