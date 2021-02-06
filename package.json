@@ -9,33 +9,33 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@react-google-maps/api": "^1.13.0",
-    "@sentry/browser": "^5.28.0",
-    "@sentry/node": "^5.28.0",
-    "@stripe/stripe-js": "^1.11.0",
-    "date-fns": "^2.16.1",
-    "mobx": "^6.0.4",
-    "mobx-react": "^7.0.5",
-    "mobx-react-lite": "^3.1.6",
-    "next": "10.0.3",
+    "@react-google-maps/api": "^2.1.1",
+    "@sentry/browser": "^6.1.0",
+    "@sentry/node": "^6.1.0",
+    "@stripe/stripe-js": "^1.12.1",
+    "date-fns": "^2.17.0",
+    "mobx": "^6.1.5",
+    "mobx-react": "^7.1.0",
+    "mobx-react-lite": "^3.2.0",
+    "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
-    "react-lazyload": "^3.1.0",
+    "react-lazyload": "^3.1.1",
     "react-modal": "^3.12.1",
-    "stripe": "^8.126.0",
+    "stripe": "^8.134.0",
     "styled-components": "^5.2.1",
     "svg-loaders-react": "^2.2.1",
     "use-http": "^1.0.16"
   },
   "devDependencies": {
-    "@types/googlemaps": "^3.40.3",
-    "@types/node": "^14.14.10",
-    "@types/react": "^17.0.0",
+    "@types/googlemaps": "^3.43.2",
+    "@types/node": "^14.14.25",
+    "@types/react": "^17.0.1",
     "@types/webpack-env": "^1.16.0",
     "file-loader": "^6.2.0",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
