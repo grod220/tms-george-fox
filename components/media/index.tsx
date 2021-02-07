@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 
 import MediaHero from './camera-and-studio.jpg';
 import TripleD from './triple-d/';
@@ -10,10 +10,10 @@ import ShortHero from '../shared/short-hero';
 
 const Media = () => (
   <div>
-    <Helmet>
+    <Head>
       <title>Media :: The Meatball Stoppe</title>
       <meta name="description" content="Guy Fieri loves us and so does the greater Orlando community" />
-    </Helmet>
+    </Head>
     <ShortHero image={MediaHero} headline="In the media" />
     <TripleD />
     <NewsOutlets />

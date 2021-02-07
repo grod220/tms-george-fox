@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 
 import ShortHero from '../components/shared/short-hero';
 import MediaHero from '../components/media/camera-and-studio.jpg';
@@ -11,10 +11,10 @@ import MoreVidsText from '../components/media/more-vids-text';
 export default function Media() {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Media :: The Meatball Stoppe</title>
         <meta name="description" content="Guy Fieri loves us and so does the greater Orlando community" />
-      </Helmet>
+      </Head>
       <ShortHero image={MediaHero} headline="In the media" />
       <TripleD />
       <NewsOutlets />

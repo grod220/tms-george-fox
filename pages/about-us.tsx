@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 import ShortHero from '../components/shared/short-hero';
 import AboutUsHero from '../components/about-us/family-drone-pic.jpg';
 import TopIntro from '../components/about-us/top-intro';
@@ -11,13 +11,13 @@ import GivingBack from '../components/about-us/giving-back';
 export default function AboutUs() {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>About Us :: The Meatball Stoppe</title>
         <meta
           name="description"
           content="Making amazing Italian food and bringing families together has been our story from the beginning."
         />
-      </Helmet>
+      </Head>
       <ShortHero image={AboutUsHero} headline="About the Stoppe Famiglia" />
       <TopIntro />
       <LocationInfo />

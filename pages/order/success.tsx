@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 
 import ShortHero from '../../components/shared/short-hero';
 import FamilyStorePic from '../../components/about-us/family-drone-pic.jpg';
@@ -20,9 +20,9 @@ const Headline = styled.div`
 export default function Success() {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Order Successful :: The Meatball Stoppe</title>
-      </Helmet>
+      </Head>
       <ShortHero image={FamilyStorePic} headline="Order successful" />
       <Container>
         <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 import BigHero from '../components/homepage/big-hero';
 import OrderBar from '../components/homepage/order-bar';
 import SocialBar from '../components/homepage/social-bar';
@@ -18,13 +18,13 @@ import { Category } from '../utilities/contentful-types';
 export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetStaticPropsType<typeof getStaticProps> {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>The Meatball Stoppe :: Love & Famiglia, All Rolled Up</title>
         <meta
           name="description"
           content="An authentic Italian restaurant loved by Guy Fieri & the entire community. Orlando's #1 ranked most family-friendly restaurant by USA Today."
         />
-      </Helmet>
+      </Head>
       {/*<Overlay />*/}
       <BigHero />
       <OrderBar />
