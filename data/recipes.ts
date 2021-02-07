@@ -1,34 +1,37 @@
 import ChickenMeatballsImg from './images/chicken-meatballs.jpg';
 
-interface BaseRecipe {
+export interface Recipe {
   name: string;
   id: string;
   description: string;
+  output: {
+    type: string;
+    value: string;
+  };
+  prepTime: string;
+  cookTime: string;
   ingredients: string[];
   directions: string[];
   image: string;
   additional?: {
     title: string;
     details: string[];
-  };
+  }[];
 }
 
-interface YieldRecipe extends BaseRecipe {
-  yields: string;
-}
-
-interface ServingsRecipe extends BaseRecipe {
-  servings: string;
-}
-
-const recipes: (ServingsRecipe | YieldRecipe)[] = [
+const recipes: Recipe[] = [
   {
     name: 'Chicken Meatballs',
     id: 'chicken-meatballs',
     description:
       "This easy sourdough bagels recipe makes the most delicious, chewy bagels you'll ever have! Only a few ingredients and minimal steps are needed for this simple overnight recipe.",
     image: ChickenMeatballsImg,
-    yields: '20 meatballs',
+    output: {
+      type: 'yields',
+      value: '20 meatballs',
+    },
+    prepTime: '25 minutes',
+    cookTime: '35 minutes',
     ingredients: [
       '1lb of ground Chicken',
       '2 large cloves of garlic',
@@ -45,13 +48,15 @@ const recipes: (ServingsRecipe | YieldRecipe)[] = [
       'Put the chicken in a bowl. In the food processor add garlic and basil and puree. Then add milk, egg and puree all the ingredients together. Add mixture to the chicken, then add breadcrumbs and Romano. Gently mix with hands but do NOT overmix.',
       'Line a baking sheet with parchment paper. Spray with Canola Spray. Using a 2.5 oz ice cream scoop to ensure equal size and put meatballs on the baking sheet and bake 12 minutes until done or 160 degrees. Then add the meatballs to the heated Marinara sauce on stovetop and reheat on med low to soft and tender. Remove meatballs from sauce and put in a baking pan, top with sauce, then top with Mozzarella. Bake until the cheese is melted beautifully.',
     ],
-    additional: {
-      title: 'parmigiana style',
-      details: [
-        'Let’s say you make the meatballs one day and later in the week you want to make them for dinner, Parmigiana Style follow the directions below.',
-        'In a baking pan, pour about 1” water in pan. Add meatballs, cover with foil and reheat/steam chicken meatballs 10-12 min. Remove from the oven, drain water and cover meatballs with Marinara Sauce and Fresh Mozzarella and finish baking until the cheese is melted beautifully.',
-      ],
-    },
+    additional: [
+      {
+        title: 'parmigiana style',
+        details: [
+          'Let’s say you make the meatballs one day and later in the week you want to make them for dinner, Parmigiana Style follow the directions below.',
+          'In a baking pan, pour about 1” water in pan. Add meatballs, cover with foil and reheat/steam chicken meatballs 10-12 min. Remove from the oven, drain water and cover meatballs with Marinara Sauce and Fresh Mozzarella and finish baking until the cheese is melted beautifully.',
+        ],
+      },
+    ],
   },
   {
     name: 'Pasta Patate e Piselli',
@@ -59,7 +64,12 @@ const recipes: (ServingsRecipe | YieldRecipe)[] = [
     description:
       "This easy sourdough bagels recipe makes the most delicious, chewy bagels you'll ever have! Only a few ingredients and minimal steps are needed for this simple overnight recipe.",
     image: ChickenMeatballsImg,
-    servings: '4',
+    output: {
+      type: 'servings',
+      value: '4',
+    },
+    prepTime: '25 minutes',
+    cookTime: '35 minutes',
     ingredients: [
       '1 medium onion chopped',
       '4 cloves of garlic sliced',
@@ -87,7 +97,12 @@ const recipes: (ServingsRecipe | YieldRecipe)[] = [
     description:
       "This easy sourdough bagels recipe makes the most delicious, chewy bagels you'll ever have! Only a few ingredients and minimal steps are needed for this simple overnight recipe.",
     image: ChickenMeatballsImg,
-    servings: '6-8',
+    output: {
+      type: 'servings',
+      value: '6-8',
+    },
+    prepTime: '25 minutes',
+    cookTime: '35 minutes',
     ingredients: [
       '3 lbs ripe plum tomatoes, cut in half lengthwise',
       '1⁄4 cup plus 2 tablespoons good olive oil',
