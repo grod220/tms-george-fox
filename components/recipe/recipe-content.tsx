@@ -3,6 +3,7 @@ import { Recipe } from '../../data/recipes';
 import styled from 'styled-components';
 import Timings from './timings';
 import Separator from './separator';
+import VideoLesson from './video-lesson';
 
 const Container = styled.div`
   display: flex;
@@ -34,9 +35,15 @@ const Step = styled.li`
   margin-bottom: 20px;
 `;
 
+const Description = styled.div`
+  font-style: italic;
+  text-align: center;
+`;
+
 const RecipeContent = ({ recipe }: { recipe: Recipe }) => (
   <Container>
-    <div>{recipe.description}</div>
+    <Description>{`"${recipe.description}" - Chef Isabella`}</Description>
+    <VideoLesson youtubeEmbedId={recipe.youtubeVideoId} />
     <Timings recipe={recipe} />
     <Separator title="Ingredients" />
     <ul>
@@ -50,7 +57,7 @@ const RecipeContent = ({ recipe }: { recipe: Recipe }) => (
         <Step key={step}>{step}</Step>
       ))}
     </ol>
-    {recipe.additional.map(({ title, details }) => (
+    {recipe.additional?.map(({ title, details }) => (
       <div key={title}>
         <Separator title={title} />
         <ol>

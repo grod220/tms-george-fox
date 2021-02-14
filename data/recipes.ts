@@ -1,9 +1,12 @@
 import ChickenMeatballsImg from './images/chicken-meatballs.jpg';
+import RoastedTomatoImg from './images/roasted-tomato.jpg';
+import PastaPatateImg from './images/pasta-patate.jpg';
 
 export interface Recipe {
   name: string;
   id: string;
   description: string;
+  youtubeVideoId: string;
   output: {
     type: string;
     value: string;
@@ -23,15 +26,15 @@ const recipes: Recipe[] = [
   {
     name: 'Chicken Meatballs',
     id: 'chicken-meatballs',
-    description:
-      "This easy sourdough bagels recipe makes the most delicious, chewy bagels you'll ever have! Only a few ingredients and minimal steps are needed for this simple overnight recipe.",
+    description: 'So moist and flavorful. As I say in the video, dang these are good!',
+    youtubeVideoId: '0ZhGzh7YDMg',
     image: ChickenMeatballsImg,
     output: {
       type: 'yields',
       value: '20 meatballs',
     },
-    prepTime: '25 minutes',
-    cookTime: '35 minutes',
+    prepTime: '20 minutes',
+    cookTime: '12 minutes',
     ingredients: [
       '1lb of ground Chicken',
       '2 large cloves of garlic',
@@ -62,14 +65,15 @@ const recipes: Recipe[] = [
     name: 'Pasta Patate e Piselli',
     id: 'pasta-patate-e-piselli',
     description:
-      "This easy sourdough bagels recipe makes the most delicious, chewy bagels you'll ever have! Only a few ingredients and minimal steps are needed for this simple overnight recipe.",
-    image: ChickenMeatballsImg,
+      "Mamma Adriana Vicari's signature dish. She would be honored if she knew you made her dish for your famiglia.",
+    youtubeVideoId: '7laXHQh2gz4',
+    image: PastaPatateImg,
     output: {
       type: 'servings',
       value: '4',
     },
-    prepTime: '25 minutes',
-    cookTime: '35 minutes',
+    prepTime: '20 minutes',
+    cookTime: '25 minutes',
     ingredients: [
       '1 medium onion chopped',
       '4 cloves of garlic sliced',
@@ -94,15 +98,15 @@ const recipes: Recipe[] = [
   {
     name: 'Roasted Tomato Basil Soup',
     id: 'roasted-tomato-basil-soup',
-    description:
-      "This easy sourdough bagels recipe makes the most delicious, chewy bagels you'll ever have! Only a few ingredients and minimal steps are needed for this simple overnight recipe.",
-    image: ChickenMeatballsImg,
+    description: 'Nothing says Mind and Heart health like this soup. So warm and comforting',
+    youtubeVideoId: 'zak5Tfboyy8',
+    image: RoastedTomatoImg,
     output: {
       type: 'servings',
       value: '6-8',
     },
-    prepTime: '25 minutes',
-    cookTime: '35 minutes',
+    prepTime: '15 minutes',
+    cookTime: '1 hr 30 minutes',
     ingredients: [
       '3 lbs ripe plum tomatoes, cut in half lengthwise',
       '1⁄4 cup plus 2 tablespoons good olive oil',
