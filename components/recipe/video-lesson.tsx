@@ -7,6 +7,18 @@ const VideoEmbed = styled.iframe`
   margin-top: 15px;
 `;
 
+const Sponsorships = styled.p`
+  font-size: 18px;
+  font-style: italic;
+  color: gray;
+  text-align: right;
+  margin: 0 0 -10px 0;
+
+  a {
+    text-decoration: underline;
+  }
+`;
+
 const VideoLesson = ({ youtubeEmbedId }: { youtubeEmbedId: string }) => {
   const [vidHeight, setVidHeight] = useState(450);
 
@@ -26,6 +38,10 @@ const VideoLesson = ({ youtubeEmbedId }: { youtubeEmbedId: string }) => {
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
+      <Sponsorships>
+        Video sponsors: <a href="https://www.flovideography.com/">Flo Videography</a>,{' '}
+        <a href="https://www.clincloudresearch.com/">CLINCLOUD</a>, & <a href="https://adrccares.org/">ADRC</a>
+      </Sponsorships>
     </div>
   );
 };
