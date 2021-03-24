@@ -14,6 +14,7 @@ import { YelpReservations } from '../components/homepage/yelp-reservations';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
+import Overlay from '../components/homepage/modal-overlay';
 
 export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetStaticPropsType<typeof getStaticProps> {
   return (
@@ -25,7 +26,7 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
           content="An authentic Italian restaurant loved by Guy Fieri & the entire community. Orlando's #1 ranked most family-friendly restaurant by USA Today."
         />
       </Head>
-      {/*<Overlay />*/}
+      <Overlay />
       <BigHero />
       <OrderBar />
       <LazyLoad height={100}>

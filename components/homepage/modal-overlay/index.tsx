@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Highlight from '../../shared/highlight';
+import useModal from './use-modal';
 
 const BlurredBackground = styled.div`
   position: fixed;
@@ -57,31 +58,23 @@ const DateCentering = styled.div`
 `;
 
 export default function Overlay() {
-  const [open, setOpen] = useState(true);
+  const [shouldDisplay, closeModal] = useModal('quick-serve-alert');
   return (
-    open && (
-      <BlurredBackground onClick={() => setOpen(false)}>
+    shouldDisplay && (
+      <BlurredBackground onClick={closeModal}>
         <Modal onClick={(e) => e.stopPropagation()}>
-          <X onClick={() => setOpen(false)}>X</X>
-          <WelcomeTitle>We are taking covid-19 seriously</WelcomeTitle>
+          <X onClick={closeModal}>X</X>
+          <WelcomeTitle>New quick-service model</WelcomeTitle>
+          <p>To all of our great customers and friends,</p>
           <p>
-            Nothing is more important to us than the safety and well being of our staff, customers and family. In the
-            interest of minimizing the exposure of our staff and more opportunity to clean and sanitize the entire
-            restaurant, we have decided to modify our hours of operation.
+            We will testing our new{' '}
+            <Highlight>
+              <i>Modified Quick Service model</i>
+            </Highlight>{' '}
+            effective immediately. Our guests will order at the front counter then be seated for service. This is all in
+            the effort to increase efficiency and speed to our guests all while adjusting to the long range impact of
+            COVID-19.
           </p>
-          <p>
-            Effective now, our hours will be as listed below until further notice. we will continue to have dine in
-            service, delivery and curb side pickup while adhering to all state mandated guidelines. We pray this
-            horrible situation will soon pass and everyone takes every necessary precaution to be safe and healthy.
-          </p>
-          <DateCentering>
-            <p>
-              <Highlight b>Monday-Wednesday: 3pm to 9pm</Highlight>
-            </p>
-            <p>
-              <Highlight b>Thursday-Saturday: 11am to 9pm</Highlight>
-            </p>
-          </DateCentering>
           <p>Grazie for your ongoing support.</p>
           <p>
             <i>— Jeff & Isabella Morgia</i>
