@@ -20,4 +20,8 @@ module.exports = {
   images: {
     domains: ['images.ctfassets.net'],
   },
+  // Should remove after NextJs sets it as default
+  future: {
+    webpack5: true,
+  },
 };
