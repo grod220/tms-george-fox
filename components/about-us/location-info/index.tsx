@@ -90,7 +90,7 @@ const LocationInfo = () => (
           GOOGLE MAPS LINK
         </a>
       </p>
-      <p>We’re open Mon-Wed (3pm-9pm), Thurs-Sat (11am-9pm), and closed on Sundays.</p>
+      <p>We’re open Mon-Wed (3pm-9pm Takeout only), Thurs-Sat (11am-9pm Dine in & Takeout), and closed on Sundays.</p>
     </RedBox>
   </Container>
 );
