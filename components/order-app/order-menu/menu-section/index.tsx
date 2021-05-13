@@ -17,10 +17,21 @@ const MenuItems = styled.div`
   user-select: none;
 `;
 
+const Note = styled.p`
+  margin-top: 0;
+  font-size: 16px;
+  color: #515151;
+`;
+
 const MenuSection = ({ category }: { category: Category }) => {
   return (
     <>
       <CategoryTitle>{removeHashes(category?.title)}</CategoryTitle>
+      {category?.title === 'Desserts' && (
+        <Note>
+          Call 407-270-6505 for daily offerings. Daily house-made artisan cheesecakes & layer cakes - $7.25 each.
+        </Note>
+      )}
       <MenuItems>
         {category.menuItemsCollection.items?.map((item, i) => (
           <MenuItem itemData={item} key={i} />
