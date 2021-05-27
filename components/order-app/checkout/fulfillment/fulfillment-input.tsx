@@ -50,7 +50,17 @@ const FulfillmentInput = observer(({ title, setFunc, error, value, ...others }: 
     <WidgetWrapper>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <LabelHelper>{title}</LabelHelper>
-      <InputEl {...others} hasError={Boolean(error)} onChange={(e) => setFunc(e.target.value)} value={value} required />
+      <InputEl
+        {...others}
+        hasError={Boolean(error)}
+        onChange={(e) => {
+          // Guard against the case where users can add non-valid inputs, e.g.: 6-31-2021
+          if (!e.target.value) return;
+          setFunc(e.target.value);
+        }}
+        value={value}
+        required
+      />
     </WidgetWrapper>
   );
 });
