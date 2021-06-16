@@ -170,7 +170,11 @@ const createDictById = <T extends BaseItem[]>(arr: T): Record<BaseItem['sys']['i
 
 export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): Promise<MenuVersion[]> => {
   const fullMenu = await menuRetrievalFn();
-  const menuItemsDict = createDictById([...(await getMenuItems(0)), ...(await getMenuItems(100))]);
+  const menuItemsDict = createDictById([
+    ...(await getMenuItems(0)),
+    ...(await getMenuItems(100)),
+    ...(await getMenuItems(200)),
+  ]);
   const optionsDict = createDictById(await getAllOptions());
 
   // insanity required due to the contentful complaining about the complexity of queries
