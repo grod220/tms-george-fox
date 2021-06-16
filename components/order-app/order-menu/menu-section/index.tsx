@@ -30,6 +30,7 @@ const MenuSection = ({ category }: { category: Category }) => {
       {category?.title === 'Desserts' && (
         <Note>
           Call 407-270-6505 for daily offerings. Daily house-made artisan cheesecakes & layer cakes - $7.25 each.
+          Speciality layered cakes can be ordered with one week notice.
         </Note>
       )}
       <MenuItems>
