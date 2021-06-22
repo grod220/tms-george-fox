@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { media } from '../../utilities/media';
 import Highlight from '../shared/highlight';
 
-import NormalMenu from './tms-menu-nov-2020.pdf';
+import NormalMenu from './tms-menu-2021.pdf';
 import VeganMenu from './primo-vegan-menu.jpg';
 
 const Container = styled.div`
