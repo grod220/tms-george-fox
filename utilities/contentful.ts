@@ -20,13 +20,16 @@ export const getFullMenuPreview = async (): Promise<Category[]> => {
       menuVersionCollection(where: { type: "Full menu"}, limit: 1) {
         items {
           type
-          categoriesCollection {
+          categoriesCollection(limit:20) {
             items {
               title
               menuItemsCollection {
                 items {
                   title
                   price
+                  image {
+                    url
+                  }
                 }
               }
             }

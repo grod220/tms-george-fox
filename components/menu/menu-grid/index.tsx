@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import MenuItem from './menu-item';
-import FoodPicData from './food-pic-data';
 import FoodPicSquare from './food-pic-square';
 import { Category } from '../../../utilities/contentful-types';
 
@@ -37,16 +36,23 @@ const shuffle = (array) => {
 
 const interweaveData = (categories: Category[]) => {
   const MenuArr = categories.map((categoryData, i) => (
-    <MenuItem
-      category={categoryData.title}
-      menuItems={categoryData.menuItemsCollection.items}
-      key={i + FoodPicData.length}
-    />
+    <MenuItem category={categoryData.title} menuItems={categoryData.menuItemsCollection.items} key={i} />
   ));
-  const FoodPicArr = shuffle(FoodPicData.map((foodObj, i) => <FoodPicSquare {...foodObj} key={i} />));
-  const largerLength = MenuArr.length > FoodPicArr.length ? MenuArr.length : FoodPicArr.length;
+
+  const itemsWithPicture = categories
+    .map((cat) => cat.menuItemsCollection.items)
+    .flat()
+    .filter((item) => item.image);
+
+  const shuffledItems = shuffle(itemsWithPicture);
+  const shortenedItems = shuffledItems.slice(0, MenuArr.length);
+
+  const FoodPicArr = shortenedItems.map((foodObj, i) => (
+    <FoodPicSquare imagePath={foodObj.image.url} name={foodObj.title} key={i} />
+  ));
+
   const interwoven = [];
-  for (let i = 0; i < largerLength; i++) {
+  for (let i = 0; i < MenuArr.length; i++) {
     interwoven.push(MenuArr[i]);
     interwoven.push(FoodPicArr[i]);
   }
