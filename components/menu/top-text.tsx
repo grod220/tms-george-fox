@@ -32,7 +32,7 @@ const TopText = () => (
       </Highlight>{' '}
       -{' '}
       <Highlight i>
-        <a href={VeganMenu.src} target="_blank" rel="noopener noreferrer">
+        <a href={VeganMenu} target="_blank" rel="noopener noreferrer">
           Primo Vegan Menu
         </a>
       </Highlight>

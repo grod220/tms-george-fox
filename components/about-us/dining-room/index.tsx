@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const LeftPic = styled.div`
   flex: 1;
-  background: url(${DiningRoomPic.src});
+  background: url(${DiningRoomPic});
   background-size: cover;
   background-position: 50%;
   height: 25rem;

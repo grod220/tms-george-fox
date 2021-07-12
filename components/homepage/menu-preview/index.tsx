@@ -8,7 +8,7 @@ import { Category } from '../../../utilities/contentful-types';
 
 const MenuHero = styled.div`
   text-align: center;
-  background: url(${MenuHeroImg.src}) no-repeat center 0;
+  background: url(${MenuHeroImg}) no-repeat center 0;
   background-size: cover;
   height: 28rem;
   display: flex;

@@ -25,7 +25,7 @@ const TwoPicWrapper = styled.div`
 `;
 
 const LeftPic = styled.div`
-  background: url(${OutsidePic.src});
+  background: url(${OutsidePic});
   background-size: cover;
   background-position: 100%;
   flex: 2;
@@ -39,7 +39,7 @@ const LeftPic = styled.div`
 `;
 
 const RightPic = styled.div`
-  background: url(${InsidePic.src});
+  background: url(${InsidePic});
   background-size: cover;
   background-position: 50%;
   flex: 3;
