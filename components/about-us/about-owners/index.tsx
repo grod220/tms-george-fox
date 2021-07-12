@@ -19,7 +19,7 @@ const Quote = styled.div`
 `;
 
 const OwnersPic = styled.div`
-  background: url(${MomJeff.src}) no-repeat;
+  background: url(${MomJeff}) no-repeat;
   width: 90rem;
   height: 45rem;
   background-size: cover;

@@ -21,7 +21,7 @@ const Map = () => (
       options={{ styles: MapStyles as google.maps.MapTypeStyle[], disableDefaultUI: true, scrollwheel: false }}
       mapContainerStyle={{ height: '46rem', marginTop: '6rem' }}
     >
-      <Marker position={{ lat: 28.5394327, lng: -81.2868005 }} icon={CustomMarker.src} onClick={directionsLink} />
+      <Marker position={{ lat: 28.5394327, lng: -81.2868005 }} icon={CustomMarker} onClick={directionsLink} />
     </GoogleMap>
   </LoadScript>
 );

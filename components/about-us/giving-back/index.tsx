@@ -36,7 +36,7 @@ const Headline = styled.h2`
 
 const RightPic = styled.div`
   flex: 1;
-  background: url(${GroupPic.src});
+  background: url(${GroupPic});
   height: 60rem;
   background-position: 50%;
   background-repeat: no-repeat;
