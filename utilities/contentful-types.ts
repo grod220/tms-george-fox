@@ -10,7 +10,11 @@ export interface MenuItem extends BaseItem {
   title: string;
   price: number;
   description: string;
-  image: { url: string } | null;
+  image: {
+    url: string;
+    width: number;
+    height: number;
+  } | null;
   submitImageToUber: boolean;
   temperature: string[];
   optionsCollection: Collection<Option>;

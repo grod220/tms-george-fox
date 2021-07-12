@@ -36,7 +36,7 @@ const shuffle = (array) => {
 
 const interweaveData = (categories: Category[]) => {
   const MenuArr = categories.map((categoryData, i) => (
-    <MenuItem category={categoryData.title} menuItems={categoryData.menuItemsCollection.items} key={i} />
+    <MenuItem category={categoryData.title} menuItems={categoryData.menuItemsCollection.items} key={i + 100} />
   ));
 
   const itemsWithPicture = categories

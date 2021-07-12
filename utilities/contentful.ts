@@ -29,6 +29,8 @@ export const getFullMenuPreview = async (): Promise<Category[]> => {
                   price
                   image {
                     url
+                    width
+                    height
                   }
                 }
               }
@@ -105,6 +107,8 @@ const getMenuItems = async (skip: number): Promise<MenuItem[]> => {
           temperature
           image {
             url
+            width
+            height
           }
           optionsCollection {
             total

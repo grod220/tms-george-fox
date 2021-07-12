@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -44,20 +43,19 @@ const HeadlineText = styled.h1`
     padding-top: .7rem;`};
 `;
 
-const ShortHero = ({ image, headline }) => (
+const ShortHero = ({ image, headline }: { image: StaticImageData | string; headline: string }) => (
   <div>
     <TopImage>
-      <Image src={image} layout="fill" objectFit="cover" />
+      {typeof image === 'string' ? (
+        <Image src={image} layout="fill" objectFit="cover" />
+      ) : (
+        <Image src={image} layout="fill" objectFit="cover" placeholder="blur" />
+      )}
     </TopImage>
     <RedBar>
       <HeadlineText>{headline}</HeadlineText>
     </RedBar>
   </div>
 );
-
-ShortHero.propTypes = {
-  image: PropTypes.string,
-  headline: PropTypes.string,
-};
 
 export default ShortHero;

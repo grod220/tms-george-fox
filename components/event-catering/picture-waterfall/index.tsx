@@ -37,7 +37,7 @@ const Container = styled.div`
 const PictureWaterfall = () => (
   <Container>
     {CateringImages.map((path, index) => (
-      <FoodPicSquare imagePath={path} key={index} />
+      <FoodPicSquare imagePath={path.src} key={index} />
     ))}
   </Container>
 );

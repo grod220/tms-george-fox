@@ -10,31 +10,31 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.2.0",
-    "@sentry/browser": "^6.4.1",
-    "@sentry/node": "^6.4.1",
-    "@stripe/stripe-js": "^1.15.0",
-    "date-fns": "^2.21.3",
+    "@sentry/browser": "^6.9.0",
+    "@sentry/node": "^6.9.0",
+    "@stripe/stripe-js": "^1.16.0",
+    "date-fns": "^2.22.1",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
     "mobx-react-lite": "^3.2.0",
-    "next": "10.2.3",
+    "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-ga": "^3.3.0",
     "react-lazyload": "^3.2.0",
-    "react-modal": "^3.13.1",
-    "stripe": "^8.150.0",
+    "react-modal": "^3.14.3",
+    "stripe": "^8.161.0",
     "styled-components": "^5.3.0",
     "svg-loaders-react": "^2.2.1",
-    "use-http": "^1.0.20"
+    "use-http": "^1.0.21"
   },
   "devDependencies": {
     "@types/googlemaps": "^3.43.3",
-    "@types/node": "^15.6.1",
-    "@types/react": "^17.0.8",
-    "@types/webpack-env": "^1.16.0",
+    "@types/node": "^16.3.1",
+    "@types/react": "^17.0.14",
+    "@types/webpack-env": "^1.16.2",
     "file-loader": "^6.2.0",
-    "prettier": "^2.3.0",
-    "typescript": "^4.3.2"
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   }
 }

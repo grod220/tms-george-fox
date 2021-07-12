@@ -28,7 +28,7 @@ const recipes: Recipe[] = [
     id: 'chicken-meatballs',
     description: 'So moist and flavorful. As I say in the video, dang these are good!',
     youtubeVideoId: '0ZhGzh7YDMg',
-    image: ChickenMeatballsImg,
+    image: ChickenMeatballsImg.src,
     output: {
       type: 'yields',
       value: '20 meatballs',
@@ -67,7 +67,7 @@ const recipes: Recipe[] = [
     description:
       "Mamma Adriana Vicari's signature dish. She would be honored if she knew you made her dish for your famiglia.",
     youtubeVideoId: '7laXHQh2gz4',
-    image: PastaPatateImg,
+    image: PastaPatateImg.src,
     output: {
       type: 'servings',
       value: '4',
@@ -100,7 +100,7 @@ const recipes: Recipe[] = [
     id: 'roasted-tomato-basil-soup',
     description: 'Nothing says Mind and Heart health like this soup. So warm and comforting',
     youtubeVideoId: 'zak5Tfboyy8',
-    image: RoastedTomatoImg,
+    image: RoastedTomatoImg.src,
     output: {
       type: 'servings',
       value: '6-8',
