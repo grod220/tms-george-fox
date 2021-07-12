@@ -51,7 +51,7 @@ const FBImage = styled.div`
   background-size: cover;
   background-position: 50%;
   position: relative;
-  background-image: url(${(props) => props});
+  background-image: url(${(props) => props.src});
   animation: ${(props) => props.activated && 'fadeIn 1s'};
 
   @keyframes fadeIn {
