@@ -66,6 +66,11 @@ const RightSide = styled.div`
   position: relative;
 `;
 
+// Hardcoding needed due to NextJs not acknowledging smaller sizes (should retry upon nextjs version update)
+const customLoader = ({ src, width, quality }) => {
+  return `${src}?w=500&q=${quality || 75}`;
+};
+
 const MenuItem = observer(({ itemData }: { itemData: MenuItemType }) => {
   const [modal, setModal] = useState(false);
   const itemCount = OrderStore.shoppingCart.filter((item) => item.dishName === itemData.title).length;
@@ -86,8 +91,8 @@ const MenuItem = observer(({ itemData }: { itemData: MenuItemType }) => {
           </Details>
         </LeftSide>
         {itemData.image && (
-          <RightSide image={itemData.image.url}>
-            <Image src={itemData.image.url} layout="fill" objectFit="cover" />
+          <RightSide>
+            <Image src={itemData.image.url} layout="fill" objectFit="cover" loader={customLoader} />
           </RightSide>
         )}
       </ItemContainer>

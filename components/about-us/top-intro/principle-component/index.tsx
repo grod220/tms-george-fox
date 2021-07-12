@@ -31,9 +31,9 @@ const PrincipleWrapper = styled.div`
   }
 `;
 
-const PrincipleFeature = ({ image, text, alt }) => (
+const PrincipleFeature = ({ img, text, alt }) => (
   <PrincipleWrapper>
-    <img src={image} alt={alt} />
+    <img src={img} alt={alt} />
     <RedBox>{text}</RedBox>
   </PrincipleWrapper>
 );

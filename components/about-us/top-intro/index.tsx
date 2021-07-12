@@ -44,12 +44,12 @@ const TopIntro = () => (
     <TopText>The Meatball Stoppe is really only about two things.</TopText>
     <PrincipleBox>
       <PrincipleFeature
-        image={PlateSilhouette}
+        img={PlateSilhouette.src}
         text="Making incredible Italian food at a reasonable price"
         alt="Plate of food"
       />
       <PrincipleFeature
-        image={FamilySilhouette}
+        img={FamilySilhouette.src}
         text="Reinforcing famiglia traditions every step of the way"
         alt="A family holding hands"
       />
