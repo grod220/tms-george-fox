@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Highlight from '../../shared/highlight';
 import useModal from './use-modal';
 
 const BlurredBackground = styled.div`
@@ -64,18 +63,13 @@ export default function Overlay() {
       <BlurredBackground onClick={closeModal}>
         <Modal onClick={(e) => e.stopPropagation()}>
           <X onClick={closeModal}>X</X>
-          <WelcomeTitle>New quick-service model</WelcomeTitle>
-          <p>To all of our great customers and friends,</p>
+          <WelcomeTitle>Closed Monday August 30th & September 6th</WelcomeTitle>
           <p>
-            We will testing our new{' '}
-            <Highlight>
-              <i>Modified Quick Service model</i>
-            </Highlight>{' '}
-            effective immediately. Our guests will order at the front counter then be seated for service. This is all in
-            the effort to increase efficiency and speed to our guests all while adjusting to the long range impact of
-            COVID-19.
+            Hello all tms friends over the past several months our staff has worked unusually hard through trying times
+            and have made great sacrifices. So we have decided to close in order to give them extra time to rest and
+            recharge themselves. We will be open our regular hours Tuesday-Saturday. Thank you for your understanding as
+            we reward those who have been so loyal to us.
           </p>
-          <p>Grazie for your ongoing support.</p>
           <p>
             <i>— Jeff & Isabella Morgia</i>
           </p>
