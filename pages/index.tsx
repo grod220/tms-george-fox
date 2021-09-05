@@ -2,7 +2,7 @@ import React from 'react';
 import LazyLoad from 'react-lazyload';
 import Head from 'next/head';
 import BigHero from '../components/homepage/big-hero';
-import OrderBar from '../components/homepage/order-bar';
+import OrderBar, { isClosedForHoliday } from '../components/homepage/order-bar';
 import SocialBar from '../components/homepage/social-bar';
 import MenuPreview from '../components/homepage/menu-preview';
 import TestimonialTaster from '../components/homepage/testimonial-taster';
@@ -26,7 +26,7 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
           content="An authentic Italian restaurant loved by Guy Fieri & the entire community. Orlando's #1 ranked most family-friendly restaurant by USA Today."
         />
       </Head>
-      <Overlay />
+      {isClosedForHoliday() && <Overlay />}
       <BigHero />
       <OrderBar />
       <LazyLoad height={100}>

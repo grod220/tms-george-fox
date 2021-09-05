@@ -107,13 +107,8 @@ const MiniSubtext = styled.h4`
   margin: 0;
 `;
 
-const isClosedForHoliday = (): boolean => {
-  const closedDates = [
-    set(new Date(), { year: 2020, month: 11, date: 24 }),
-    set(new Date(), { year: 2020, month: 11, date: 25 }),
-    set(new Date(), { year: 2020, month: 11, date: 26 }),
-    set(new Date(), { year: 2020, month: 11, date: 27 }),
-  ];
+export const isClosedForHoliday = (): boolean => {
+  const closedDates = [set(new Date(), { year: 2021, month: 8, date: 6 })];
   return closedDates.some((d) => isSameDay(new Date(), d));
 };
 
@@ -122,8 +117,8 @@ const OrderBar = () => (
     <Container>
       {isClosedForHoliday() ? (
         <Announcement>
-          <MainText>⚠️ Closed for Christmas 🎄️</MainText>
-          <MiniSubtext>Back on the 28th</MiniSubtext>
+          <MainText>⚠️ Closed for Labor Day 🎉️</MainText>
+          <MiniSubtext>Back on the 7th</MiniSubtext>
         </Announcement>
       ) : (
         <>
