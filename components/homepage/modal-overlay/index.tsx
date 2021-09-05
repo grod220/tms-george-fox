@@ -63,12 +63,11 @@ export default function Overlay() {
       <BlurredBackground onClick={closeModal}>
         <Modal onClick={(e) => e.stopPropagation()}>
           <X onClick={closeModal}>X</X>
-          <WelcomeTitle>Closed Monday August 30th & September 6th</WelcomeTitle>
+          <WelcomeTitle>Closed for Labor day</WelcomeTitle>
           <p>
             Hello all tms friends over the past several months our staff has worked unusually hard through trying times
-            and have made great sacrifices. So we have decided to close in order to give them extra time to rest and
-            recharge themselves. We will be open our regular hours Tuesday-Saturday. Thank you for your understanding as
-            we reward those who have been so loyal to us.
+            and have made great sacrifices. For Labor day, our staff is taking the time to rest and recharge themselves.
+            We will be open our regular hours Tuesday-Saturday.
           </p>
           <p>
             <i>— Jeff & Isabella Morgia</i>
