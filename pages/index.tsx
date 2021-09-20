@@ -15,6 +15,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 import Overlay from '../components/homepage/modal-overlay';
+import NewsletterSignup from '../components/homepage/newsletter-signup';
 
 export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetStaticPropsType<typeof getStaticProps> {
   return (
@@ -49,6 +50,9 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
       </LazyLoad>
       <LazyLoad height={400}>
         <Passion />
+      </LazyLoad>
+      <LazyLoad height={200}>
+        <NewsletterSignup />
       </LazyLoad>
       <LazyLoad height={160}>
         <Footer />
