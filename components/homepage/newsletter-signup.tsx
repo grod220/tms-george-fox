@@ -70,7 +70,7 @@ const NewsletterSignup = () => (
     <SectionTitle>
       Join the Famiglia <NewsletterImg src={NewsletterIcon} alt="Newsletter icon" />
     </SectionTitle>
-    <div>Stay on top of the latest specials, events, and news from the Meatball Stoppe 💛</div>
+    <div>Stay on top of the latest specials, events, and news from The Meatball Stoppe 💛</div>
     <a href={FORM_LINK} target="_blank" rel="noopener noreferrer">
       <SignupButton>Signup here →</SignupButton>
     </a>

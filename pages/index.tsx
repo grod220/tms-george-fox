@@ -42,9 +42,9 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
       <LazyLoad height={350}>
         <TestimonialTaster />
       </LazyLoad>
-      <LazyLoad height={400}>
-        <LaDifferenzaPromo />
-      </LazyLoad>
+      {/*<LazyLoad height={400}>*/}
+      {/*  <LaDifferenzaPromo />*/}
+      {/*</LazyLoad>*/}
       <LazyLoad height={450}>
         <Map />
       </LazyLoad>
