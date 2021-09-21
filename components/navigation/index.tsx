@@ -40,14 +40,18 @@ export default function Navigation() {
           </Link>
         </Logo>
         <NavLinks>
-          <li>
-            <a rel="noopener noreferrer" target="_blank" href="https://www.ladifferenzabakery.com">
-              Bakery
-            </a>
-          </li>
           <NavItem path="/media" action={hideMobileMenu}>
             Media
           </NavItem>
+          <li>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdyXYgwf2UjDQjQp09JchTeBqYxoNxD8xVH_YdeX4MS4Lu5aQ/viewform"
+            >
+              Newsletter
+            </a>
+          </li>
           <MobileMoreDetails />
         </NavLinks>
       </NavBar>
