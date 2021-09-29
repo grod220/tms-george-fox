@@ -15,7 +15,7 @@ export interface Recipe {
   cookTime: string;
   ingredients: string[];
   directions: string[];
-  image: string;
+  image: StaticImageData;
   additional?: {
     title: string;
     details: string[];

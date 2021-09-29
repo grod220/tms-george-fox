@@ -128,7 +128,7 @@ const TripleD = () => (
   <Container>
     <TopTwo>
       <TripleDHero>
-        <img src={dddLogo} width="60%" alt="TripleD logo" />
+        <img src={dddLogo.src} width="60%" alt="TripleD logo" />
         <GroupPic src={groupPic} width="97%" alt="Group pic with Guy Fieri" />
         <a
           href="https://www.amazon.com/gp/product/B06ZZF8MJP/ref=oh_aui_d_detailpage_o01_?ie=UTF8&psc=1"
@@ -141,12 +141,12 @@ const TripleD = () => (
       <SupplementalPics>
         <FourPics>
           <TwoPics>
-            <img src={inTheKitchenPic} alt="Chefs in the kitchen" />
-            <img src={guyThinkingPic} alt="Guy Fieri looking contemplative" />
+            <img src={inTheKitchenPic.src} alt="Chefs in the kitchen" />
+            <img src={guyThinkingPic.src} alt="Guy Fieri looking contemplative" />
           </TwoPics>
           <TwoPics>
-            <img src={pestoCloseUpPic} alt="Pesto meatball" />
-            <img src={hotRodPic} alt="Guy Fieri in his hot rod" />
+            <img src={pestoCloseUpPic.src} alt="Pesto meatball" />
+            <img src={hotRodPic.src} alt="Guy Fieri in his hot rod" />
           </TwoPics>
         </FourPics>
       </SupplementalPics>

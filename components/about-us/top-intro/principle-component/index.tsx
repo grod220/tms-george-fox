@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { media } from '../../../../utilities/media';
-import PropTypes from 'prop-types';
 
 const RedBox = styled.div`
   background-color: #902e2d;
@@ -31,17 +30,17 @@ const PrincipleWrapper = styled.div`
   }
 `;
 
-const PrincipleFeature = ({ img, text, alt }) => (
+interface PrincipleFeatureProps {
+  image: StaticImageData;
+  text: string;
+  alt: string;
+}
+
+const PrincipleFeature: FC<PrincipleFeatureProps> = ({ image, text, alt }) => (
   <PrincipleWrapper>
-    <img src={img} alt={alt} />
+    <img src={image.src} alt={alt} />
     <RedBox>{text}</RedBox>
   </PrincipleWrapper>
 );
-
-PrincipleFeature.propTypes = {
-  image: PropTypes.string,
-  text: PropTypes.string,
-  alt: PropTypes.string,
-};
 
 export default PrincipleFeature;
