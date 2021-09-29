@@ -39,7 +39,10 @@ const interweaveData = (categories: Category[]) => {
     <MenuItem category={categoryData.title} menuItems={categoryData.menuItemsCollection.items} key={i + 100} />
   ));
 
-  const itemsWithPicture = categories
+  const filteredCats = categories.filter(
+    (category) => !['Beverages', 'Alcoholic Beverages', 'Desserts'].includes(category.title),
+  );
+  const itemsWithPicture = filteredCats
     .map((cat) => cat.menuItemsCollection.items)
     .flat()
     .filter((item) => item.image);
