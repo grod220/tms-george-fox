@@ -40,7 +40,7 @@ const Footer = () => (
     <AllText>
       <ul>
         <NavItem path="/menu">Menu</NavItem>
-        <NavItem path="/catering">Catering</NavItem>
+        <NavItem path="/event-catering">Catering</NavItem>
         <NavItem path="/about-us">About Us</NavItem>
         <NavItem path="/media">Media</NavItem>
       </ul>

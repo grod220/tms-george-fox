@@ -1,27 +1,6 @@
 /// <reference types="next" />
 /// <reference types="next/types/global" />
 /// <reference types="next/image-types/global" />
-declare module '*.jpg' {
-  const value: any;
-  export = value;
-}
 
-declare module '*.png' {
-  const value: any;
-  export = value;
-}
-
-declare module '*.svg' {
-  const value: any;
-  export = value;
-}
-
-declare module '*.pdf' {
-  const value: any;
-  export = value;
-}
-
-declare module '*.mp3' {
-  const value: any;
-  export = value;
-}
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.

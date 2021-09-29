@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -25,9 +25,17 @@ const Logo = styled.img`
   margin: 0 auto 1rem;
 `;
 
-const Clipping = ({ name, image, audio, linkTo, text }) => (
+interface ClippingProps {
+  name: string;
+  image: StaticImageData;
+  audio?: string;
+  linkTo?: string;
+  text: string;
+}
+
+const Clipping: FC<ClippingProps> = ({ name, image, audio, linkTo, text }) => (
   <Container>
-    <Logo src={image} alt={name} />"{text}" {''}
+    <Logo src={image.src} alt={name} />"{text}" {''}
     {linkTo ? (
       <LinkOut href={linkTo} target="_blank" rel="noopener noreferrer">
         LINK
@@ -44,13 +52,5 @@ const Clipping = ({ name, image, audio, linkTo, text }) => (
     ) : null}
   </Container>
 );
-
-Clipping.propTypes = {
-  name: PropTypes.string,
-  image: PropTypes.string,
-  audio: PropTypes.string,
-  linkTo: PropTypes.string,
-  text: PropTypes.string,
-};
 
 export default Clipping;

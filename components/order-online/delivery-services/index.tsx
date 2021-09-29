@@ -32,7 +32,7 @@ const UberEatsBlock = styled.div`
 const DeliveryServices = () => (
   <Container>
     <UberEatsBlock>
-      <img src={UberEatsLogo} alt="Uber Eats logo" />
+      <img src={UberEatsLogo.src} alt="Uber Eats logo" />
       <div />
       <BlueButton href="https://www.ubereats.com/orlando/food-delivery/the-meatball-stoppe/yBDto8eNQ2-X2HhNvMY39Q">
         Full Menu
@@ -43,7 +43,7 @@ const DeliveryServices = () => (
     </UberEatsBlock>
     <HorizontalLine />
     <div>
-      <img src={GrubHubLogo} alt="Uber Eats logo" />
+      <img src={GrubHubLogo.src} alt="Uber Eats logo" />
       <BlueButton href="https://www.grubhub.com/restaurant/the-meatball-stoppe-7325-lake-underhill-rd-orlando/547192">
         Go to Grubhub
       </BlueButton>

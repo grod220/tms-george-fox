@@ -43,7 +43,7 @@ const HeadlineText = styled.h1`
     padding-top: .7rem;`};
 `;
 
-const ShortHero = ({ image, headline }: { image: string; headline: string }) => (
+const ShortHero = ({ image, headline }: { image: StaticImageData; headline: string }) => (
   <div>
     <TopImage>
       <Image src={image} layout="fill" objectFit="cover" />

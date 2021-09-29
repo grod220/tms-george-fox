@@ -29,7 +29,7 @@ export const NavBar = styled.ul`
     box-shadow: 20px 0px 54px -4px rgba(0,0,0,1);
     flex-direction: column;
     z-index: 1000;
-    background: url(${MobileMenuBackground}) center top;
+    background: url(${MobileMenuBackground.src}) center top;
     background-size: cover;
     transition: left .25s ease-in;
 
