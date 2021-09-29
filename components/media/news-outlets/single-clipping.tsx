@@ -35,7 +35,7 @@ interface ClippingProps {
 
 const Clipping: FC<ClippingProps> = ({ name, image, audio, linkTo, text }) => (
   <Container>
-    <Logo src={image} alt={name} />"{text}" {''}
+    <Logo src={image.src} alt={name} />"{text}" {''}
     {linkTo ? (
       <LinkOut href={linkTo} target="_blank" rel="noopener noreferrer">
         LINK

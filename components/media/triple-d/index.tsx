@@ -11,7 +11,7 @@ import inTheKitchenPic from './images/inTheKitchen.jpg';
 import pestoCloseUpPic from './images/pestoCloseUp.jpg';
 
 const Container = styled.div`
-  background: url(${GuyFieriRays}) no-repeat;
+  background: url(${GuyFieriRays.src}) no-repeat;
   background-size: 100%;
   background-position: top;
   display: flex;
@@ -129,7 +129,7 @@ const TripleD = () => (
     <TopTwo>
       <TripleDHero>
         <img src={dddLogo.src} width="60%" alt="TripleD logo" />
-        <GroupPic src={groupPic} width="97%" alt="Group pic with Guy Fieri" />
+        <GroupPic src={groupPic.src} width="97%" alt="Group pic with Guy Fieri" />
         <a
           href="https://www.amazon.com/gp/product/B06ZZF8MJP/ref=oh_aui_d_detailpage_o01_?ie=UTF8&psc=1"
           target="_blank"
