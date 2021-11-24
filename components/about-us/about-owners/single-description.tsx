@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Highlight from '../../shared/highlight';
 
-const Description = ({ name, text }) => (
+interface DescriptionProps {
+  name: string;
+  text: string;
+}
+
+const Description: FC<DescriptionProps> = ({ name, text }) => (
   <div>
-    <Highlight i size={2.6}>
+    <Highlight i size={'2.6'}>
       About {name}
     </Highlight>
     <p>{text}</p>

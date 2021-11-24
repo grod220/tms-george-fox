@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
-import PropTypes from 'prop-types';
 
 const RedBox = styled.div`
   background-color: #902e2d;
@@ -24,7 +23,13 @@ const Top = styled.div`
   margin-bottom: 2rem;
 `;
 
-const TestimonialBox = ({ name, city, text }) => (
+interface TestimonialBoxProps {
+  name: string;
+  city: string;
+  text: string;
+}
+
+const TestimonialBox: FC<TestimonialBoxProps> = ({ name, city, text }) => (
   <RedBox>
     <Top>
       {name}
@@ -36,11 +41,5 @@ const TestimonialBox = ({ name, city, text }) => (
     {text}
   </RedBox>
 );
-
-TestimonialBox.propTypes = {
-  name: PropTypes.string,
-  city: PropTypes.string,
-  text: PropTypes.string,
-};
 
 export default TestimonialBox;

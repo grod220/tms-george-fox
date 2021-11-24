@@ -41,13 +41,6 @@ const DeliveryServices = () => (
         Vegan Menu
       </BlueButton>
     </UberEatsBlock>
-    <HorizontalLine />
-    <div>
-      <img src={GrubHubLogo.src} alt="Uber Eats logo" />
-      <BlueButton href="https://www.grubhub.com/restaurant/the-meatball-stoppe-7325-lake-underhill-rd-orlando/547192">
-        Go to Grubhub
-      </BlueButton>
-    </div>
   </Container>
 );
 
