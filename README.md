@@ -1,30 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The Meatball Stoppe: Nextjs App
 
-## Getting Started
+##### Version 6: [George Fox](https://en.wikipedia.org/wiki/George_Fox)
 
-First, run the development server:
+The app repo for themeatballstoppe.com. If you're in the Orlando area, give us a visit! [YELP](https://www.yelp.com/biz/the-meatball-stoppe-orlando-2) - [Google Maps](https://goo.gl/maps/zQhgK1nnauw)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Technologies used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- React (Nextjs)
+- Contentful CMS for menu
+- Styled-components
+- Google Maps api
+- Facebook api
+- Stripe api + online ordering
+- Firebase functions + hosting
+- Github actions
+- Typescript
+- Mobx
+- Vercel
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### How to dev locally
 
-## Learn More
+Frontend: yarn dev (from app/)
 
-To learn more about Next.js, take a look at the following resources:
+### Update from v5
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Migrated Gatsby to Nextjs
+- Pre-rendered, statically served content + serverless cloud functions for backend/routes.
+- Full Typescript adoption
