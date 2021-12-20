@@ -31,9 +31,9 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
       {/*{isClosedForHoliday() && <Overlay />}*/}
       <BigHero />
       <OrderBar />
-      <LazyLoad height={100}>
-        <YelpReservations />
-      </LazyLoad>
+      {/*<LazyLoad height={100}>*/}
+      {/*  <YelpReservations />*/}
+      {/*</LazyLoad>*/}
       <LazyLoad height={350}>
         <SocialBar />
       </LazyLoad>
