@@ -27,7 +27,8 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
           content="An authentic Italian restaurant loved by Guy Fieri & the entire community. Orlando's #1 ranked most family-friendly restaurant by USA Today."
         />
       </Head>
-      {isClosedForHoliday() && <Overlay />}
+      <Overlay />
+      {/*{isClosedForHoliday() && <Overlay />}*/}
       <BigHero />
       <OrderBar />
       <LazyLoad height={100}>

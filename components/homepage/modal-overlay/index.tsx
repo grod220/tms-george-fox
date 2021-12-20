@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import useModal from './use-modal';
 
@@ -52,12 +52,10 @@ const WelcomeTitle = styled.h2`
   }
 `;
 
-const DateCentering = styled.div`
-  text-align: center;
-`;
-
 export default function Overlay() {
-  const [shouldDisplay, closeModal] = useModal('quick-serve-alert');
+  // const [shouldDisplay, closeModal] = useModal('quick-serve-alert');
+  const [shouldDisplay, setShouldDisplay] = useState(true);
+  const closeModal = () => setShouldDisplay(false)
   return (
     shouldDisplay && (
       <BlurredBackground onClick={closeModal}>
@@ -65,7 +63,7 @@ export default function Overlay() {
           <X onClick={closeModal}>X</X>
           <WelcomeTitle>Special Holiday hours</WelcomeTitle>
           <p>
-            Closed from <b>Dec 24-26 & Jan 1st</b> & closing early on <b>Dec 31st</b>.
+            Closed from <b>Dec 24-26 & Jan 1st</b> & closing at 5pm on <b>Dec 31st</b>.
           </p>
           <p>We wish your family a wonderful holiday 🎄</p>
           <p>
