@@ -2,7 +2,7 @@ import { BaseItem, Category, Collection, MenuItem, MenuVersion, Option } from '.
 
 const TMS_CONTENTFUL_SPACE_ID = '8fhpgddd51q7';
 
-async function fetchGraphQL<T>(query): Promise<{ data: T }> {
+async function fetchGraphQL<T>(query): Promise<{ data: T | undefined }> {
   const response = await fetch(`https://graphql.contentful.com/content/v1/spaces/${TMS_CONTENTFUL_SPACE_ID}`, {
     method: 'POST',
     headers: {
@@ -40,7 +40,7 @@ export const getFullMenuPreview = async (): Promise<Category[]> => {
       }
     }
   `);
-  return fullMenu.data.menuVersionCollection.items[0].categoriesCollection.items;
+  return fullMenu.data?.menuVersionCollection.items[0].categoriesCollection.items ?? [];
 };
 
 const getMenuItemsWithIdsOnly = async (topQuery: string): Promise<MenuVersion[]> => {
@@ -69,7 +69,7 @@ const getMenuItemsWithIdsOnly = async (topQuery: string): Promise<MenuVersion[]>
       }
     }
   `);
-  return fullMenu.data.menuVersionCollection.items;
+  return fullMenu.data?.menuVersionCollection.items ?? [];
 };
 
 export const getNormalItemsWithIdsOnly = async (): Promise<MenuVersion[]> => {
@@ -122,7 +122,7 @@ const getMenuItems = async (skip: number): Promise<MenuItem[]> => {
       }
     }
   `);
-  return dishCollection.data.dishCollection.items;
+  return dishCollection.data?.dishCollection.items ?? [];
 };
 
 const getAllOptions = async (): Promise<Option[]> => {
@@ -165,7 +165,7 @@ const getAllOptions = async (): Promise<Option[]> => {
       }
     }
   `);
-  return optionsCollection.data.optionsCollection.items;
+  return optionsCollection.data?.optionsCollection.items ?? [];
 };
 
 const createDictById = <T extends BaseItem[]>(arr: T): Record<BaseItem['sys']['id'], BaseItem> => {
