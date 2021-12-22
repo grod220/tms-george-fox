@@ -42,5 +42,5 @@ export default function useModal(modalKey: string) {
     if (!validKeyInLocalStorage(modalKey)) setShouldDisplay(true);
   });
 
-  return [shouldDisplay, closeModal];
+  return [shouldDisplay, closeModal] as const;
 }

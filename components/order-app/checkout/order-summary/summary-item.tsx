@@ -58,7 +58,7 @@ interface SummaryItemProps {
 }
 
 const SummaryItem = observer(({ item, shoppingCartIndex }: SummaryItemProps) => {
-  const removeFromCart = (index) => {
+  const removeFromCart = (index: number) => {
     OrderStore.shoppingCart.splice(index, 1);
   };
   return (

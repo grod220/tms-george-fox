@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Recipe } from '../../data/recipes';
 import styled from 'styled-components';
 
@@ -28,7 +28,7 @@ const TimingName = styled.h4`
   font-weight: normal;
 `;
 
-const Timings = ({ recipe }: { recipe: Recipe }) => {
+const Timings: FC<{ recipe: Recipe }> = ({ recipe }) => {
   const data = [
     {
       name: 'Prep time',

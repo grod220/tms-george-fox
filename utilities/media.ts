@@ -1,6 +1,6 @@
 // Modified from https://github.com/styled-components/styled-components/blob/master/docs/tips-and-tricks.md
 
-import { css } from 'styled-components';
+import { css, CSSObject, SimpleInterpolation, FlattenSimpleInterpolation } from 'styled-components';
 
 const sizes = {
   giant: 1800, // and up
@@ -10,29 +10,29 @@ const sizes = {
 };
 
 // iterate through the sizes and create a media template
-export const media: any = Object.keys(sizes).reduce((accumulator, label) => {
+export const media = (Object.keys(sizes) as (keyof typeof sizes)[]).reduce((accumulator, label) => {
   // use em in breakpoints to work properly cross-browser and support users
   // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
   const emSize = sizes[label] / 16;
 
   if (label === 'giant' || label === 'desktop') {
-    accumulator[label] = (...args) => css`
+    accumulator[label] = (first, ...interpolations) => css`
       @media (min-width: ${emSize}em) {
-        ${css(...args)};
+        ${css(first, ...interpolations)};
       }
     `;
   } else if (label === 'tablet') {
-    accumulator[label] = (...args) => css`
+    accumulator[label] = (first, ...interpolations) => css`
       @media (min-width: ${emSize}em) and (max-width: ${(sizes.desktop - 1) / 16}em) {
-        ${css(...args)};
+        ${css(first, ...interpolations)};
       }
     `;
   } else if (label === 'phone') {
-    accumulator[label] = (...args) => css`
+    accumulator[label] = (first, ...interpolations) => css`
       @media (max-width: ${emSize}em) {
-        ${css(...args)};
+        ${css(first, ...interpolations)};
       }
     `;
   }
   return accumulator;
-}, {});
+}, {} as Record<keyof typeof sizes, (first: TemplateStringsArray | CSSObject, ...interpolations: SimpleInterpolation[]) => FlattenSimpleInterpolation>);

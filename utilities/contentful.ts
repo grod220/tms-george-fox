@@ -2,7 +2,7 @@ import { BaseItem, Category, Collection, MenuItem, MenuVersion, Option } from '.
 
 const TMS_CONTENTFUL_SPACE_ID = '8fhpgddd51q7';
 
-async function fetchGraphQL<T>(query): Promise<{ data: T | undefined }> {
+async function fetchGraphQL<T>(query: string): Promise<{ data: T | undefined }> {
   const response = await fetch(`https://graphql.contentful.com/content/v1/spaces/${TMS_CONTENTFUL_SPACE_ID}`, {
     method: 'POST',
     headers: {
@@ -168,11 +168,11 @@ const getAllOptions = async (): Promise<Option[]> => {
   return optionsCollection.data?.optionsCollection.items ?? [];
 };
 
-const createDictById = <T extends BaseItem[]>(arr: T): Record<BaseItem['sys']['id'], BaseItem> => {
+const createDictById = <T extends BaseItem>(arr: T[]) => {
   return arr.reduce((acc, curr) => {
     acc[curr.sys.id] = curr;
     return acc;
-  }, {});
+  }, {} as Record<BaseItem['sys']['id'], BaseItem>);
 };
 
 export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): Promise<MenuVersion[]> => {
@@ -188,11 +188,17 @@ export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): P
   fullMenu.forEach((menu) =>
     menu.categoriesCollection.items.forEach((category) =>
       category.menuItemsCollection.items.forEach((item) => {
-        Object.entries(menuItemsDict[item.sys.id]).forEach(([key, val]) => {
-          item[key] = val;
-          item.optionsCollection?.items.forEach((option) => {
-            Object.entries(optionsDict[option.sys.id]).forEach(([key, val]) => {
-              option[key] = val;
+        Object.values(menuItemsDict[item.sys.id]).forEach((val) => {
+          item = {
+            ...item,
+            ...val,
+          };
+          item.optionsCollection.items.forEach((option) => {
+            Object.values(optionsDict[option.sys.id]).forEach((val) => {
+              option = {
+                ...option,
+                ...val,
+              };
             });
           });
         });

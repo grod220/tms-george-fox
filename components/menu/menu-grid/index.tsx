@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import MenuItem from './menu-item';
@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `;
 
-const shuffle = (array) => {
+const shuffle = (array: any[]) => {
   let currentIndex = array.length,
     temporaryValue,
     randomIndex;
@@ -62,6 +62,6 @@ const interweaveData = (categories: Category[]) => {
   return interwoven;
 };
 
-const MenuGrid = ({ menu }: { menu: Category[] }) => <Container>{interweaveData(menu)}</Container>;
+const MenuGrid: FC<{ menu: Category[] }> = ({ menu }) => <Container>{interweaveData(menu)}</Container>;
 
 export default MenuGrid;

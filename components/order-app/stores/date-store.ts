@@ -3,7 +3,7 @@ import { isInPast, isOnASunday, parseHTMLDateAndTime, withinLeadTime, withinOpen
 import FulfillmentStore from './fulfillment-store';
 
 class DateStore {
-  fulfillmentTimeAndDate: Date;
+  fulfillmentTimeAndDate: Date = new Date();
   fulfillmentStore: FulfillmentStore;
 
   constructor(fulfillmentStore: FulfillmentStore) {
@@ -31,6 +31,8 @@ class DateStore {
     if (!withinLeadTime(this.fulfillmentTimeAndDate)) {
       return 'Need lead time';
     }
+
+    return 'Unknown error';
   }
 
   setFulfillmentDateAndTime(str: string) {

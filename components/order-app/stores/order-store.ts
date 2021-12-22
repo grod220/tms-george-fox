@@ -6,9 +6,11 @@ import RegisterStore from './register-store';
 
 export type ActiveTab = 'Full menu' | 'Vegetarian' | 'Vegan' | 'Gluten Free' | 'Catering Menu' | 'Checkout';
 
+export type OrderType = 'normal' | 'catering';
+
 class OrderStore {
-  activeTab: ActiveTab;
-  orderType: string;
+  activeTab: ActiveTab = 'Full menu';
+  orderType: OrderType = 'normal';
   shoppingCart: ItemStore[];
   fulfillment: FulfillmentStore;
   registerStore: RegisterStore;
@@ -24,7 +26,7 @@ class OrderStore {
     this.activeTab = tab;
   }
 
-  setOrderType(type: string) {
+  setOrderType(type: OrderType) {
     this.orderType = type;
   }
 

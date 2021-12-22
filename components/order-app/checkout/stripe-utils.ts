@@ -34,7 +34,10 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
   return orderRequest;
 };
 
-export default async function handleCheckoutRequest(showSpinner, showError) {
+export default async function handleCheckoutRequest(
+  showSpinner: React.Dispatch<React.SetStateAction<boolean>>,
+  showError: React.Dispatch<React.SetStateAction<boolean>>,
+) {
   showSpinner(true);
   try {
     const res = await fetch('/api/stripe/order', {
@@ -50,6 +53,7 @@ export default async function handleCheckoutRequest(showSpinner, showError) {
     }
     const stripe = await loadStripe('pk_live_ivfkFrzhLuZbUiZRVkvsBwI3');
     // const stripe = await loadStripe('pk_test_OaDvLsgEGQbshVWpSFMQMm1k');
+    if (!stripe) return null;
     const result = await stripe.redirectToCheckout({
       sessionId: jsonResponse.id,
     });

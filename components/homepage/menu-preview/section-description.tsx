@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import addZeroIfNeeded from '../../../utilities/add-zero';
 import { MenuItem } from '../../../utilities/contentful-types';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<Pick<SectionDescriptionProps, 'activeSection' | 'category' | 'opacity'>>`
   display: ${(props) => (props.activeSection === props.category ? 'flex' : 'none')};
   transition: opacity 0.2s linear;
   opacity: ${(props) => (props.activeSection === props.category ? props.opacity : 0)};
@@ -30,12 +30,12 @@ const Price = styled.span`
 
 interface SectionDescriptionProps {
   menuItems: Pick<MenuItem, 'title' | 'price'>[];
-  activeSection: string;
+  activeSection?: string;
   opacity: number;
   category: string;
 }
 
-const SectionDescription = ({ category, menuItems, activeSection, opacity }: SectionDescriptionProps) => (
+const SectionDescription: FC<SectionDescriptionProps> = ({ category, menuItems, activeSection, opacity }) => (
   <Wrapper activeSection={activeSection} category={category} opacity={opacity}>
     <AllItems>
       {menuItems.map((item, i) => (

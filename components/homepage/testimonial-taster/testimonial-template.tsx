@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
-import Proptypes from 'prop-types';
 
 import Highlight from '../../shared/highlight';
 
@@ -13,7 +12,15 @@ const AlignOnSmallScreens = styled.p`
     text-align: right;`};
 `;
 
-const Testimonial = ({ text, author, urlText, url, className }) => {
+interface TestimonialProps {
+  text: string;
+  author: string;
+  urlText: string;
+  url: string;
+  className?: string;
+}
+
+const Testimonial: FC<TestimonialProps> = ({ text, author, urlText, url, className }) => {
   return (
     <div className={className}>
       <p>
@@ -29,14 +36,6 @@ const Testimonial = ({ text, author, urlText, url, className }) => {
       </AlignOnSmallScreens>
     </div>
   );
-};
-
-Testimonial.propTypes = {
-  text: Proptypes.string,
-  author: Proptypes.string,
-  urlText: Proptypes.string,
-  url: Proptypes.string,
-  className: Proptypes.string,
 };
 
 export default Testimonial;

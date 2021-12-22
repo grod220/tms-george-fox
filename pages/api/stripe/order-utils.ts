@@ -104,7 +104,12 @@ export const formatPaymentIntentObj = (
     metadata: metaDataObj,
   };
 
-  if (reqBody.orderType === 'catering' && reqBody.fulfillmentOption === 'delivery') {
+  if (
+    reqBody.orderType === 'catering' &&
+    reqBody.fulfillmentOption === 'delivery' &&
+    reqBody.deliveryLocation &&
+    reqBody.numberOfGuests
+  ) {
     paymentIntentObj.shipping = {
       address: { line1: reqBody.deliveryLocation },
       name: reqBody.contactName,

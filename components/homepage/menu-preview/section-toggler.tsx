@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const MenuTitle = styled.span`
+const MenuTitle = styled.span<SectionTogglerProps>`
   padding: 1rem;
   text-align: center;
   color: ${(props) => (props.activeSection === props.name ? '#902e2d' : '#bbb')};
@@ -16,6 +16,12 @@ const MenuTitle = styled.span`
   }
 `;
 
-const SectionToggler = (props) => <MenuTitle {...props}>{props.name}</MenuTitle>;
+interface SectionTogglerProps {
+  name: string;
+  activeSection?: string;
+  onClick: () => void;
+}
+
+const SectionToggler: FC<SectionTogglerProps> = (props) => <MenuTitle {...props}>{props.name}</MenuTitle>;
 
 export default SectionToggler;

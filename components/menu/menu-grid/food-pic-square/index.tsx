@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -19,7 +19,7 @@ const InnerText = styled.div`
   bottom: 1.4rem;
 `;
 
-const FoodPicSquare = ({ imagePath, name }: { imagePath: StaticImageData; name?: string }) => (
+const FoodPicSquare: FC<{ imagePath: StaticImageData; name?: string }> = ({ imagePath, name }) => (
   <Box>
     <Image src={imagePath} layout="fill" objectFit="cover" />
     {name && <InnerText>{name}</InnerText>}

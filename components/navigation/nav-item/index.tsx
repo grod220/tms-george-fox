@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 
-const NavItem = ({ children, path, action }) => (
+interface NavItemProps {
+  path: string;
+  action?: () => void;
+}
+
+const NavItem: FC<NavItemProps> = ({ children, path, action }) => (
   <li>
     <Link href={path}>
       <a onClick={action}>{children}</a>
     </Link>
   </li>
 );
-
-NavItem.propTypes = {
-  path: PropTypes.string,
-  action: PropTypes.func,
-};
 
 export default NavItem;

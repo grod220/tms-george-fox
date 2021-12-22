@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from '../../utilities/media';
 
 import SubBarText from './subBarText';
 import MobileMenuBackground from './images/mobile_menu.jpg';
 
-export const NavBar = styled.ul`
+export const NavBar = styled.ul<{ mobileMenuShown: boolean }>`
   list-style: none;
   padding: 0;
   display: flex;
@@ -19,19 +19,22 @@ export const NavBar = styled.ul`
 
   ${media.tablet`font-size: 2.2rem;`}
 
-  ${media.phone`
+  ${(props) => media.phone`
     position: fixed;
     background-color: white;
-    left: ${(props) => (props.mobileMenuShown ? '0' : '-30.7rem')};
+    left: -30.7rem;
     top: -5.2rem;
     height: 100%;
     width: 22.7rem;
     box-shadow: 20px 0px 54px -4px rgba(0,0,0,1);
     flex-direction: column;
     z-index: 1000;
-    background: url(${MobileMenuBackground.src}) center top;
+    background: ${css`url(${MobileMenuBackground.src}) center top`};
     background-size: cover;
-    transition: left .25s ease-in;
+    transform: ${css`
+      ${props.mobileMenuShown ? 'translateX(30.7rem)' : 'translateX(0rem)'}
+    `};
+    transition: transform .25s ease-in;
 
     padding: 3rem 3.5rem 0 0;
     text-transform: uppercase;
@@ -44,7 +47,8 @@ export const NavBar = styled.ul`
 
     li {
       padding-bottom: 2rem;
-    }`};
+    }
+  `};
 `;
 
 export const NavLinks = styled.div`

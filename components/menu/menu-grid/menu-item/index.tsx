@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { MenuItem as MenuItemType } from '../../../../utilities/contentful-types';
 
@@ -33,7 +33,7 @@ interface MenuItemProps {
   menuItems: Pick<MenuItemType, 'title' | 'price'>[];
 }
 
-const MenuItem = ({ category, menuItems }: MenuItemProps) => (
+const MenuItem: FC<MenuItemProps> = ({ category, menuItems }) => (
   <RedBox>
     <Top>
       <Category>{category}</Category>

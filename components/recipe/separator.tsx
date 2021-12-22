@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Title = styled.h4`
   text-transform: uppercase;
 `;
 
-const Separator = ({ title }: { title: string }) => (
+const Separator: FC<{ title: string }> = ({ title }) => (
   <Container>
     <Title>{title}</Title>
     <Divider />

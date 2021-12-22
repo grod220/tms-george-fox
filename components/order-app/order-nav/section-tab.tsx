@@ -6,7 +6,7 @@ import { media } from '../../../utilities/media';
 import OrderStore, { ActiveTab } from '../stores/order-store';
 import { removeHashes } from '../../../utilities/contentful-formatter';
 
-export const Section = styled.div`
+export const Section = styled.div<{ active: boolean }>`
   color: ${({ active }) => (active ? '#902e2d' : '#4c4c4c')};
   font-size: 18px;
   display: flex;

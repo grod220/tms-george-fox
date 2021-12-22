@@ -24,7 +24,7 @@ const GrandTotal = styled.div`
   color: black;
 `;
 
-const Fee = styled.div`
+const Fee = styled.div<{ error: boolean }>`
   text-align: right;
   ${({ error }) => error && 'color: #902e2d;'};
 `;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import LazyLoad from 'react-lazyload';
 import Head from 'next/head';
 import BigHero from '../components/homepage/big-hero';
@@ -17,7 +17,7 @@ import { Category } from '../utilities/contentful-types';
 import Overlay from '../components/homepage/modal-overlay';
 import NewsletterSignup from '../components/homepage/newsletter-signup';
 
-export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetStaticPropsType<typeof getStaticProps> {
+const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) => {
   return (
     <>
       <Head>
@@ -60,12 +60,14 @@ export default function Index({ fullMenu }: { fullMenu: Category[] }): InferGetS
       </LazyLoad>
     </>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<{ fullMenu: Category[] }> = async (context) => {
   return {
     props: {
       fullMenu: await getFullMenuPreview(),
     },
   };
 };
+
+export default Index;

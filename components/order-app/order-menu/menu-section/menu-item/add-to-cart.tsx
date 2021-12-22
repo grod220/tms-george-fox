@@ -6,7 +6,7 @@ import addZero from '../../../../../utilities/add-zero';
 import ItemStore from '../../../stores/item-store';
 import OrderStore from '../../../stores/order-store';
 
-const Container = styled.div`
+const Container = styled.div<{ ready: boolean; highlightColor: string }>`
   position: sticky;
   height: 70px;
   background-color: #b37f7e;
@@ -43,7 +43,7 @@ const Price = styled.div`
   right: 20px;
 `;
 
-const CountBtn = styled.div`
+const CountBtn = styled.div<{ ready: boolean }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;

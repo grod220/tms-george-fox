@@ -30,7 +30,7 @@ const Legend = () => {
         <img width="16px" src={VeggieSVG} alt="Veggie options" /> = Veg options
       </Veg>
       <GF>
-        <img width="21px" src={GlutenFreePNG} alt="gluten-free options" /> = Gluten-free options
+        <img width="21px" src={GlutenFreePNG.src} alt="gluten-free options" /> = Gluten-free options
       </GF>
     </Container>
   );

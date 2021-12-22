@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Head from 'next/head';
 
 import ShortHero from '../../components/shared/short-hero';
@@ -8,7 +8,7 @@ import { getNormalMenus } from '../../utilities/contentful';
 import { MenuVersion } from '../../utilities/contentful-types';
 import OrderApp from '../../components/order-app';
 
-export default function Pickup({ menus }: { menus: MenuVersion[] }): InferGetStaticPropsType<typeof getStaticProps> {
+const Pickup: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ menus }) => {
   return (
     <>
       <Head>
@@ -19,12 +19,14 @@ export default function Pickup({ menus }: { menus: MenuVersion[] }): InferGetSta
       <OrderApp menus={menus} />
     </>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<{ menus: MenuVersion[] }> = async (context) => {
   return {
     props: {
       menus: await getNormalMenus(),
     },
   };
 };
+
+export default Pickup;

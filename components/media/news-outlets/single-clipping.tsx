@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Container = styled.div`
   margin-bottom: 4rem;

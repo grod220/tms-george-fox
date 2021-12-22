@@ -5,14 +5,16 @@ import OrderPickupOptionButton from './order-pickup-option-button';
 import OrderInfoSectionHeader from '../checkout-section-header';
 
 const OrderTypeSelector = () => {
+  if (OrderStore.orderType !== 'catering') {
+    return null;
+  }
+
   return (
-    OrderStore.orderType === 'catering' && (
-      <>
-        <OrderInfoSectionHeader>order type</OrderInfoSectionHeader>
-        <OrderPickupOptionButton text="delivery" />
-        <OrderPickupOptionButton text="pickup" func={() => OrderStore.fulfillment.setDeliveryLocation(undefined)} />
-      </>
-    )
+    <>
+      <OrderInfoSectionHeader>order type</OrderInfoSectionHeader>
+      <OrderPickupOptionButton text="delivery" />
+      <OrderPickupOptionButton text="pickup" func={() => OrderStore.fulfillment.setDeliveryLocation(undefined)} />
+    </>
   );
 };
 

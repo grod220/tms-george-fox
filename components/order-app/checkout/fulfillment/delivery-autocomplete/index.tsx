@@ -19,7 +19,7 @@ const DeliveryAutocomplete = observer(() => {
         placeholder={
           OrderStore.fulfillment.deliveryLocation ? formatGooglePlacesObj(OrderStore.fulfillment.deliveryLocation) : ''
         }
-        size="30"
+        size={30}
         required
       />
     </WidgetWrapper>

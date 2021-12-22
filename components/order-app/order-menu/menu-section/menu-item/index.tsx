@@ -6,7 +6,7 @@ import formatPrice from '../../../../../utilities/add-zero';
 import { removeHashes } from '../../../../../utilities/contentful-formatter';
 import OrderStore from '../../../stores/order-store';
 import { MenuItem as MenuItemType } from '../../../../../utilities/contentful-types';
-import Image from 'next/image';
+import Image, { ImageLoader } from 'next/image';
 import MenuItemModal from './modal';
 import { observer } from 'mobx-react-lite';
 
@@ -67,7 +67,7 @@ const RightSide = styled.div`
 `;
 
 // Hardcoding needed due to NextJs not acknowledging smaller sizes (should retry upon nextjs version update)
-const customLoader = ({ src, width, quality }) => {
+const customLoader: ImageLoader = ({ src, width, quality }) => {
   return `${src}?w=500&q=${quality || 75}`;
 };
 
