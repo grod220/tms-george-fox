@@ -23,12 +23,9 @@ const VideoLesson: FC<{ youtubeEmbedId: string }> = ({ youtubeEmbedId }) => {
   const [vidHeight, setVidHeight] = useState(450);
 
   useEffect(() => {
-    const container = document.getElementById('yt-embed');
-    if (container) {
-      const containerWidth = container.offsetWidth;
-      const proportionedHeight = (containerWidth * 9) / 16;
-      setVidHeight(proportionedHeight < 400 ? proportionedHeight : 400);
-    }
+    const containerWidth = document.getElementById('yt-embed')!.offsetWidth;
+    const proportionedHeight = (containerWidth * 9) / 16;
+    setVidHeight(proportionedHeight < 400 ? proportionedHeight : 400);
   });
 
   return (

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { media } from '../../utilities/media';
 
 import SubBarText from './subBarText';
@@ -29,11 +29,9 @@ export const NavBar = styled.ul<{ mobileMenuShown: boolean }>`
     box-shadow: 20px 0px 54px -4px rgba(0,0,0,1);
     flex-direction: column;
     z-index: 1000;
-    background: ${css`url(${MobileMenuBackground.src}) center top`};
+    background: url(${MobileMenuBackground.src}) center top;
     background-size: cover;
-    transform: ${css`
-      ${props.mobileMenuShown ? 'translateX(30.7rem)' : 'translateX(0rem)'}
-    `};
+    transform: ${props.mobileMenuShown ? 'translateX(30.7rem)' : 'translateX(0rem)'};
     transition: transform .25s ease-in;
 
     padding: 3rem 3.5rem 0 0;

@@ -25,12 +25,13 @@ export const distanceFromTMS = async (googlePlacesObj: google.maps.places.PlaceR
   await insertGoogleMapsScript();
 
   const TMSLocation = new google.maps.LatLng(28.539307, -81.286839);
-  if (googlePlacesObj.geometry && googlePlacesObj.geometry.location) {
-    const result = await getDistance(TMSLocation, googlePlacesObj.geometry.location);
-    const distanceInMiles = Number(result.rows[0].elements[0].distance.text.split(' ')[0]);
-    return distanceInMiles;
+  if (!googlePlacesObj.geometry?.location) {
+    throw new Error('Location not found');
   }
-  return 0;
+
+  const result = await getDistance(TMSLocation, googlePlacesObj.geometry.location);
+  const distanceInMiles = Number(result.rows[0].elements[0].distance.text.split(' ')[0]);
+  return distanceInMiles;
 };
 
 export const formatGooglePlacesObj = ({ name, formatted_address }: google.maps.places.PlaceResult) => {

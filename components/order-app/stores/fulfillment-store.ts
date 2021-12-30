@@ -3,7 +3,7 @@ import { distanceFromTMS } from './order-utils';
 import DateStore from './date-store';
 
 class FulfillmentStore {
-  option: 'pickup' | 'delivery' = 'delivery';
+  option: 'pickup' | 'delivery' = 'pickup';
   contactName: string = '';
   contactNumber: string = '';
   numberOfGuests: number = 0;
@@ -11,7 +11,7 @@ class FulfillmentStore {
 
   deliveryLocation: google.maps.places.PlaceResult = {};
   errorFromGoogle: boolean = false;
-  loadingMiles: boolean = true;
+  loadingMiles: boolean = false;
   deliveryMiles: number = 0;
 
   dateStore: DateStore;

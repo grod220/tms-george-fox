@@ -20,7 +20,7 @@ export default class MyApp extends App {
         Sentry.captureException(error);
       }
     });
-    super.componentDidCatch && super.componentDidCatch(error, errorInfo);
+    super.componentDidCatch?.(error, errorInfo);
   }
 
   render() {

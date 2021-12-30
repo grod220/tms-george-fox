@@ -172,7 +172,7 @@ const createDictById = <T extends BaseItem>(arr: T[]) => {
   return arr.reduce((acc, curr) => {
     acc[curr.sys.id] = curr;
     return acc;
-  }, {} as Record<BaseItem['sys']['id'], BaseItem>);
+  }, {} as Record<string, T>);
 };
 
 export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): Promise<MenuVersion[]> => {
@@ -185,28 +185,33 @@ export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): P
   const optionsDict = createDictById(await getAllOptions());
 
   // insanity required due to the contentful complaining about the complexity of queries
-  fullMenu.forEach((menu) =>
-    menu.categoriesCollection.items.forEach((category) =>
-      category.menuItemsCollection.items.forEach((item) => {
-        Object.values(menuItemsDict[item.sys.id]).forEach((val) => {
-          item = {
+  const fullMenuMerged: MenuVersion[] = fullMenu.map((menu) => ({
+    ...menu,
+    categoriesCollection: {
+      ...menu.categoriesCollection,
+      items: menu.categoriesCollection.items.map((category) => ({
+        ...category,
+        menuItemsCollection: {
+          ...category.menuItemsCollection,
+          items: category.menuItemsCollection.items.map((item) => ({
             ...item,
-            ...val,
-          };
-          item.optionsCollection.items.forEach((option) => {
-            Object.values(optionsDict[option.sys.id]).forEach((val) => {
-              option = {
-                ...option,
-                ...val,
-              };
-            });
-          });
-        });
-      }),
-    ),
-  );
+            ...menuItemsDict[item.sys.id],
+            optionsCollection: {
+              ...item.optionsCollection,
+              items: item.optionsCollection
+                ? item.optionsCollection.items.map((option) => ({
+                    ...option,
+                    ...optionsDict[option.sys.id],
+                  }))
+                : [],
+            },
+          })),
+        },
+      })),
+    },
+  }));
 
-  return fullMenu;
+  return fullMenuMerged;
 };
 
 export const getNormalMenus = async (): Promise<MenuVersion[]> => {
