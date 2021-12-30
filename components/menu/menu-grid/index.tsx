@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `;
 
-const shuffle = (array: any[]) => {
+const shuffle = <T extends any>(array: T[]) => {
   let currentIndex = array.length,
     temporaryValue,
     randomIndex;
@@ -50,9 +50,10 @@ const interweaveData = (categories: Category[]) => {
   const shuffledItems = shuffle(itemsWithPicture);
   const shortenedItems = shuffledItems.slice(0, MenuArr.length);
 
-  const FoodPicArr = shortenedItems.map((foodObj, i) => (
-    <FoodPicSquare imagePath={foodObj.image.url} name={foodObj.title} key={i} />
-  ));
+  const FoodPicArr = shortenedItems.map((foodObj, i) => {
+    const { url: src, width, height } = foodObj.image!;
+    return <FoodPicSquare imagePath={{ src, width, height }} name={foodObj.title} key={i} />;
+  });
 
   const interwoven = [];
   for (let i = 0; i < MenuArr.length; i++) {
