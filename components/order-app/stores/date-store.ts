@@ -32,7 +32,7 @@ class DateStore {
       return 'Need lead time';
     }
 
-    return 'Unknown error';
+    return '';
   }
 
   setFulfillmentDateAndTime(str: string) {
