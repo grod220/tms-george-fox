@@ -16,7 +16,7 @@ const TwoBoxContainer = styled.div`
 
 const LeftImage = styled.div`
   flex: 2;
-  background: url(${BakedZiti});
+  background: url(${BakedZiti.src});
   background-size: cover;
   background-position: 50%;
 `;

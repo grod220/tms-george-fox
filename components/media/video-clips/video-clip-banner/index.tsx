@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { media } from '../../../../utilities/media';
-import PropTypes from 'prop-types';
 
-const Backdrop = styled.div`
+const Backdrop = styled.div<Pick<VideoClipBannerProps, 'color' | 'bottom'>>`
   background-color: ${(props) => props.color};
   display: flex;
   justify-content: center;
@@ -16,7 +15,7 @@ const Backdrop = styled.div`
     margin:0;`};
 `;
 
-const Container = styled.div`
+const Container = styled.div<Pick<VideoClipBannerProps, 'reverse' | 'bottom'>>`
   width: 73vw;
   display: flex;
   flex-direction: ${(props) => (props.reverse ? 'row-reverse' : 'row')};
@@ -48,7 +47,7 @@ const Container = styled.div`
   }
 `;
 
-const Headline = styled.div`
+const Headline = styled.div<Pick<VideoClipBannerProps, 'bottom'>>`
   font-family: 'Dancing Script';
   font-size: 5.8rem;
   width: ${(props) => (props.bottom ? '56rem' : '38rem')};
@@ -72,7 +71,16 @@ const Headline = styled.div`
     text-align: center;`};
 `;
 
-const VideoClipBanner = ({ color, metatitle, videoURL, headline, reverse, bottom }) => (
+interface VideoClipBannerProps {
+  color: string;
+  metatitle: string;
+  videoURL: string;
+  headline: string;
+  reverse?: boolean;
+  bottom?: boolean;
+}
+
+const VideoClipBanner: FC<VideoClipBannerProps> = ({ color, metatitle, videoURL, headline, reverse, bottom }) => (
   <Backdrop color={color} bottom={bottom}>
     <Container reverse={reverse} bottom={bottom}>
       <iframe title={metatitle} frameBorder="0" src={videoURL} />
@@ -80,14 +88,5 @@ const VideoClipBanner = ({ color, metatitle, videoURL, headline, reverse, bottom
     </Container>
   </Backdrop>
 );
-
-VideoClipBanner.propTypes = {
-  color: PropTypes.string,
-  metatitle: PropTypes.string,
-  videoURL: PropTypes.string,
-  headline: PropTypes.string,
-  reverse: PropTypes.bool,
-  bottom: PropTypes.bool,
-};
 
 export default VideoClipBanner;

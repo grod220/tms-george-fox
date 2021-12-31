@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 
-const SubBarText = ({ className }) => {
+interface SubBarTextProps {
+  className?: string;
+}
+
+const SubBarText: FC<SubBarTextProps> = ({ className }) => {
   return (
     <div className={className}>
       <span>

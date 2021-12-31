@@ -3,6 +3,14 @@ import Stripe from 'stripe';
 import * as Sentry from '@sentry/node';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      STRIPE_PROD_SECRET: string;
+    }
+  }
+}
+
 // For testing
 // const stripe = new Stripe(process.env.STRIPE_DEV_SECRET, { apiVersion: '2020-08-27' });
 const stripe = new Stripe(process.env.STRIPE_PROD_SECRET, { apiVersion: '2020-08-27' });

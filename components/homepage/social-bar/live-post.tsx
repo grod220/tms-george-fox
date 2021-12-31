@@ -44,7 +44,7 @@ const SocialWrapper = styled.div`
   `}
 `;
 
-const FBImage = styled.div`
+const FBImage = styled.div<{ src: string; activated: boolean }>`
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -87,7 +87,7 @@ const SmallFBIcon = styled.div`
   margin-right: 1.8rem;
 `;
 
-const LoadingAnimation = styled.div`
+const LoadingAnimation = styled.div<{ activated: boolean }>`
   opacity: ${(props) => (props.activated ? 1 : 0)};
   animation-duration: 2s;
   animation-fill-mode: forwards;
@@ -115,7 +115,7 @@ const LoadingAnimation = styled.div`
   }
 `;
 
-const loadImageIntoMemory = (imageUrl, setLoaded) => {
+const loadImageIntoMemory = (imageUrl: string, setLoaded: React.Dispatch<React.SetStateAction<boolean>>) => {
   if (!imageUrl) return;
   const img = new Image();
   img.src = imageUrl;

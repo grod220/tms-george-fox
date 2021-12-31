@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -18,7 +18,12 @@ const StyledButton = styled.button`
   }
 `;
 
-export const BlueButton = ({ href, internal = false, children }) => {
+interface BlueButtonProps {
+  href: string;
+  internal?: boolean;
+}
+
+export const BlueButton: FC<BlueButtonProps> = ({ href, internal = false, children }) => {
   if (internal) {
     return (
       <Link href={href}>

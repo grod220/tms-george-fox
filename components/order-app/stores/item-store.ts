@@ -67,7 +67,10 @@ class ItemStore {
 
   hashScrubber(option: Option): Option {
     const copy = { ...option };
-    copy.title = removeHashes(copy.title);
+    const title = removeHashes(copy.title);
+    if (title) {
+      copy.title = title;
+    }
     return copy;
   }
 

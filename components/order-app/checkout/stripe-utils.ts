@@ -4,7 +4,7 @@ import { formatGooglePlacesObj } from '../stores/order-utils';
 import { convert24HourTo12Format, extendedDateFormat } from '../stores/date-utils';
 import { loadStripe } from '@stripe/stripe-js';
 import * as Sentry from '@sentry/browser';
-import { OrderRequest } from '../../../pages/api/stripe/order-utils';
+import { OrderRequest, ShoppingCart } from '../../../pages/api/stripe/order-utils';
 
 const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
   const orderRequest: OrderRequest = {
@@ -16,10 +16,11 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
     specialInstructions: orderStore.fulfillment.specialInstructions,
     fulfillmentOption: orderStore.fulfillment.option,
     shoppingCart: toJS(orderStore.shoppingCart).map((item, index) => {
-      // @ts-ignore --- toJS does not resolve computed properties
-      item.total = orderStore.shoppingCart[index].total;
-      return item;
-    }),
+      return {
+        ...item,
+        total: orderStore.shoppingCart[index].total,
+      };
+    }) as ShoppingCart,
     tip: orderStore.registerStore.tip,
     tax: orderStore.registerStore.tax,
   };
@@ -34,7 +35,10 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
   return orderRequest;
 };
 
-export default async function handleCheckoutRequest(showSpinner, showError) {
+export default async function handleCheckoutRequest(
+  showSpinner: React.Dispatch<React.SetStateAction<boolean>>,
+  showError: React.Dispatch<React.SetStateAction<boolean>>,
+) {
   showSpinner(true);
   try {
     const res = await fetch('/api/stripe/order', {
@@ -50,6 +54,8 @@ export default async function handleCheckoutRequest(showSpinner, showError) {
     }
     const stripe = await loadStripe('pk_live_ivfkFrzhLuZbUiZRVkvsBwI3');
     // const stripe = await loadStripe('pk_test_OaDvLsgEGQbshVWpSFMQMm1k');
+    if (!stripe) throw new Error("Couldn't load stripe");
+
     const result = await stripe.redirectToCheckout({
       sessionId: jsonResponse.id,
     });

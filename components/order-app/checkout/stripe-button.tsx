@@ -7,7 +7,7 @@ import OrderStore from '../stores/order-store';
 import handleCheckoutRequest from './stripe-utils';
 import StripeLogo from './stripe-logo-white.svg';
 
-const Button = styled.button`
+const Button = styled.button<{ error: boolean; spinner: boolean; ready: boolean }>`
   height: 54px;
   width: 328px;
   border-radius: 4px;

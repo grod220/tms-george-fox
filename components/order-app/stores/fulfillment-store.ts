@@ -3,16 +3,16 @@ import { distanceFromTMS } from './order-utils';
 import DateStore from './date-store';
 
 class FulfillmentStore {
-  option: 'pickup' | 'delivery';
+  option: 'pickup' | 'delivery' = 'pickup';
   contactName: string = '';
   contactNumber: string = '';
-  numberOfGuests: number;
+  numberOfGuests: number = 0;
   specialInstructions: string = '';
 
-  deliveryLocation: google.maps.places.PlaceResult;
-  errorFromGoogle: boolean;
-  loadingMiles: boolean;
-  deliveryMiles: number;
+  deliveryLocation: google.maps.places.PlaceResult = {};
+  errorFromGoogle: boolean = false;
+  loadingMiles: boolean = false;
+  deliveryMiles: number = 0;
 
   dateStore: DateStore;
 
@@ -26,7 +26,7 @@ class FulfillmentStore {
     );
   }
 
-  handleDeliverLocationUpdate(googlePlacesObj) {
+  handleDeliverLocationUpdate(googlePlacesObj: google.maps.places.PlaceResult) {
     this.loadingMiles = true;
     distanceFromTMS(googlePlacesObj)
       .then((miles) => {
@@ -60,8 +60,10 @@ class FulfillmentStore {
     this.specialInstructions = str;
   }
 
-  setDeliveryLocation(location: google.maps.places.PlaceResult) {
-    this.deliveryLocation = location;
+  setDeliveryLocation(location?: google.maps.places.PlaceResult) {
+    if (location) {
+      this.deliveryLocation = location;
+    }
   }
 
   setErrorFromGoogle(bool: boolean) {

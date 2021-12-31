@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Head from 'next/head';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
@@ -9,7 +9,7 @@ import MenuGrid from '../components/menu/menu-grid';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 
-export default function Menu({ fullMenu }: { fullMenu: Category[] }): InferGetStaticPropsType<typeof getStaticProps> {
+const Menu: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) => {
   return (
     <>
       <Head>
@@ -21,12 +21,14 @@ export default function Menu({ fullMenu }: { fullMenu: Category[] }): InferGetSt
       <MenuGrid menu={fullMenu} />
     </>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<{ fullMenu: Category[] }> = async (context) => {
   return {
     props: {
       fullMenu: await getFullMenuPreview(),
     },
   };
 };
+
+export default Menu;

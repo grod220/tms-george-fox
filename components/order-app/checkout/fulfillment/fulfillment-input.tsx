@@ -27,7 +27,7 @@ export const LabelHelper = styled.label`
   text-transform: capitalize;
 `;
 
-export const InputEl = styled.input`
+export const InputEl = styled.input<{ hasError?: boolean }>`
   padding: 10px;
   font-size: 18px;
   font-family: vollkorn;

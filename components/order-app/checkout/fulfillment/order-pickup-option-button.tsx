@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import OrderStore from '../../stores/order-store';
 import styled from 'styled-components';
 
-const OrderPickupOption = styled.button`
+const OrderPickupOption = styled.button<{ selected: boolean }>`
   background-color: ${({ selected }) => (selected ? '#902e2d' : '#e0e0e0')};
   padding: 10px 20px;
   text-transform: uppercase;

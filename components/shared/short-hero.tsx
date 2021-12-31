@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -43,7 +43,7 @@ const HeadlineText = styled.h1`
     padding-top: .7rem;`};
 `;
 
-const ShortHero = ({ image, headline }: { image: StaticImageData; headline: string }) => (
+const ShortHero: FC<{ image: StaticImageData; headline: string }> = ({ image, headline }) => (
   <div>
     <TopImage>
       <Image src={image} layout="fill" objectFit="cover" />

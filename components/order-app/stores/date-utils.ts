@@ -52,6 +52,7 @@ const openingHours = {
 const leadTimesInMinutes = {
   normal: {
     pickup: 30,
+    delivery: 0,
   },
   catering: {
     delivery: 180,
@@ -59,13 +60,15 @@ const leadTimesInMinutes = {
   },
 };
 
+type DaysofWeekStr = keyof typeof openingHours;
+
 /* All time is browser-time. May be a bit tricky if ordering from a different timezone. */
 
 export const convert24HourTo12Format = (date: Date) => format(date, 'h:mm aa');
 
 export const extendedDateFormat = (date: Date) => format(date, 'EEEE, MMMM do y');
 
-const getDayOfWeekStr = (dateObj) => format(dateObj, 'EEEE');
+const getDayOfWeekStr = (dateObj: number | Date) => format(dateObj, 'EEEE') as DaysofWeekStr;
 
 export const isInPast = (proposedTime: Date): boolean => isBefore(proposedTime, new Date());
 
@@ -95,13 +98,13 @@ export const getNextAvailableFulfillmentDateAndTime = (): Date => {
   }
 };
 
-export const withinOpeningHours = (dateObj): boolean => {
+export const withinOpeningHours = (dateObj: number | Date): boolean => {
   const dayProposed = getDayOfWeekStr(dateObj);
   const hour = getHours(dateObj);
   return hour >= openingHours[dayProposed].open && hour < openingHours[dayProposed].close;
 };
 
-const isBeforeOpeningToday = (proposedDateObj) => {
+const isBeforeOpeningToday = (proposedDateObj: number | Date) => {
   const todayStr = getDayOfWeekStr(startOfToday());
   const proposedHour = getHours(proposedDateObj);
   return isToday(proposedDateObj) && proposedHour < openingHours[todayStr].open;
@@ -109,7 +112,8 @@ const isBeforeOpeningToday = (proposedDateObj) => {
 
 export const getOneYearFromTodayStr = () => convertToHTMLDateAndTimeStr(addYears(startOfToday(), 1));
 
-export const parseHTMLDateAndTime = (proposedDateStr) => parse(proposedDateStr, "yyyy-MM-dd'T'HH:mm", new Date());
+export const parseHTMLDateAndTime = (proposedDateStr: string) =>
+  parse(proposedDateStr, "yyyy-MM-dd'T'HH:mm", new Date());
 
 export const withinLeadTime = (proposedDateObj: Date): boolean => {
   const nextAvailableTime = getNextAvailableFulfillmentDateAndTime();

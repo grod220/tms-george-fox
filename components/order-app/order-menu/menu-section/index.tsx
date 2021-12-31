@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import MenuItem from './menu-item';
@@ -23,7 +23,7 @@ const Note = styled.p`
   color: #515151;
 `;
 
-const MenuSection = ({ category }: { category: Category }) => {
+const MenuSection: FC<{ category: Category }> = ({ category }) => {
   return (
     <>
       <CategoryTitle>{removeHashes(category?.title)}</CategoryTitle>

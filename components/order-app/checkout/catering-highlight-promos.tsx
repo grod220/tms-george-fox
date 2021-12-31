@@ -8,7 +8,7 @@ const Container = styled.div`
   grid-gap: 20px;
 `;
 
-const Bar = styled.div`
+const Bar = styled.div<{ background: string; text: string }>`
   background-color: ${({ background }) => background};
   display: flex;
   justify-content: center;

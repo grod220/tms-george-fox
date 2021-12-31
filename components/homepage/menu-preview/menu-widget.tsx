@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { media } from '../../../utilities/media';
@@ -44,11 +44,11 @@ const Descriptions = styled.div`
     width: 94vw;`};
 `;
 
-const MenuWidget = ({ menu }: { menu: Category[] }) => {
-  const [active, setActive] = useState(undefined);
+const MenuWidget: FC<{ menu: Category[] }> = ({ menu }) => {
+  const [active, setActive] = useState<string | undefined>(undefined);
   const [opacity, setOpacity] = useState(0);
 
-  const toggleSection = (headline) => {
+  const toggleSection = (headline: string) => {
     if (headline === active) return;
     setOpacity(0);
     setTimeout(() => setActive(headline), 200);

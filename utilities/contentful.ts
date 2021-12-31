@@ -2,7 +2,7 @@ import { BaseItem, Category, Collection, MenuItem, MenuVersion, Option } from '.
 
 const TMS_CONTENTFUL_SPACE_ID = '8fhpgddd51q7';
 
-async function fetchGraphQL<T>(query): Promise<{ data: T | undefined }> {
+async function fetchGraphQL<T>(query: string): Promise<{ data: T | undefined }> {
   const response = await fetch(`https://graphql.contentful.com/content/v1/spaces/${TMS_CONTENTFUL_SPACE_ID}`, {
     method: 'POST',
     headers: {
@@ -168,11 +168,11 @@ const getAllOptions = async (): Promise<Option[]> => {
   return optionsCollection.data?.optionsCollection.items ?? [];
 };
 
-const createDictById = <T extends BaseItem[]>(arr: T): Record<BaseItem['sys']['id'], BaseItem> => {
+const createDictById = <T extends BaseItem>(arr: T[]) => {
   return arr.reduce((acc, curr) => {
     acc[curr.sys.id] = curr;
     return acc;
-  }, {});
+  }, {} as Record<string, T>);
 };
 
 export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): Promise<MenuVersion[]> => {
@@ -185,22 +185,33 @@ export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): P
   const optionsDict = createDictById(await getAllOptions());
 
   // insanity required due to the contentful complaining about the complexity of queries
-  fullMenu.forEach((menu) =>
-    menu.categoriesCollection.items.forEach((category) =>
-      category.menuItemsCollection.items.forEach((item) => {
-        Object.entries(menuItemsDict[item.sys.id]).forEach(([key, val]) => {
-          item[key] = val;
-          item.optionsCollection?.items.forEach((option) => {
-            Object.entries(optionsDict[option.sys.id]).forEach(([key, val]) => {
-              option[key] = val;
-            });
-          });
-        });
-      }),
-    ),
-  );
+  const fullMenuMerged: MenuVersion[] = fullMenu.map((menu) => ({
+    ...menu,
+    categoriesCollection: {
+      ...menu.categoriesCollection,
+      items: menu.categoriesCollection.items.map((category) => ({
+        ...category,
+        menuItemsCollection: {
+          ...category.menuItemsCollection,
+          items: category.menuItemsCollection.items.map((item) => ({
+            ...item,
+            ...menuItemsDict[item.sys.id],
+            optionsCollection: {
+              ...item.optionsCollection,
+              items: item.optionsCollection
+                ? item.optionsCollection.items.map((option) => ({
+                    ...option,
+                    ...optionsDict[option.sys.id],
+                  }))
+                : [],
+            },
+          })),
+        },
+      })),
+    },
+  }));
 
-  return fullMenu;
+  return fullMenuMerged;
 };
 
 export const getNormalMenus = async (): Promise<MenuVersion[]> => {

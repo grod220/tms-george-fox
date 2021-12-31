@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Recipe } from '../../data/recipes';
 import styled from 'styled-components';
 import Timings from './timings';
@@ -40,7 +40,7 @@ const Description = styled.div`
   text-align: center;
 `;
 
-const RecipeContent = ({ recipe }: { recipe: Recipe }) => (
+const RecipeContent: FC<{ recipe: Recipe }> = ({ recipe }) => (
   <Container>
     <Description>{`"${recipe.description}" - Chef Isabella`}</Description>
     <VideoLesson youtubeEmbedId={recipe.youtubeVideoId} />

@@ -3,7 +3,7 @@ import ReactGA from 'react-ga';
 
 const GOOGLE_ANALYTICS_PROPERTY = 'UA-55491347-1';
 
-const trackPage = (url) => {
+const trackPage = (url: string) => {
   ReactGA.set({ url });
   ReactGA.pageview(url);
 };
