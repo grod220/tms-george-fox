@@ -52,7 +52,7 @@ const openingHours = {
 const leadTimesInMinutes = {
   normal: {
     pickup: 30,
-    delivery: 0,
+    delivery: 0, // not relevant to normal stripe orders
   },
   catering: {
     delivery: 180,

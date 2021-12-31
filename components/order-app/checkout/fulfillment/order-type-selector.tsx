@@ -6,7 +6,7 @@ import OrderInfoSectionHeader from '../checkout-section-header';
 
 const OrderTypeSelector = () => {
   if (OrderStore.orderType !== 'catering') {
-    return null;
+    return <></>;
   }
 
   return (

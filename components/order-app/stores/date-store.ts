@@ -11,28 +11,12 @@ class DateStore {
     this.fulfillmentStore = fulfillmentStore;
   }
 
-  get fulfillmentTimeAndDateError(): string {
-    if (!this.fulfillmentTimeAndDate) {
-      return 'Date is invalid';
-    }
-
-    if (isInPast(this.fulfillmentTimeAndDate)) {
-      return 'Date is in past';
-    }
-
-    if (isOnASunday(this.fulfillmentTimeAndDate)) {
-      return 'Not open on Sundays';
-    }
-
-    if (!withinOpeningHours(this.fulfillmentTimeAndDate)) {
-      return 'Not within opening hours';
-    }
-
-    if (!withinLeadTime(this.fulfillmentTimeAndDate)) {
-      return 'Need lead time';
-    }
-
-    return '';
+  get fulfillmentTimeAndDateError() {
+    if (!this.fulfillmentTimeAndDate) return 'Date is invalid';
+    if (isInPast(this.fulfillmentTimeAndDate)) return 'Date is in past';
+    if (isOnASunday(this.fulfillmentTimeAndDate)) return 'Not open on Sundays';
+    if (!withinOpeningHours(this.fulfillmentTimeAndDate)) return 'Not within opening hours';
+    if (!withinLeadTime(this.fulfillmentTimeAndDate)) return 'Need lead time';
   }
 
   setFulfillmentDateAndTime(str: string) {
