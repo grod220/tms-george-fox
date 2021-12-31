@@ -5,6 +5,7 @@ import { convert24HourTo12Format, extendedDateFormat } from '../stores/date-util
 import { loadStripe } from '@stripe/stripe-js';
 import * as Sentry from '@sentry/browser';
 import { OrderRequest, ShoppingCart } from '../../../pages/api/stripe/order-utils';
+import { Dispatch, SetStateAction } from 'react';
 
 const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
   const orderRequest: OrderRequest = {
@@ -15,18 +16,16 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
     contactNumber: orderStore.fulfillment.contactNumber,
     specialInstructions: orderStore.fulfillment.specialInstructions,
     fulfillmentOption: orderStore.fulfillment.option,
-    shoppingCart: toJS(orderStore.shoppingCart).map((item, index) => {
-      return {
-        ...item,
-        total: orderStore.shoppingCart[index].total,
-      };
-    }) as ShoppingCart,
+    shoppingCart: toJS(orderStore.shoppingCart).map((item, index) => ({
+      ...item,
+      total: orderStore.shoppingCart[index].total,
+    })) as ShoppingCart,
     tip: orderStore.registerStore.tip,
     tax: orderStore.registerStore.tax,
   };
 
   if (OrderStore.fulfillment.option === 'delivery') {
-    orderRequest.deliveryLocation = formatGooglePlacesObj(orderStore.fulfillment.deliveryLocation);
+    orderRequest.deliveryLocation = orderStore.fulfillment.deliveryLocation && formatGooglePlacesObj(orderStore.fulfillment.deliveryLocation);
     orderRequest.deliveryFee = orderStore.registerStore.deliveryFee as number;
     orderRequest.numberOfGuests = orderStore.fulfillment.numberOfGuests;
   }
@@ -36,8 +35,8 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
 };
 
 export default async function handleCheckoutRequest(
-  showSpinner: React.Dispatch<React.SetStateAction<boolean>>,
-  showError: React.Dispatch<React.SetStateAction<boolean>>,
+  showSpinner: Dispatch<SetStateAction<boolean>>,
+  showError: Dispatch<SetStateAction<boolean>>,
 ) {
   showSpinner(true);
   try {

@@ -37,9 +37,4 @@ export const initAutocomplete = async () => {
   attachAutoCompleteEl();
 };
 
-export const cleanupMapsElements = () => {
-  const pacContainer = document.querySelector('.pac-container');
-  if (pacContainer) {
-    pacContainer.remove();
-  }
-};
+export const cleanupMapsElements = () => document.querySelector('.pac-container')?.remove();

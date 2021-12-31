@@ -3,7 +3,7 @@ import { insertGoogleMapsScript } from '../checkout/fulfillment/delivery-autocom
 const getDistance = (
   TMS: google.maps.LatLng,
   deliveryLocation: google.maps.LatLng,
-): Promise<google.maps.DistanceMatrixResponse> =>
+): Promise<google.maps.DistanceMatrixResponse | null> =>
   new Promise((resolve, reject) => {
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
@@ -14,9 +14,7 @@ const getDistance = (
         unitSystem: google.maps.UnitSystem.IMPERIAL,
       },
       (result) => {
-        if (result) {
-          resolve(result);
-        }
+        resolve(result);
       },
     );
   });
@@ -30,6 +28,8 @@ export const distanceFromTMS = async (googlePlacesObj: google.maps.places.PlaceR
   }
 
   const result = await getDistance(TMSLocation, googlePlacesObj.geometry.location);
+  if (!result) throw new Error('Error getting distance from Google Maps Api')
+
   const distanceInMiles = Number(result.rows[0].elements[0].distance.text.split(' ')[0]);
   return distanceInMiles;
 };

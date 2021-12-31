@@ -57,9 +57,7 @@ export default function Overlay() {
   const [shouldDisplay, setShouldDisplay] = useState(true);
   const closeModal = () => setShouldDisplay(false);
 
-  if (!shouldDisplay) {
-    return null;
-  }
+  if (!shouldDisplay) return <></>;
 
   return (
     <BlurredBackground onClick={closeModal}>

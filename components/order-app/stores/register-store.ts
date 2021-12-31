@@ -47,7 +47,7 @@ class RegisterStore {
       return 'Select delivery location';
     }
 
-    if (this.fulfillmentStore.errorFromGoogle) {
+    if (this.fulfillmentStore.errorFromGoogle || !this.fulfillmentStore.deliveryMiles) {
       return '🚫 error with Google Maps';
     }
 

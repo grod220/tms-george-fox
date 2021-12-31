@@ -9,10 +9,10 @@ class FulfillmentStore {
   numberOfGuests: number = 0;
   specialInstructions: string = '';
 
-  deliveryLocation: google.maps.places.PlaceResult = {};
+  deliveryLocation?: google.maps.places.PlaceResult;
   errorFromGoogle: boolean = false;
   loadingMiles: boolean = false;
-  deliveryMiles: number = 0;
+  deliveryMiles?: number;
 
   dateStore: DateStore;
 
@@ -22,7 +22,9 @@ class FulfillmentStore {
 
     reaction(
       () => this.deliveryLocation,
-      (googlePlacesObj) => this.handleDeliverLocationUpdate(googlePlacesObj),
+      (googlePlacesObj) => {
+        if (googlePlacesObj) this.handleDeliverLocationUpdate(googlePlacesObj);
+      },
     );
   }
 
@@ -61,9 +63,7 @@ class FulfillmentStore {
   }
 
   setDeliveryLocation(location?: google.maps.places.PlaceResult) {
-    if (location) {
-      this.deliveryLocation = location;
-    }
+    this.deliveryLocation = location;
   }
 
   setErrorFromGoogle(bool: boolean) {
