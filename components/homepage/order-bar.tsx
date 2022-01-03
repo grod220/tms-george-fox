@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../utilities/media';
 import Link from 'next/link';
-import { isSameDay, set } from 'date-fns';
+import { isClosedForHoliday } from './modal-overlay';
 
 const RedBar = styled.div`
   background: #902e2d;
@@ -106,16 +106,6 @@ const MiniSubtext = styled.h4`
   font-weight: normal;
   margin: 0;
 `;
-
-export const isClosedForHoliday = (): boolean => {
-  const closedDates = [
-    set(new Date(), { year: 2021, month: 11, date: 24 }),
-    set(new Date(), { year: 2021, month: 11, date: 25 }),
-    set(new Date(), { year: 2021, month: 11, date: 26 }),
-    set(new Date(), { year: 2022, month: 0, date: 1 }),
-  ];
-  return closedDates.some((d) => isSameDay(new Date(), d));
-};
 
 const OrderBar = () => (
   <RedBar>
