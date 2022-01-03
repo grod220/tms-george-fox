@@ -2,19 +2,16 @@ import React, { FC } from 'react';
 import LazyLoad from 'react-lazyload';
 import Head from 'next/head';
 import BigHero from '../components/homepage/big-hero';
-import OrderBar, { isClosedForHoliday } from '../components/homepage/order-bar';
+import OrderBar from '../components/homepage/order-bar';
 import SocialBar from '../components/homepage/social-bar';
 import MenuPreview from '../components/homepage/menu-preview';
 import TestimonialTaster from '../components/homepage/testimonial-taster';
-import LaDifferenzaPromo from '../components/homepage/la-differenza-promo';
 import Map from '../components/homepage/map';
 import Passion from '../components/homepage/passion';
 import Footer from '../components/homepage/footer';
-import { YelpReservations } from '../components/homepage/yelp-reservations';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
-import Overlay from '../components/homepage/modal-overlay';
 import NewsletterSignup from '../components/homepage/newsletter-signup';
 
 const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) => {
@@ -27,7 +24,6 @@ const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu })
           content="An authentic Italian restaurant loved by Guy Fieri & the entire community. Orlando's #1 ranked most family-friendly restaurant by USA Today."
         />
       </Head>
-      <Overlay />
       {/*{isClosedForHoliday() && <Overlay />}*/}
       <BigHero />
       <OrderBar />

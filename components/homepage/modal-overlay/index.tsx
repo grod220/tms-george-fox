@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import useModal from './use-modal';
+import { isSameDay, set } from 'date-fns';
 
 const BlurredBackground = styled.div`
   position: fixed;
@@ -51,6 +51,16 @@ const WelcomeTitle = styled.h2`
     max-width: 200px;
   }
 `;
+
+export const isClosedForHoliday = (): boolean => {
+  const closedDates = [
+    set(new Date(), { year: 2021, month: 11, date: 24 }),
+    set(new Date(), { year: 2021, month: 11, date: 25 }),
+    set(new Date(), { year: 2021, month: 11, date: 26 }),
+    set(new Date(), { year: 2022, month: 0, date: 1 }),
+  ];
+  return closedDates.some((d) => isSameDay(new Date(), d));
+};
 
 export default function Overlay() {
   // const [shouldDisplay, closeModal] = useModal('quick-serve-alert');
