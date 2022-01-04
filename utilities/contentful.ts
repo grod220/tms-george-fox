@@ -197,9 +197,9 @@ export const getMenus = async (menuRetrievalFn: () => Promise<MenuVersion[]>): P
             ...item,
             ...menuItemsDict[item.sys.id],
             optionsCollection: {
-              ...item.optionsCollection,
-              items: item.optionsCollection
-                ? item.optionsCollection.items.map((option) => ({
+              ...menuItemsDict[item.sys.id].optionsCollection,
+              items: menuItemsDict[item.sys.id].optionsCollection
+                ? menuItemsDict[item.sys.id].optionsCollection.items.map((option) => ({
                     ...option,
                     ...optionsDict[option.sys.id],
                   }))

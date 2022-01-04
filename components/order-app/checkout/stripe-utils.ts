@@ -25,7 +25,8 @@ const serializeOrderStore = (orderStore: typeof OrderStore): OrderRequest => {
   };
 
   if (OrderStore.fulfillment.option === 'delivery') {
-    orderRequest.deliveryLocation = orderStore.fulfillment.deliveryLocation && formatGooglePlacesObj(orderStore.fulfillment.deliveryLocation);
+    orderRequest.deliveryLocation =
+      orderStore.fulfillment.deliveryLocation && formatGooglePlacesObj(orderStore.fulfillment.deliveryLocation);
     orderRequest.deliveryFee = orderStore.registerStore.deliveryFee as number;
     orderRequest.numberOfGuests = orderStore.fulfillment.numberOfGuests;
   }

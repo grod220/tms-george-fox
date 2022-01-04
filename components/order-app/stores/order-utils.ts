@@ -28,7 +28,7 @@ export const distanceFromTMS = async (googlePlacesObj: google.maps.places.PlaceR
   }
 
   const result = await getDistance(TMSLocation, googlePlacesObj.geometry.location);
-  if (!result) throw new Error('Error getting distance from Google Maps Api')
+  if (!result) throw new Error('Error getting distance from Google Maps Api');
 
   const distanceInMiles = Number(result.rows[0].elements[0].distance.text.split(' ')[0]);
   return distanceInMiles;
