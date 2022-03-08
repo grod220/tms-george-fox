@@ -24,7 +24,7 @@ const TopText = () => (
   <Container>
     <Centered>
       Hand made like your Mamma and Nonna’s. All of our dishes are made with the highest quality meat and fresh
-      ingredients. Also! There are plenty of options for vegan &amp; glutten free (*gf) guests.{' '}
+      ingredients. Also! There are plenty of options for vegan &amp; gluten free (*gf) guests.{' '}
       <Highlight i>
         <a href={NormalMenu} target="_blank" rel="noopener noreferrer">
           Full Menu
