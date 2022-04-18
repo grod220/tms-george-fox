@@ -8,7 +8,7 @@ const fileLoaderConfig = {
 };
 
 const fileLoader = {
-  test: /\.(pdf|mp3|svg)$/,
+  test: /\.(pdf|mp3|svg|mp4)$/,
   use: [fileLoaderConfig],
 };
 
