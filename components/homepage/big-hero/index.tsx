@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import { media } from '../../../utilities/media';
+import { VideoBackground } from './video-background';
+import { isMobile } from 'react-device-detect';
 import { generateHeroImage } from './generate-hero';
 
 const HeroBackground = styled.div`
@@ -35,16 +37,22 @@ const HeroText = styled.div`
     margin: 0 0 5rem 0;`};
 `;
 
-const BigHero = () => (
-  <HeroBackground>
-    <HeroText>
-      <div>As featured on Diners, Drive-Ins & Dives</div>
-      <div>
-        <em>with Guy Fieri, Food Network</em>
-      </div>
-    </HeroText>
-    <Image src={generateHeroImage()} layout="fill" objectFit="cover" quality="100" />
-  </HeroBackground>
-);
+const BigHero = () => {
+  return (
+    <HeroBackground>
+      <HeroText>
+        <div>As featured on Diners, Drive-Ins & Dives</div>
+        <div>
+          <em>with Guy Fieri, Food Network</em>
+        </div>
+      </HeroText>
+      {isMobile ? (
+        <Image src={generateHeroImage()} layout="fill" objectFit="cover" quality="100" />
+      ) : (
+        <VideoBackground />
+      )}
+    </HeroBackground>
+  );
+};
 
 export default BigHero;
