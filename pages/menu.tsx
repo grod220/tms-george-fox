@@ -4,7 +4,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import TopText from '../components/menu/top-text';
 import ShortHero from '../components/shared/short-hero';
-import MenuHero from '../components/menu/food-image-tiles.jpg';
+import MenuHero from '../components/menu/meatball-options.jpg';
 import MenuGrid from '../components/menu/menu-grid';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
