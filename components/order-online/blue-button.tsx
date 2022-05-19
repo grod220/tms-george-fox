@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -21,6 +21,7 @@ const StyledButton = styled.button`
 interface BlueButtonProps {
   href: string;
   internal?: boolean;
+  children: ReactNode;
 }
 
 export const BlueButton: FC<BlueButtonProps> = ({ href, internal = false, children }) => {

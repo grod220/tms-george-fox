@@ -1,4 +1,5 @@
 import { getDayOfYear } from 'date-fns';
+import { StaticImageData } from 'next/image';
 
 const getAllHeroImageURLs = () => {
   const requireAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().map(requireContext);

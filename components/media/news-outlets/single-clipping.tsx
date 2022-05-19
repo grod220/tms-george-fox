@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { StaticImageData } from 'next/image';
 
 const Container = styled.div`
   margin-bottom: 4rem;

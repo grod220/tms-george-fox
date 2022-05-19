@@ -30,7 +30,7 @@ const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu })
       {/*<LazyLoad height={100}>*/}
       {/*  <YelpReservations />*/}
       {/*</LazyLoad>*/}
-      <LazyLoad height={350}>
+      <LazyLoad height={400}>
         <SocialBar />
       </LazyLoad>
       <LazyLoad height={400}>

@@ -1,6 +1,7 @@
 import ChickenMeatballsImg from './images/chicken-meatballs.jpg';
 import RoastedTomatoImg from './images/roasted-tomato.jpg';
 import PastaPatateImg from './images/pasta-patate.jpg';
+import { StaticImageData } from 'next/image';
 
 export interface Recipe {
   name: string;
