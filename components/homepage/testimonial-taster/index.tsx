@@ -66,7 +66,6 @@ const TestimonialTaster = () => (
           <StyledTestimonial {...testimonial} key={i} />
         ))}
       </ThreeTestimonials>
-      r/index.jsx
     </BorderBox>
     <LearnMore>
       See even more reviews on{' '}
