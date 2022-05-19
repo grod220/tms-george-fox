@@ -13,6 +13,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 import NewsletterSignup from '../components/homepage/newsletter-signup';
+import { MeatballDisplay } from '../components/homepage/meatball-display';
 
 const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) => {
   return (
@@ -35,6 +36,9 @@ const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu })
       </LazyLoad>
       <LazyLoad height={400}>
         <MenuPreview menu={fullMenu} />
+      </LazyLoad>
+      <LazyLoad height={400}>
+        <MeatballDisplay />
       </LazyLoad>
       <LazyLoad height={350}>
         <TestimonialTaster />
