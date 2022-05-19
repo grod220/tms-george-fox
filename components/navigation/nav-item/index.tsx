@@ -4,7 +4,7 @@ import Link from 'next/link';
 interface NavItemProps {
   path: string;
   action?: () => void;
-  children: ReactNode
+  children: ReactNode;
 }
 
 const NavItem: FC<NavItemProps> = ({ children, path, action }) => (
