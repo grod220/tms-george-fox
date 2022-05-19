@@ -10,7 +10,7 @@ const Container = styled.div`
   column-gap: 1.5rem;
   width: 93%;
   column-fill: auto;
-  margin: 0 auto;
+  margin: 30px auto;
 
   > div {
     break-inside: avoid-column;
