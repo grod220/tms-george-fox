@@ -8,6 +8,7 @@ import MenuHero from '../components/menu/meatball-options.jpg';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 import dynamic from 'next/dynamic';
+import { MeatballDisplay } from '../components/shared/meatball-display';
 
 const MenuGrid = dynamic(() => import('../components/menu/menu-grid'), { ssr: false });
 
@@ -20,6 +21,7 @@ const Menu: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) 
       </Head>
       <ShortHero image={MenuHero} headline="Our delicious menu" />
       <TopText />
+      <MeatballDisplay />
       <MenuGrid menu={fullMenu} />
     </>
   );

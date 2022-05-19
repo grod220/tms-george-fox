@@ -13,7 +13,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 import NewsletterSignup from '../components/homepage/newsletter-signup';
-import { MeatballDisplay } from '../components/homepage/meatball-display';
+import { MeatballDisplay } from '../components/shared/meatball-display';
 
 const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) => {
   return (
