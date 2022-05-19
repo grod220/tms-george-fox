@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import Link from 'next/link';
 
 interface NavItemProps {
   path: string;
   action?: () => void;
+  children: ReactNode
 }
 
 const NavItem: FC<NavItemProps> = ({ children, path, action }) => (

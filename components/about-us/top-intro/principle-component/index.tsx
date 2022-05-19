@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { media } from '../../../../utilities/media';
+import { StaticImageData } from 'next/image';
 
 const RedBox = styled.div`
   background-color: #902e2d;
