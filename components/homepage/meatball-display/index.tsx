@@ -27,6 +27,7 @@ const Card = styled.div`
 `;
 
 const MeatballName = styled.div`
+  margin-top: 10px;
   color: #902e2d;
   text-align: center;
   font-size: 20px;

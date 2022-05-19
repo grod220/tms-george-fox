@@ -1,5 +1,20 @@
-import SomeMeatball from './images/some-meatball.png';
 import { StaticImageData } from 'next/image';
+
+import Blackbean from './images/blackbean.jpg';
+import ChickenParm from './images/chicken-parm.jpg';
+import Buffalo from './images/buffalo.jpg';
+import Crab from './images/crab.jpg';
+import Eggplant from './images/eggplant.jpg';
+import Gator from './images/gator.jpg';
+import Impossible from './images/impossible.jpg';
+import MacAndCheese from './images/mac-and-cheese.jpg';
+import Marsala from './images/marsala.jpg';
+import NonnasTraditional from './images/nonnas.jpg';
+import Polenta from './images/polenta.jpg';
+import SausagePepperOnion from './images/sausage-pepper-onion.jpg';
+import Sausage from './images/sausage.jpg';
+import SpicyPork from './images/spicypork.jpg';
+import Veggie from './images/veggie.jpg';
 
 export interface MeatballData {
   image: StaticImageData;
@@ -11,105 +26,105 @@ export interface MeatballData {
 
 export const MeatballDisplayData: MeatballData[] = [
   {
-    image: SomeMeatball,
+    image: NonnasTraditional,
     name: "Nonna's Traditional Italian",
     glutenFree: false,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: Buffalo,
     name: 'Chicken Buffalo Bleu',
     glutenFree: true,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: Marsala,
     name: 'Chicken Marsala',
     glutenFree: true,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: ChickenParm,
     name: 'Chicken Parmigiana',
     glutenFree: true,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: Veggie,
     name: 'Veggie',
     glutenFree: true,
     vegan: true,
     vegetarian: true,
   },
   {
-    image: SomeMeatball,
+    image: Blackbean,
     name: 'Spicy black bean yucca',
     glutenFree: true,
     vegan: true,
     vegetarian: true,
   },
   {
-    image: SomeMeatball,
+    image: SpicyPork,
     name: 'Spicy Pork',
     glutenFree: false,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: SausagePepperOnion,
     name: 'Sausage Pepper & Onions',
     glutenFree: true,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: Polenta,
     name: 'Polenta',
     glutenFree: true,
     vegan: false,
     vegetarian: true,
   },
   {
-    image: SomeMeatball,
+    image: Sausage,
     name: 'Sausage',
     glutenFree: true,
     vegan: false,
     vegetarian: true,
   },
   {
-    image: SomeMeatball,
+    image: Eggplant,
     name: 'Eggplant Zucchini Quinoa',
     glutenFree: true,
     vegan: true,
     vegetarian: true,
   },
   {
-    image: SomeMeatball,
+    image: MacAndCheese,
     name: 'Mac & Cheese',
     glutenFree: false,
     vegan: false,
     vegetarian: true,
   },
   {
-    image: SomeMeatball,
+    image: Crab,
     name: 'Crab',
     glutenFree: false,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: Gator,
     name: 'Gator',
     glutenFree: false,
     vegan: false,
     vegetarian: false,
   },
   {
-    image: SomeMeatball,
+    image: Impossible,
     name: 'Impossible Barbecue',
     glutenFree: true,
     vegan: true,
