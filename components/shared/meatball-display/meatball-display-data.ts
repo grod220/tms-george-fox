@@ -93,7 +93,7 @@ export const MeatballDisplayData: MeatballData[] = [
     name: 'Sausage',
     glutenFree: true,
     vegan: false,
-    vegetarian: true,
+    vegetarian: false,
   },
   {
     image: Eggplant,
