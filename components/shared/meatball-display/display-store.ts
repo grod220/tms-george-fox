@@ -20,6 +20,18 @@ class MeatballDisplayStore {
   get meatballsToDisplay(): MeatballData[] {
     return this.meatballData.filter(this.glutenFreeFilter).filter(this.vegetarianFilter).filter(this.veganFilter);
   }
+
+  toggleGlutenFree() {
+    this.onlyGlutenFree = !this.onlyGlutenFree;
+  }
+
+  toggleVegetarian() {
+    this.onlyVegetarian = !this.onlyVegetarian;
+  }
+
+  toggleVegan() {
+    this.onlyVegan = !this.onlyVegan;
+  }
 }
 
 export default new MeatballDisplayStore(MeatballDisplayData);

@@ -27,28 +27,28 @@ export const Filters = observer(() => {
         activeColor="#f08f25"
         inactiveColor="#ffd7ab"
         active={Store.onlyGlutenFree}
-        onClick={() => (Store.onlyGlutenFree = !Store.onlyGlutenFree)}
+        onClick={() => Store.toggleGlutenFree()}
       >
         gluten-free
-        <input type="checkbox" checked={Store.onlyGlutenFree} />
+        <input type="checkbox" checked={Store.onlyGlutenFree} readOnly />
       </FilterButton>
       <FilterButton
         activeColor="#44c78e"
         inactiveColor="#c2e7d5"
         active={Store.onlyVegetarian}
-        onClick={() => (Store.onlyVegetarian = !Store.onlyVegetarian)}
+        onClick={() => Store.toggleVegetarian()}
       >
         vegetarian
-        <input type="checkbox" checked={Store.onlyVegetarian} />
+        <input type="checkbox" checked={Store.onlyVegetarian} readOnly />
       </FilterButton>
       <FilterButton
         activeColor="#39be3a"
         inactiveColor="#c7e7c2"
         active={Store.onlyVegan}
-        onClick={() => (Store.onlyVegan = !Store.onlyVegan)}
+        onClick={() => Store.toggleVegan()}
       >
         vegan
-        <input type="checkbox" checked={Store.onlyVegan} />
+        <input type="checkbox" checked={Store.onlyVegan} readOnly />
       </FilterButton>
     </Container>
   );
