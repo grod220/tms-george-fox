@@ -5,7 +5,6 @@ import ChickenParm from './images/chicken-parm.jpg';
 import Buffalo from './images/buffalo.jpg';
 import Crab from './images/crab.jpg';
 import Eggplant from './images/eggplant.jpg';
-import Gator from './images/gator.jpg';
 import Impossible from './images/impossible.jpg';
 import MacAndCheese from './images/mac-and-cheese.jpg';
 import Marsala from './images/marsala.jpg';
@@ -112,13 +111,6 @@ export const MeatballDisplayData: MeatballData[] = [
   {
     image: Crab,
     name: 'Crab',
-    glutenFree: false,
-    vegan: false,
-    vegetarian: false,
-  },
-  {
-    image: Gator,
-    name: 'Gator',
     glutenFree: false,
     vegan: false,
     vegetarian: false,
