@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -38,6 +38,15 @@ const HeroText = styled.div`
 `;
 
 const BigHero = () => {
+  const [Background, setBackground] = useState<JSX.Element | null>(<VideoBackground />);
+
+  // to fix hydration error, set the background in useEffect
+  useEffect(() => {
+    isMobile
+      ? setBackground(<Image src={generateHeroImage()} layout="fill" objectFit="cover" quality="100" />)
+      : setBackground(<VideoBackground />);
+  }, []);
+
   return (
     <HeroBackground>
       <HeroText>
@@ -46,11 +55,8 @@ const BigHero = () => {
           <em>with Guy Fieri, Food Network</em>
         </div>
       </HeroText>
-      {isMobile ? (
-        <Image src={generateHeroImage()} layout="fill" objectFit="cover" quality="100" />
-      ) : (
-        <VideoBackground />
-      )}
+
+      {Background}
     </HeroBackground>
   );
 };
