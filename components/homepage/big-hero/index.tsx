@@ -38,7 +38,7 @@ const HeroText = styled.div`
 `;
 
 const BigHero = () => {
-  const [Background, setBackground] = useState<JSX.Element | null>(<VideoBackground />);
+  const [Background, setBackground] = useState<JSX.Element>(<VideoBackground />);
 
   // to fix hydration error, set the background in useEffect
   useEffect(() => {

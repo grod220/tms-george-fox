@@ -15,7 +15,6 @@ export interface MenuItem extends BaseItem {
     width: number;
     height: number;
   } | null;
-  submitImageToUber: boolean;
   temperature: string[];
   optionsCollection: Collection<Option>;
 }

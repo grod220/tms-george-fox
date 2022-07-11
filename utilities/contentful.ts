@@ -103,7 +103,6 @@ const getMenuItems = async (skip: number): Promise<MenuItem[]> => {
           title
           price
           description
-          submitImageToUber
           temperature
           image {
             url
