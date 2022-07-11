@@ -34,9 +34,11 @@ const MenuSection: FC<{ category: Category }> = ({ category }) => {
         </Note>
       )}
       <MenuItems>
-        {category.menuItemsCollection.items?.map((item, i) => (
-          <MenuItem itemData={item} key={i} />
-        ))}
+        {category.menuItemsCollection.items
+          ?.filter((item) => item.inStock)
+          .map((item, i) => (
+            <MenuItem itemData={item} key={i} />
+          ))}
       </MenuItems>
     </>
   );

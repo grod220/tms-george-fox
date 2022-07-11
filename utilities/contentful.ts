@@ -104,6 +104,7 @@ const getMenuItems = async (skip: number): Promise<MenuItem[]> => {
           price
           description
           temperature
+          inStock
           image {
             url
             width

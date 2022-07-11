@@ -16,6 +16,7 @@ export interface MenuItem extends BaseItem {
     height: number;
   } | null;
   temperature: string[];
+  inStock: boolean;
   optionsCollection: Collection<Option>;
 }
 
