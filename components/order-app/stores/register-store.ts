@@ -52,25 +52,29 @@ class RegisterStore {
     }
 
     if (this.fulfillmentStore.deliveryMiles < 10) {
-      if (Number(this.subTotal) >= 150) {
-        return 20;
-      } else {
-        return '⚠️ Minimum cart total for this distance is $150';
-      }
-    } else if (this.fulfillmentStore.deliveryMiles < 15) {
-      if (Number(this.subTotal) >= 175) {
-        return 25;
-      } else {
-        return '⚠️ Minimum cart total for this distance is $175';
-      }
-    } else if (this.fulfillmentStore.deliveryMiles < 21) {
       if (Number(this.subTotal) >= 200) {
-        return 40;
+        return 35;
       } else {
         return '⚠️ Minimum cart total for this distance is $200';
       }
+    } else if (this.fulfillmentStore.deliveryMiles < 20) {
+      if (Number(this.subTotal) >= 300) {
+        return 50;
+      } else {
+        return '⚠️ Minimum cart total for this distance is 300';
+      }
+    } else if (this.fulfillmentStore.deliveryMiles < 30) {
+      if (Number(this.subTotal) >= 400) {
+        return 75;
+      } else {
+        return '⚠️ Minimum cart total for this distance is 400';
+      }
     } else {
-      return 'Distance beyond 20 miles. Call 📞 the Meatball Stoppe to place order.';
+      if (Number(this.subTotal) >= 500) {
+        return 100;
+      } else {
+        return '⚠️ Minimum cart total for this distance is 500';
+      }
     }
   }
 }

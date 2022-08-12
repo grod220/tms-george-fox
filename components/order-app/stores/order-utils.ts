@@ -22,7 +22,11 @@ const getDistance = (
 export const distanceFromTMS = async (googlePlacesObj: google.maps.places.PlaceResult) => {
   await insertGoogleMapsScript();
 
-  const TMSLocation = new google.maps.LatLng(28.539307, -81.286839);
+  const TMSLocation = new google.maps.LatLng({
+    lat: 28.539307,
+    lng: -81.286839,
+  });
+
   if (!googlePlacesObj.geometry?.location) {
     throw new Error('Location not found');
   }
@@ -30,8 +34,9 @@ export const distanceFromTMS = async (googlePlacesObj: google.maps.places.PlaceR
   const result = await getDistance(TMSLocation, googlePlacesObj.geometry.location);
   if (!result) throw new Error('Error getting distance from Google Maps Api');
 
-  const distanceInMiles = Number(result.rows[0].elements[0].distance.text.split(' ')[0]);
-  return distanceInMiles;
+  const distanceInMeters = result.rows[0].elements[0].distance.value;
+  const metersInAMile = 0.000621371;
+  return distanceInMeters * metersInAMile;
 };
 
 export const formatGooglePlacesObj = ({ name, formatted_address }: google.maps.places.PlaceResult) => {
