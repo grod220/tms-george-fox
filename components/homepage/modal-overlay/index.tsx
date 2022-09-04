@@ -54,10 +54,8 @@ const WelcomeTitle = styled.h2`
 
 export const isClosedForHoliday = (): boolean => {
   const closedDates = [
-    set(new Date(), { year: 2021, month: 11, date: 24 }),
-    set(new Date(), { year: 2021, month: 11, date: 25 }),
-    set(new Date(), { year: 2021, month: 11, date: 26 }),
-    set(new Date(), { year: 2022, month: 0, date: 1 }),
+    set(new Date(), { year: 2022, month: 8, date: 4 }),
+    set(new Date(), { year: 2022, month: 8, date: 5 }),
   ];
   return closedDates.some((d) => isSameDay(new Date(), d));
 };
@@ -73,11 +71,11 @@ export default function Overlay() {
     <BlurredBackground onClick={closeModal}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <X onClick={closeModal}>X</X>
-        <WelcomeTitle>Special Holiday hours</WelcomeTitle>
+        <WelcomeTitle>Happy Labor Day</WelcomeTitle>
         <p>
-          Closed <b>Dec 24-26 & Jan 1st</b> & closing at 5pm on <b>Dec 31st</b>.
+          We’ll be closed Labor Day to allow our staff to spend time with their famiglia. We’ll reopen{' '}
+          <b>Tuesday at 2pm</b>.
         </p>
-        <p>We wish your family a wonderful holiday 🎄</p>
         <p>
           <i>— Jeff & Isabella Morgia</i>
         </p>
