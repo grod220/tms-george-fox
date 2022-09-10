@@ -12,8 +12,8 @@ declare global {
 }
 
 // For testing
-// const stripe = new Stripe(process.env.STRIPE_DEV_SECRET, { apiVersion: '2020-08-27' });
-const stripe = new Stripe(process.env.STRIPE_PROD_SECRET, { apiVersion: '2020-08-27' });
+// const stripe = new Stripe(process.env.STRIPE_DEV_SECRET, { apiVersion: '2022-08-01' });
+const stripe = new Stripe(process.env.STRIPE_PROD_SECRET, { apiVersion: '2022-08-01' });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {

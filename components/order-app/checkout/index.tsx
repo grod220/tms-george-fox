@@ -1,13 +1,14 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components';
-
-import Fulfillment from './fulfillment';
 import OrderSummary from './order-summary';
 import OrderStore from '../stores/order-store';
 import Total from './total';
 import StripeButton from './stripe-button';
 import CateringHighlightPromos from './catering-highlight-promos';
+import NormalFulfillment from './fulfillment/normal-fulfillment';
+import CateringFulfillment from './fulfillment/catering-fulfillment';
+import BusinessFulfillment from './fulfillment/business-fulfillment';
 
 const Container = styled.div`
   display: flex;
@@ -24,8 +25,15 @@ const Checkout = observer(() => {
   return (
     <Container>
       <Content>
-        {OrderStore.orderType === 'catering' && <CateringHighlightPromos />}
-        <Fulfillment />
+        {OrderStore.orderType === 'normal' && <NormalFulfillment />}
+        {OrderStore.orderType === 'catering' && (
+          <>
+            <CateringHighlightPromos />
+            <CateringFulfillment />
+          </>
+        )}
+        {OrderStore.orderType === 'business' && <BusinessFulfillment />}
+
         <OrderSummary />
         {Boolean(OrderStore.shoppingCart.length) && (
           <>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import OrderStore from './stores/order-store';
+import OrderStore, { OrderType } from './stores/order-store';
 
 import OrderNav from './order-nav';
 import { MenuVersion } from '../../utilities/contentful-types';
@@ -8,16 +8,16 @@ import OrderMenu from './order-menu';
 import Checkout from './checkout';
 
 interface OrderAppProps {
-  catering?: boolean;
+  type: OrderType;
   menus: MenuVersion[];
 }
 
-const OrderApp = observer(({ catering, menus }: OrderAppProps) => {
-  useEffect(() => OrderStore.initializeModule(catering), [catering]);
+const OrderApp = observer(({ menus, type }: OrderAppProps) => {
+  useEffect(() => OrderStore.initializeModule(type), [type]);
 
   return (
     <>
-      <OrderNav catering={catering} menus={menus} />
+      <OrderNav type={type} menus={menus} />
       {OrderStore.activeTab === 'Checkout' ? (
         <Checkout />
       ) : (

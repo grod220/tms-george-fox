@@ -14,6 +14,9 @@ class FulfillmentStore {
   loadingMiles: boolean = false;
   deliveryMiles?: number;
 
+  buildingName: string = '';
+  businessSuite: string = '';
+
   dateStore: DateStore;
 
   constructor() {
@@ -68,6 +71,14 @@ class FulfillmentStore {
 
   setErrorFromGoogle(bool: boolean) {
     this.errorFromGoogle = bool;
+  }
+
+  setBusinessSuite(str: string) {
+    this.businessSuite = str;
+  }
+
+  setBuildingName(str: string) {
+    this.buildingName = str;
   }
 }
 
