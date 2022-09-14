@@ -18,8 +18,12 @@ class RegisterStore {
     return ((this.tip / Number(this.subTotal)) * 100).toFixed();
   }
 
+  get subTotalRaw() {
+    return this.shoppingCart.reduce((acc, item) => acc + item.total, 0);
+  }
+
   get subTotal() {
-    return addZero(parseFloat(this.shoppingCart.reduce((acc, item) => acc + item.total, 0).toFixed(2)));
+    return addZero(parseFloat(this.subTotalRaw.toFixed(2)));
   }
 
   get tax() {

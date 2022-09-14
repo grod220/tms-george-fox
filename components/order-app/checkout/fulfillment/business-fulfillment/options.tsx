@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
 import FulfillmentInput from '../fulfillment-input';
 import OrderStore from '../../../stores/order-store';
-import { businessOrderConfig } from './config';
+import { getBusinessOrderConfig } from './config';
+import { FulfillmentSelect } from '../fulfillment-select';
+import { format } from 'date-fns';
 
 const Container = styled.div`
   display: flex;
@@ -12,56 +14,70 @@ const Container = styled.div`
   margin-top: -10px;
 `;
 
-const PickupLocation = styled.div`
-  width: 100%;
-  font-style: italic;
-  color: #902e2d;
-  font-size: 16px;
-  margin-top: 10px;
-`;
-
-const RedAnchor = styled.a`
-  color: #902e2d;
-  text-decoration: underline;
-`;
-
 const BusinessFulfillmentOptions = observer(() => {
   return (
     <Container>
       <FulfillmentInput
-        title="Name"
+        title="Customer name"
         type="text"
         value={OrderStore.fulfillment.contactName}
         setFunc={(val) => OrderStore.fulfillment.setContactName(val)}
       />
+      <FulfillmentInput
+        title="Customer phone"
+        type="text"
+        value={OrderStore.fulfillment.contactNumber}
+        setFunc={(val) => OrderStore.fulfillment.setContactNumber(val)}
+      />
 
-      <select name="building" onChange={({ target: { value } }) => OrderStore.fulfillment.setBuildingName(value)}>
+      <FulfillmentSelect
+        title="location"
+        onChange={({ target: { value: buildingName } }) => {
+          const info = getBusinessOrderConfig().filter((item) => item.buildingName === buildingName)[0];
+          OrderStore.fulfillment.setBuildingInfo(info);
+        }}
+        disabled={false}
+      >
         <option value="">--Choose delivery location--</option>
-        {businessOrderConfig.map((config) => {
+        {getBusinessOrderConfig().map((config) => {
           return (
             <option value={config.buildingName}>
               {config.buildingName} - {config.addr}
             </option>
           );
         })}
-      </select>
+      </FulfillmentSelect>
+
+      <FulfillmentSelect
+        title="Delivery Time"
+        onChange={({ target: { value: dateStr } }) =>
+          OrderStore.fulfillment.dateStore.setFulfillmentWithISOStr(dateStr)
+        }
+        disabled={OrderStore.fulfillment.buildingInfo === undefined}
+      >
+        <option value="">--Choose delivery time--</option>
+        {getBusinessOrderConfig()
+          .filter((config) => config.buildingName === OrderStore.fulfillment.buildingInfo?.buildingName)
+          .map((config) =>
+            config.deliveryTimes.map((date) => (
+              <option value={date.toISOString()}>{format(date, 'EEEE, MMM do')}</option>
+            )),
+          )}
+      </FulfillmentSelect>
 
       <FulfillmentInput
-        title="Suite"
+        title="Company name"
+        type="text"
+        value={OrderStore.fulfillment.companyName}
+        setFunc={(val) => OrderStore.fulfillment.setCompanyName(val)}
+      />
+
+      <FulfillmentInput
+        title="Business Suite"
         type="text"
         value={OrderStore.fulfillment.businessSuite}
         setFunc={(val) => OrderStore.fulfillment.setBusinessSuite(val)}
       />
-
-      <select name="delivery-time">
-        {businessOrderConfig
-          .filter((config) => config.buildingName === OrderStore.fulfillment.buildingName)
-          .map((config) =>
-            config.deliveryTimes
-              // .filter( within lead time ) = delivery date - lead time > date.now()?
-              .map((date) => <option value={'fillstore'}>{date.toString()}</option>),
-          )}
-      </select>
 
       <FulfillmentInput
         title="Any special instructions?"

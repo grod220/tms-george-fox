@@ -70,15 +70,26 @@ class OrderStore {
       !this.fulfillment.dateStore.fulfillmentTimeAndDateError;
     if (this.orderType === 'normal' || (this.orderType === 'catering' && this.fulfillment.option === 'pickup')) {
       return baseQualificationsSatisfied;
-    } else if (this.orderType === 'catering' && this.fulfillment) {
+    } else if (this.orderType === 'catering' && this.fulfillment.option === 'delivery') {
       return (
         baseQualificationsSatisfied &&
         Boolean(this.fulfillment.deliveryLocation) &&
         typeof this.registerStore.deliveryFee === 'number' &&
         Number(this.fulfillment.numberOfGuests) > 0
       );
+    } else if (this.orderType === 'business') {
+      return (
+        Boolean(this.fulfillment.contactName) &&
+        Boolean(this.fulfillment.contactNumber) &&
+        Boolean(this.fulfillment.dateStore.fulfillmentTimeAndDate) &&
+        !this.fulfillment.dateStore.fulfillmentTimeAndDateError &&
+        Boolean(this.fulfillment.companyName) &&
+        Boolean(this.fulfillment.businessSuite) &&
+        Boolean(this.fulfillment.buildingInfo) &&
+        this.registerStore.subTotalRaw >= 45
+      );
     } else {
-      // what does business need
+      alert('Contact owners about website order bug');
       return false;
     }
   }

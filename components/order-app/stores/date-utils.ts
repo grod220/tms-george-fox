@@ -10,6 +10,7 @@ import {
   isSunday,
   isToday,
   parse,
+  parseISO,
   roundToNearestMinutes,
   setHours,
   startOfToday,
@@ -60,7 +61,7 @@ const leadTimesInMinutes = {
   },
   business: {
     pickup: 0, // not relevant to business orders
-    delivery: 10000,
+    delivery: 3120, // 52 hours
   },
 };
 
@@ -118,6 +119,8 @@ export const getOneYearFromTodayStr = () => convertToHTMLDateAndTimeStr(addYears
 
 export const parseHTMLDateAndTime = (proposedDateStr: string) =>
   parse(proposedDateStr, "yyyy-MM-dd'T'HH:mm", new Date());
+
+export const parseISOStr = (isoStr: string) => parseISO(isoStr);
 
 export const withinLeadTime = (proposedDateObj: Date): boolean => {
   const nextAvailableTime = getNextAvailableFulfillmentDateAndTime();
