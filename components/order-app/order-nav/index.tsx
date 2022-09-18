@@ -32,6 +32,7 @@ const MenuNavItemsWrapper = styled.div`
 
 const CATERING_MENUS = ['Catering Menu'];
 const NORMAL_MENUS = ['Full menu', 'Vegetarian', 'Vegan', 'Gluten Free #meat'];
+const BUSINESS_MENUS = ['Full menu #business'];
 
 const menuComparator = (menus: string[], a: string, b: string): number => {
   return menus.indexOf(a) - menus.indexOf(b);
@@ -43,7 +44,7 @@ interface OrderNavProps {
 }
 
 const OrderNav = observer(({ type, menus }: OrderNavProps) => {
-  const menuVersions = type === 'catering' ? CATERING_MENUS : NORMAL_MENUS;
+  const menuVersions = type === 'catering' ? CATERING_MENUS : type === 'normal' ? NORMAL_MENUS : BUSINESS_MENUS;
 
   return (
     <Container>

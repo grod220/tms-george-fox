@@ -4,7 +4,14 @@ import { getNextAvailableFulfillmentDateAndTime } from './date-utils';
 import FulfillmentStore from './fulfillment-store';
 import RegisterStore from './register-store';
 
-export type ActiveTab = 'Full menu' | 'Vegetarian' | 'Vegan' | 'Gluten Free' | 'Catering Menu' | 'Checkout';
+export type ActiveTab =
+  | 'Full menu'
+  | 'Vegetarian'
+  | 'Vegan'
+  | 'Gluten Free'
+  | 'Catering Menu'
+  | 'Checkout'
+  | 'Full menu #business';
 
 export type OrderType = 'normal' | 'catering' | 'business';
 
@@ -53,7 +60,7 @@ class OrderStore {
       this.fulfillment.setFulfillmentOption('pickup');
       this.setActiveTab('Full menu');
     } else if (type == 'business') {
-      this.setActiveTab('Full menu');
+      this.setActiveTab('Full menu #business');
       this.fulfillment.setFulfillmentOption('delivery');
     }
   }

@@ -24,6 +24,7 @@ const Note = styled.p`
 `;
 
 const MenuSection: FC<{ category: Category }> = ({ category }) => {
+  console.log(category.menuItemsCollection.items);
   return (
     <>
       <CategoryTitle>{removeHashes(category?.title)}</CategoryTitle>

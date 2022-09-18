@@ -92,6 +92,19 @@ export const getCateringItemsWithIdsOnly = async (): Promise<MenuVersion[]> => {
   return getMenuItemsWithIdsOnly(`menuVersionCollection(where: { type: "Catering Menu" }, limit: 1)`);
 };
 
+export const getFamilyDeliveryItemsWithIdsOnly = async (): Promise<MenuVersion[]> => {
+  return getMenuItemsWithIdsOnly(`
+    menuVersionCollection(
+      where: {
+        OR: [
+          { type: "Full menu #business" }
+        ]
+      },
+      limit: 4
+    )
+  `);
+};
+
 const getMenuItems = async (skip: number): Promise<MenuItem[]> => {
   const dishCollection = await fetchGraphQL<{ dishCollection: Collection<MenuItem> }>(`
     query {
@@ -220,4 +233,8 @@ export const getNormalMenus = async (): Promise<MenuVersion[]> => {
 
 export const getCateringMenu = async (): Promise<MenuVersion[]> => {
   return getMenus(getCateringItemsWithIdsOnly);
+};
+
+export const getFamilyDeliveryMenu = async (): Promise<MenuVersion[]> => {
+  return getMenus(getFamilyDeliveryItemsWithIdsOnly);
 };
