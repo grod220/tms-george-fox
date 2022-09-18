@@ -85,7 +85,7 @@ class OrderStore {
         !this.fulfillment.dateStore.fulfillmentTimeAndDateError &&
         Boolean(this.fulfillment.companyName) &&
         Boolean(this.fulfillment.businessSuite) &&
-        Boolean(this.fulfillment.buildingInfo) &&
+        Boolean(this.fulfillment.buildingName) &&
         this.registerStore.subTotalRaw >= 45
       );
     } else {

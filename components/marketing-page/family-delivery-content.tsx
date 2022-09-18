@@ -4,6 +4,7 @@ import { media } from '../../utilities/media';
 import Link from 'next/link';
 import { getBusinessOrderConfig } from '../order-app/checkout/fulfillment/business-fulfillment/config';
 import { format } from 'date-fns';
+import Highlight from '../shared/highlight';
 
 const Container = styled.div`
   display: flex;
@@ -53,13 +54,10 @@ export const FamilyDeliveryContent = () => (
   <Container>
     <Centered>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac scelerisque leo. Praesent sit amet odio in
-        lorem tempus porta non ultrices ligula. Cras purus elit, bibendum nec justo tempus, laoreet maximus est. In
-        vitae pretium sapien. Donec et diam congue, dictum dolor quis, sollicitudin diam. Aenean ut sapien lectus. In in
-        finibus justo. Ut eget mauris id odio mattis congue. Nunc vehicula luctus metus ut ultricies. Quisque tincidunt
-        purus porta erat sollicitudin viverra fermentum sit amet magna. Donec ex erat, efficitur sit amet massa sit
-        amet, posuere ultricies ante. Nunc ac leo vitae orci egestas consequat sit amet non ipsum. Pellentesque egestas
-        massa vitae scelerisque vestibulum.
+        Order your family meal for one day or more. Our food has great shelf life in the fridge and freezer too! Why
+        make last-minute shopping trips to the grocery store or restaurants that would cost you so much more money?
+        We’ll have everything you need and will deliver it to your office building or you can{' '}
+        <Highlight i>“STOPPE”</Highlight> by on your way home for your Family Dinner.
       </div>
       <div>
         <Link href="/order/family-delivery-program">
@@ -68,16 +66,27 @@ export const FamilyDeliveryContent = () => (
           </a>
         </Link>
       </div>
+      <div>
+        <Highlight b i>
+          Dinner for Four - $45 + tax
+        </Highlight>
+        . All meals will be delivered on{' '}
+        <Highlight b i>
+          Wednesday or Thursday at 4pm
+        </Highlight>{' '}
+        D to the designated building and location. Wednesday orders must be placed by Monday 12pm. Thursday orders must
+        be placed by Tuesday 12pm.
+      </div>
       <DeliveryTimes>
         <div>Delivery locations & times (all deliveries at 4pm):</div>
         <ul>
           {getBusinessOrderConfig().map((item) => {
             return (
-              <li>
+              <li key={item.buildingName}>
                 <b>{item.buildingName}</b> - {item.addr}
                 <ul>
                   {item.deliveryTimes.map((date) => (
-                    <li>{format(date, 'EEEE, MMM do')}</li>
+                    <li key={date.toISOString()}>{format(date, 'EEEE, MMM do')}</li>
                   ))}
                 </ul>
               </li>

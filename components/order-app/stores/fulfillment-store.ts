@@ -17,7 +17,7 @@ class FulfillmentStore {
 
   companyName: string = '';
   businessSuite: string = '';
-  buildingInfo?: BusinessOrderOption;
+  buildingName: string = '';
 
   dateStore: DateStore;
 
@@ -83,8 +83,8 @@ class FulfillmentStore {
     this.companyName = str;
   }
 
-  setBuildingInfo(option: BusinessOrderOption) {
-    this.buildingInfo = option;
+  setBuildingName(name: string) {
+    this.buildingName = name;
   }
 }
 

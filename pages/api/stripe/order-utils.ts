@@ -17,6 +17,11 @@ export interface OrderRequest {
   deliveryLocation?: string;
   numberOfGuests?: number;
   deliveryFee?: number;
+
+  // Business orders
+  buildingName?: string;
+  businessSuite?: string;
+  companyName?: string;
 }
 
 const formatDescription = (choices: OptionChoice[]): string =>
@@ -84,6 +89,9 @@ export const formatPaymentIntentObj = (
     contact_number: reqBody.contactNumber,
     special_instructions: reqBody.specialInstructions,
     fulfillment_option: reqBody.fulfillmentOption,
+    building_name: reqBody.buildingName === undefined ? null : reqBody.buildingName,
+    business_suite: reqBody.businessSuite === undefined ? null : reqBody.businessSuite,
+    company_name: reqBody.companyName === undefined ? null : reqBody.companyName,
   };
 
   reqBody.shoppingCart
@@ -104,17 +112,17 @@ export const formatPaymentIntentObj = (
     metadata: metaDataObj,
   };
 
-  if (
-    reqBody.orderType === 'catering' &&
-    reqBody.fulfillmentOption === 'delivery' &&
-    reqBody.deliveryLocation &&
-    reqBody.numberOfGuests
-  ) {
+  if (reqBody.deliveryLocation) {
     paymentIntentObj.shipping = {
       address: { line1: reqBody.deliveryLocation },
       name: reqBody.contactName,
+      phone: reqBody.contactNumber,
     };
+  }
+
+  if (reqBody.numberOfGuests) {
     metaDataObj.number_of_guests = reqBody.numberOfGuests;
   }
+
   return paymentIntentObj;
 };

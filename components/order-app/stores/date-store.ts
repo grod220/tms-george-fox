@@ -10,7 +10,7 @@ import {
 import FulfillmentStore from './fulfillment-store';
 
 class DateStore {
-  fulfillmentTimeAndDate: Date = new Date();
+  fulfillmentTimeAndDate?: Date;
   fulfillmentStore: FulfillmentStore;
 
   constructor(fulfillmentStore: FulfillmentStore) {
@@ -30,8 +30,8 @@ class DateStore {
     this.fulfillmentTimeAndDate = parseHTMLDateAndTime(str);
   }
 
-  setFulfillmentWithISOStr(isoStr: string) {
-    this.fulfillmentTimeAndDate = parseISOStr(isoStr);
+  setFulfillmentWithISOStr(isoStr?: string) {
+    this.fulfillmentTimeAndDate = isoStr ? parseISOStr(isoStr) : undefined;
   }
 }
 

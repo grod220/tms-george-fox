@@ -23,6 +23,7 @@ const BusinessFulfillmentOptions = observer(() => {
         value={OrderStore.fulfillment.contactName}
         setFunc={(val) => OrderStore.fulfillment.setContactName(val)}
       />
+
       <FulfillmentInput
         title="Customer phone"
         type="text"
@@ -32,16 +33,17 @@ const BusinessFulfillmentOptions = observer(() => {
 
       <FulfillmentSelect
         title="location"
-        onChange={({ target: { value: buildingName } }) => {
-          const info = getBusinessOrderConfig().filter((item) => item.buildingName === buildingName)[0];
-          OrderStore.fulfillment.setBuildingInfo(info);
+        onChange={({ target: { value } }) => {
+          OrderStore.fulfillment.dateStore.setFulfillmentWithISOStr(undefined);
+          OrderStore.fulfillment.setBuildingName(value);
         }}
+        value={OrderStore.fulfillment.buildingName}
         disabled={false}
       >
         <option value="">--Choose delivery location--</option>
         {getBusinessOrderConfig().map((config) => {
           return (
-            <option value={config.buildingName}>
+            <option value={config.buildingName} key={config.buildingName}>
               {config.buildingName} - {config.addr}
             </option>
           );
@@ -50,17 +52,28 @@ const BusinessFulfillmentOptions = observer(() => {
 
       <FulfillmentSelect
         title="Delivery Time"
-        onChange={({ target: { value: dateStr } }) =>
-          OrderStore.fulfillment.dateStore.setFulfillmentWithISOStr(dateStr)
+        onChange={({ target: { value } }) => {
+          if (value === '') {
+            OrderStore.fulfillment.dateStore.setFulfillmentWithISOStr(undefined);
+          } else {
+            OrderStore.fulfillment.dateStore.setFulfillmentWithISOStr(value);
+          }
+        }}
+        value={
+          OrderStore.fulfillment.dateStore.fulfillmentTimeAndDate === undefined
+            ? ''
+            : OrderStore.fulfillment.dateStore.fulfillmentTimeAndDate.toISOString()
         }
-        disabled={OrderStore.fulfillment.buildingInfo === undefined}
+        disabled={OrderStore.fulfillment.buildingName === ''}
       >
         <option value="">--Choose delivery time--</option>
         {getBusinessOrderConfig()
-          .filter((config) => config.buildingName === OrderStore.fulfillment.buildingInfo?.buildingName)
+          .filter((config) => config.buildingName === OrderStore.fulfillment.buildingName)
           .map((config) =>
             config.deliveryTimes.map((date) => (
-              <option value={date.toISOString()}>{format(date, 'EEEE, MMM do')}</option>
+              <option key={date.toISOString()} value={date.toISOString()}>
+                {format(date, 'EEEE, MMM do')}
+              </option>
             )),
           )}
       </FulfillmentSelect>

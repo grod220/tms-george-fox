@@ -26,15 +26,16 @@ export const SelectEl = styled.select<{ hasError?: boolean }>`
 interface FulfillmentSelectProps {
   title: string;
   onChange: (arg0: any) => any;
+  value: string | undefined;
   children: React.ReactNode;
   disabled: boolean;
 }
 
-export const FulfillmentSelect = ({ title, onChange, ...others }: FulfillmentSelectProps) => {
+export const FulfillmentSelect = ({ title, ...others }: FulfillmentSelectProps) => {
   return (
     <WidgetWrapper>
       <LabelHelper>{title}</LabelHelper>
-      <SelectEl {...others} onChange={onChange} />
+      <SelectEl {...others} />
     </WidgetWrapper>
   );
 };

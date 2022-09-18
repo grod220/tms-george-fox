@@ -23,7 +23,7 @@ const businessOrderConfig: BusinessOrderOption[] = [
     buildingName: 'Orange County Center',
     addr: '5420 Trail East Park',
     deliveryTimes: [
-      set(new Date(), { year: 2022, month: 11, date: 18, hours: 16, minutes: 0 }),
+      set(new Date(), { year: 2022, month: 11, date: 19, hours: 16, minutes: 0 }),
       set(new Date(), { year: 2022, month: 9, date: 1, hours: 16, minutes: 0 }),
     ],
   },
