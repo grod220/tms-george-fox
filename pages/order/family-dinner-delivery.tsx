@@ -13,7 +13,7 @@ const FamilyDinnerDelivery: FC<InferGetStaticPropsType<typeof getStaticProps>> =
   return (
     <>
       <Head>
-        <title>Special Order :: The Meatball Stoppe</title>
+        <title>Family Dinner Delivery :: The Meatball Stoppe</title>
         <meta name="description" content="Delivered straight to your office" />
       </Head>
       <ShortHero image={DeliveryPicHero} headline="Family Dinner Delivery" />
