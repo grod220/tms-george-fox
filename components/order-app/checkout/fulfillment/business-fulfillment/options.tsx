@@ -25,7 +25,7 @@ const BusinessFulfillmentOptions = observer(() => {
       />
 
       <FulfillmentInput
-        title="Customer phone"
+        title="Customer cell phone"
         type="text"
         value={OrderStore.fulfillment.contactNumber}
         setFunc={(val) => OrderStore.fulfillment.setContactNumber(val)}
@@ -51,7 +51,7 @@ const BusinessFulfillmentOptions = observer(() => {
       </FulfillmentSelect>
 
       <FulfillmentSelect
-        title="Delivery Time"
+        title="Delivery Date"
         onChange={({ target: { value } }) => {
           if (value === '') {
             OrderStore.fulfillment.dateStore.setFulfillmentWithISOStr(undefined);
@@ -66,7 +66,7 @@ const BusinessFulfillmentOptions = observer(() => {
         }
         disabled={OrderStore.fulfillment.buildingName === ''}
       >
-        <option value="">--Choose delivery time--</option>
+        <option value="">--Choose delivery date--</option>
         {getBusinessOrderConfig()
           .filter((config) => config.buildingName === OrderStore.fulfillment.buildingName)
           .map((config) =>

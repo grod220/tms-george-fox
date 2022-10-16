@@ -54,13 +54,14 @@ export const FamilyDeliveryContent = () => (
   <Container>
     <Centered>
       <div>
-        Order your family meal for one day or more. Our food has great shelf life in the fridge and freezer too! Why
-        make last-minute shopping trips to the grocery store or restaurants that would cost you so much more money?
-        We’ll have everything you need and will deliver it to your office building or you can{' '}
-        <Highlight i>“STOPPE”</Highlight> by on your way home for your Family Dinner.
+        Need a break? Tired of running, cooking and eating the same dishes? Let The <Highlight i>STOPPE</Highlight> take
+        it off your plate and fill it with the best scratch made food made from the freshest ingredients. Order your
+        family meal for one day or more. Our food has great shelf life in the fridge and freezer too! We’ll have
+        everything you need will deliver it to your office building or you can <Highlight i>"STOPPE"</Highlight> by on
+        your way home for your Family Dinner.
       </div>
       <div>
-        <Link href="/order/family-delivery-program">
+        <Link href="/order/family-dinner-delivery">
           <a>
             <OrderButton>Order Now →</OrderButton>
           </a>
@@ -68,14 +69,31 @@ export const FamilyDeliveryContent = () => (
       </div>
       <div>
         <Highlight b i>
-          Dinner for Four - $45 + tax
+          Dinner for Four - $45 + tax:
+          <ul>
+            <li>Linguine, Rigatoni or Parpadelle with choice of one sauce</li>
+            <li>8 meatballs of choice</li>
+            <li>Stoppe Salad</li>
+            <li>Focaccia Bread</li>
+          </ul>
         </Highlight>
-        . All meals will be delivered on{' '}
+        All meals will be delivered on{' '}
         <Highlight b i>
           Wednesday or Thursday at 4pm
         </Highlight>{' '}
-        D to the designated building and location. Wednesday orders must be placed by Monday 12pm. Thursday orders must
-        be placed by Tuesday 12pm.
+        to the designated building and location. Wednesday orders must be placed by Monday 12pm. Thursday orders must be
+        placed by Tuesday 12pm.
+      </div>
+      <div>
+        <div>
+          <b>Why you’ll love the Family Dinner Delivery Program</b>
+        </div>
+        Are you ready for a break? Tired of eating the same dishes? We save you your most precious commodity of time and
+        money. EVERYTHING made from scratch daily using the freshest ingredients. No preservatives in our food! Order
+        your family meal for one day or more. Our food has great shelf life in the fridge and freezer too! Why make
+        last-minute shopping trips to the grocery store or restaurants that would cost you so much more money? We’ll
+        have everything you need and will deliver it to your office building or you can “ STOPPE” by on your way home
+        for your Family Dinner.
       </div>
       <DeliveryTimes>
         <div>Delivery locations & times (all deliveries at 4pm):</div>

@@ -10,8 +10,8 @@ export interface BusinessOrderOption {
 
 const businessOrderConfig: BusinessOrderOption[] = [
   {
-    buildingName: 'Wells Fargo',
-    addr: '12842 N. Orange Blossom Trail',
+    buildingName: 'Citrus Center',
+    addr: '255 S. Orange Avenue',
     deliveryTimes: [
       set(new Date(), { year: 2022, month: 8, date: 4, hours: 16, minutes: 0 }),
       set(new Date(), { year: 2022, month: 11, date: 8, hours: 16, minutes: 0 }),
@@ -20,8 +20,8 @@ const businessOrderConfig: BusinessOrderOption[] = [
     ],
   },
   {
-    buildingName: 'Orange County Center',
-    addr: '5420 Trail East Park',
+    buildingName: 'One Orlando Centre',
+    addr: '800 N Magnolia',
     deliveryTimes: [
       set(new Date(), { year: 2022, month: 11, date: 19, hours: 16, minutes: 0 }),
       set(new Date(), { year: 2022, month: 9, date: 1, hours: 16, minutes: 0 }),
