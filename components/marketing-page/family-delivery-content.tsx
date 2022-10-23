@@ -46,7 +46,7 @@ const OrderButton = styled.button`
   }
 `;
 
-const DeliveryTimes = styled.div`
+const Width100 = styled.div`
   width: 100%;
 `;
 
@@ -54,11 +54,27 @@ export const FamilyDeliveryContent = () => (
   <Container>
     <Centered>
       <div>
-        Need a break? Tired of running, cooking and eating the same dishes? Let The <Highlight i>STOPPE</Highlight> take
-        it off your plate and fill it with the best scratch made food made from the freshest ingredients. Order your
-        family meal for one day or more. Our food has great shelf life in the fridge and freezer too! We’ll have
-        everything you need will deliver it to your office building or you can <Highlight i>"STOPPE"</Highlight> by on
-        your way home for your Family Dinner.
+        Need a break? Tired of running, cooking and eating the same dishes? Let The STOPPE take it off your plate and
+        fill it with the best scratch made food prepared with the freshest ingredients. Order your family meal for one
+        day or more. Our food has great shelf life in the fridge and freezer too! We’ll have everything you need and
+        deliver to your office building or you can "STOPPE" by on your way home for your Family Dinner.
+      </div>
+      <div>
+        All meals will be delivered on{' '}
+        <Highlight b i>
+          Wednesday or Thursday at 4pm
+        </Highlight>
+      </div>
+
+      <div>
+        <Highlight i b>
+          Why you’ll love the Family Dinner Delivery Program{' '}
+        </Highlight>
+        - EVERYTHING made from scratch daily using the freshest ingredients. No preservatives in our food! Order your
+        family meal for one day or more. Our food has great shelf life in the fridge and freezer too! Why make costly
+        last-minute shopping trips to the grocery store? We save your most precious commodity of time and money. We have
+        everything you need and will deliver to your office building or you can “ STOPPE” by on your way home for your
+        Family Dinner.
       </div>
       <div>
         <Link href="/order/family-dinner-delivery">
@@ -67,7 +83,8 @@ export const FamilyDeliveryContent = () => (
           </a>
         </Link>
       </div>
-      <div>
+
+      <Width100>
         <Highlight b i>
           Dinner for Four - $45 + tax:
           <ul>
@@ -77,25 +94,9 @@ export const FamilyDeliveryContent = () => (
             <li>Focaccia Bread</li>
           </ul>
         </Highlight>
-        All meals will be delivered on{' '}
-        <Highlight b i>
-          Wednesday or Thursday at 4pm
-        </Highlight>{' '}
-        to the designated building and location. Wednesday orders must be placed by Monday 12pm. Thursday orders must be
-        placed by Tuesday 12pm.
-      </div>
-      <div>
-        <div>
-          <b>Why you’ll love the Family Dinner Delivery Program</b>
-        </div>
-        Are you ready for a break? Tired of eating the same dishes? We save you your most precious commodity of time and
-        money. EVERYTHING made from scratch daily using the freshest ingredients. No preservatives in our food! Order
-        your family meal for one day or more. Our food has great shelf life in the fridge and freezer too! Why make
-        last-minute shopping trips to the grocery store or restaurants that would cost you so much more money? We’ll
-        have everything you need and will deliver it to your office building or you can “ STOPPE” by on your way home
-        for your Family Dinner.
-      </div>
-      <DeliveryTimes>
+      </Width100>
+
+      <Width100>
         <div>Delivery locations & times (all deliveries at 4pm):</div>
         <ul>
           {getBusinessOrderConfig().map((item) => {
@@ -111,7 +112,7 @@ export const FamilyDeliveryContent = () => (
             );
           })}
         </ul>
-      </DeliveryTimes>
+      </Width100>
     </Centered>
   </Container>
 );
