@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import OrderStore from '../../stores/order-store';
 import addZero from '../../../../utilities/add-zero';
 import ItemStore from '../../stores/item-store';
+import { removeHashes } from '../../../../utilities/contentful-formatter';
 
 const Highlight = styled.div`
   color: #902e2d;
@@ -65,7 +66,7 @@ const SummaryItem = observer(({ item, shoppingCartIndex }: SummaryItemProps) => 
     <SpaceBetween>
       <ItemContainer>
         <RemoveX onClick={() => removeFromCart(shoppingCartIndex)}>×</RemoveX>
-        <Highlight>{item.dishName}</Highlight>
+        <Highlight>{removeHashes(item.dishName)}</Highlight>
         <Dots />
         <div>${addZero(item.basePrice)}</div>
       </ItemContainer>
