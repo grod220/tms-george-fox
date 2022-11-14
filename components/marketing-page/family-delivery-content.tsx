@@ -56,8 +56,8 @@ export const FamilyDeliveryContent = () => (
       <div>
         Need a break? Tired of running, cooking and eating the same dishes? Why make costly last-minute shopping trips
         to the grocery store? We save your most precious commodity of time and money. Let The STOPPE take this off your
-        plate and fill it with the best scratch made food prepared made with the freshest ingredients. No preservatives
-        in our food! Order your family meal for one day or more. Our food has great shelf life in the fridge and freezer
+        plate and fill it with the best scratch made food prepared with the freshest ingredients. No preservatives in
+        our food! Order your family meal for one day or more. Our food has great shelf life in the fridge and freezer
         too! We have everything you need and will deliver to your office building or you can “ STOPPE” by on your way
         home for your Family Dinner.
       </div>
