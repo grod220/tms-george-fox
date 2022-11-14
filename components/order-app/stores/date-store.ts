@@ -1,9 +1,16 @@
 import { makeAutoObservable } from 'mobx';
-import { isInPast, isOnASunday, parseHTMLDateAndTime, withinLeadTime, withinOpeningHours } from './date-utils';
+import {
+  isInPast,
+  isOnASunday,
+  parseHTMLDateAndTime,
+  parseISOStr,
+  withinLeadTime,
+  withinOpeningHours,
+} from './date-utils';
 import FulfillmentStore from './fulfillment-store';
 
 class DateStore {
-  fulfillmentTimeAndDate: Date = new Date();
+  fulfillmentTimeAndDate?: Date;
   fulfillmentStore: FulfillmentStore;
 
   constructor(fulfillmentStore: FulfillmentStore) {
@@ -21,6 +28,10 @@ class DateStore {
 
   setFulfillmentDateAndTime(str: string) {
     this.fulfillmentTimeAndDate = parseHTMLDateAndTime(str);
+  }
+
+  setFulfillmentWithISOStr(isoStr?: string) {
+    this.fulfillmentTimeAndDate = isoStr ? parseISOStr(isoStr) : undefined;
   }
 }
 

@@ -1,6 +1,7 @@
 import { makeAutoObservable, reaction } from 'mobx';
 import { distanceFromTMS } from './order-utils';
 import DateStore from './date-store';
+import { BusinessOrderOption } from '../checkout/fulfillment/business-fulfillment/config';
 
 class FulfillmentStore {
   option: 'pickup' | 'delivery' = 'pickup';
@@ -13,6 +14,10 @@ class FulfillmentStore {
   errorFromGoogle: boolean = false;
   loadingMiles: boolean = false;
   deliveryMiles?: number;
+
+  companyName: string = '';
+  businessSuite: string = '';
+  buildingName: string = '';
 
   dateStore: DateStore;
 
@@ -68,6 +73,18 @@ class FulfillmentStore {
 
   setErrorFromGoogle(bool: boolean) {
     this.errorFromGoogle = bool;
+  }
+
+  setBusinessSuite(str: string) {
+    this.businessSuite = str;
+  }
+
+  setCompanyName(str: string) {
+    this.companyName = str;
+  }
+
+  setBuildingName(name: string) {
+    this.buildingName = name;
   }
 }
 

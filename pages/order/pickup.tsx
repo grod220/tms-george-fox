@@ -16,7 +16,7 @@ const Pickup: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ menus }) =
         <meta name="description" content="Order a pickup so it'll be ready when you arrive" />
       </Head>
       <ShortHero image={MeatballHero} headline="Pickup Order" />
-      <OrderApp menus={menus} />
+      <OrderApp type="normal" menus={menus} />
     </>
   );
 };

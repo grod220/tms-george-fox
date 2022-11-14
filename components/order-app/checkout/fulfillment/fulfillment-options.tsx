@@ -48,7 +48,11 @@ const FulfillmentOptions = observer(() => {
       />
       <FulfillmentInput
         type="datetime-local"
-        value={convertToHTMLDateAndTimeStr(OrderStore.fulfillment.dateStore.fulfillmentTimeAndDate)}
+        value={
+          OrderStore.fulfillment.dateStore.fulfillmentTimeAndDate === undefined
+            ? ''
+            : convertToHTMLDateAndTimeStr(OrderStore.fulfillment.dateStore.fulfillmentTimeAndDate)
+        }
         error={OrderStore.fulfillment.dateStore.fulfillmentTimeAndDateError}
         min={convertToHTMLDateAndTimeStr(getNextAvailableFulfillmentDateAndTime())}
         max={getOneYearFromTodayStr()}

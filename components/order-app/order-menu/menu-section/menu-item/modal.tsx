@@ -8,6 +8,7 @@ import Image from 'next/image';
 import ItemStore from '../../../stores/item-store';
 import MenuItemOptions from './menu-item-options';
 import { AddToCart } from './add-to-cart';
+import { removeHashes } from '../../../../../utilities/contentful-formatter';
 
 const Content = styled.div`
   width: 100%;
@@ -93,7 +94,7 @@ const Modal = observer(({ itemData, closeFunc }: ModalProps) => {
         )}
         <Description>
           <Name>
-            <div>{itemData.title}</div>
+            <div>{removeHashes(itemData.title)}</div>
           </Name>
           <div>{itemData.description}</div>
         </Description>

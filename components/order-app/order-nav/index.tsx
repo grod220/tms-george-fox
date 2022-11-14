@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import SectionTab from './section-tab';
 import { MenuVersion } from '../../../utilities/contentful-types';
-import { ActiveTab } from '../stores/order-store';
+import { ActiveTab, OrderType } from '../stores/order-store';
 import CheckoutTab from './checkout-tab';
 
 const Container = styled.div`
@@ -32,18 +32,19 @@ const MenuNavItemsWrapper = styled.div`
 
 const CATERING_MENUS = ['Catering Menu'];
 const NORMAL_MENUS = ['Full menu', 'Vegetarian', 'Vegan', 'Gluten Free #meat'];
+const BUSINESS_MENUS = ['Full menu #business'];
 
 const menuComparator = (menus: string[], a: string, b: string): number => {
   return menus.indexOf(a) - menus.indexOf(b);
 };
 
 interface OrderNavProps {
-  catering?: boolean;
+  type: OrderType;
   menus: MenuVersion[];
 }
 
-const OrderNav = observer(({ catering, menus }: OrderNavProps) => {
-  const menuVersions = catering ? CATERING_MENUS : NORMAL_MENUS;
+const OrderNav = observer(({ type, menus }: OrderNavProps) => {
+  const menuVersions = type === 'catering' ? CATERING_MENUS : type === 'normal' ? NORMAL_MENUS : BUSINESS_MENUS;
 
   return (
     <Container>
