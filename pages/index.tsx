@@ -14,7 +14,7 @@ import { getFullMenuPreview } from '../utilities/contentful';
 import { Category } from '../utilities/contentful-types';
 import NewsletterSignup from '../components/homepage/newsletter-signup';
 import { MeatballDisplay } from '../components/shared/meatball-display';
-import Overlay, { isClosedForHoliday } from '../components/homepage/modal-overlay';
+import Overlay, { overlayShouldDisplay, isClosedForHoliday } from '../components/homepage/modal-overlay';
 
 const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu }) => {
   return (
@@ -26,7 +26,7 @@ const Index: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fullMenu })
           content="An authentic Italian restaurant loved by Guy Fieri & the entire community. Orlando's #1 ranked most family-friendly restaurant by USA Today."
         />
       </Head>
-      {isClosedForHoliday() && <Overlay />}
+      {overlayShouldDisplay() && <Overlay />}
       <BigHero />
       <OrderBar />
       {/*<LazyLoad height={100}>*/}

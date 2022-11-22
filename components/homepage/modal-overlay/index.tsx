@@ -53,11 +53,18 @@ const WelcomeTitle = styled.h2`
 `;
 
 export const isClosedForHoliday = (): boolean => {
-  const closedDates = [
-    set(new Date(), { year: 2022, month: 8, date: 4 }),
-    set(new Date(), { year: 2022, month: 8, date: 5 }),
-  ];
+  const closedDates = [set(new Date(), { year: 2022, month: 10, date: 24 })];
   return closedDates.some((d) => isSameDay(new Date(), d));
+};
+
+export const overlayShouldDisplay = (): boolean => {
+  const datesToDisplay = [
+    set(new Date(), { year: 2022, month: 10, date: 22 }),
+    set(new Date(), { year: 2022, month: 10, date: 23 }),
+    set(new Date(), { year: 2022, month: 10, date: 24 }),
+    set(new Date(), { year: 2022, month: 10, date: 25 }),
+  ];
+  return datesToDisplay.some((d) => isSameDay(new Date(), d)) || isClosedForHoliday();
 };
 
 export default function Overlay() {
@@ -71,10 +78,9 @@ export default function Overlay() {
     <BlurredBackground onClick={closeModal}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <X onClick={closeModal}>X</X>
-        <WelcomeTitle>Happy Labor Day</WelcomeTitle>
+        <WelcomeTitle>Holiday hours 🦃</WelcomeTitle>
         <p>
-          We’ll be closed Labor Day to allow our staff to spend time with their famiglia. We’ll reopen{' '}
-          <b>Tuesday at 2pm</b>.
+          We will be <b>closed Thanksgiving Day</b> and will reopen <b>Friday from 2-9pm</b>.
         </p>
         <p>
           <i>— Jeff & Isabella Morgia</i>
