@@ -72,7 +72,7 @@ const BusinessFulfillmentOptions = observer(() => {
           .map((config) =>
             config.deliveryTimes.map((date) => (
               <option key={date.toISOString()} value={date.toISOString()}>
-                {format(date, 'EEEE, MMM do')}
+                {format(date, 'EEEE, MMM do @ ha')}
               </option>
             )),
           )}

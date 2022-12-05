@@ -5,7 +5,7 @@ import ShortHero from '../../components/shared/short-hero';
 import DeliveryPicHero from '../../components/marketing-page/delivery-pic.jpg';
 
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { getFamilyDeliveryItemsWithIdsOnly, getFamilyDeliveryMenu } from '../../utilities/contentful';
+import { getFamilyDeliveryMenu } from '../../utilities/contentful';
 import { MenuVersion } from '../../utilities/contentful-types';
 import OrderApp from '../../components/order-app';
 

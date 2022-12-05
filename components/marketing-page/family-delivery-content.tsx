@@ -82,7 +82,7 @@ export const FamilyDeliveryContent = () => (
       </Width100>
 
       <Width100>
-        <div>Delivery locations & times (all deliveries at 4pm):</div>
+        <div>Delivery locations & times:</div>
         <ul>
           {getBusinessOrderConfig().map((item) => {
             return (
@@ -90,7 +90,7 @@ export const FamilyDeliveryContent = () => (
                 <b>{item.buildingName}</b> - {item.addr}
                 <ul>
                   {item.deliveryTimes.map((date) => (
-                    <li key={date.toISOString()}>{format(date, 'EEEE, MMM do')}</li>
+                    <li key={date.toISOString()}>{format(date, 'EEEE, MMM do @ ha')}</li>
                   ))}
                 </ul>
               </li>

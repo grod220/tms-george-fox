@@ -10,32 +10,14 @@ export interface BusinessOrderOption {
 
 const businessOrderConfig: BusinessOrderOption[] = [
   {
-    buildingName: 'Citrus Center',
-    addr: '255 S. Orange Avenue',
-    deliveryTimes: [
-      set(new Date(), { year: 2022, month: 8, date: 4, hours: 16, minutes: 0 }),
-      set(new Date(), { year: 2022, month: 11, date: 8, hours: 16, minutes: 0 }),
-      set(new Date(), { year: 2022, month: 10, date: 12, hours: 16, minutes: 0 }),
-      set(new Date(), { year: 2022, month: 1, date: 4, hours: 16, minutes: 0 }),
-    ],
+    buildingName: 'Downtown (South)',
+    addr: '618 East South street',
+    deliveryTimes: [set(new Date(), { year: 2022, month: 11, date: 29, hours: 16, minutes: 0 })],
   },
   {
-    buildingName: 'One Orlando Centre',
-    addr: '800 N Magnolia',
-    deliveryTimes: [
-      set(new Date(), { year: 2022, month: 11, date: 19, hours: 16, minutes: 0 }),
-      set(new Date(), { year: 2022, month: 9, date: 1, hours: 16, minutes: 0 }),
-    ],
-  },
-  {
-    buildingName: 'No Mans Land',
-    addr: '3953 Yort Road',
-    deliveryTimes: [set(new Date(), { year: 2021, month: 11, date: 18, hours: 16, minutes: 0 })],
-  },
-  {
-    buildingName: 'Florida Hospital',
-    addr: '1 Apple Circle',
-    deliveryTimes: [set(new Date(), { year: 2022, month: 9, date: 1, hours: 16, minutes: 0 })],
+    buildingName: 'Downtown (Pine)',
+    addr: '100 East Pine Street',
+    deliveryTimes: [set(new Date(), { year: 2022, month: 11, date: 29, hours: 15, minutes: 0 })],
   },
 ];
 
