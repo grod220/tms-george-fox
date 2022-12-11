@@ -53,16 +53,24 @@ const WelcomeTitle = styled.h2`
 `;
 
 export const isClosedForHoliday = (): boolean => {
-  const closedDates = [set(new Date(), { year: 2022, month: 10, date: 24 })];
+  const closedDates = [
+    set(new Date(), { year: 2022, month: 11, date: 25 }),
+    set(new Date(), { year: 2022, month: 11, date: 26 }),
+    set(new Date(), { year: 2023, month: 0, date: 1 }),
+  ];
   return closedDates.some((d) => isSameDay(new Date(), d));
 };
 
 export const overlayShouldDisplay = (): boolean => {
   const datesToDisplay = [
-    set(new Date(), { year: 2022, month: 10, date: 22 }),
-    set(new Date(), { year: 2022, month: 10, date: 23 }),
-    set(new Date(), { year: 2022, month: 10, date: 24 }),
-    set(new Date(), { year: 2022, month: 10, date: 25 }),
+    set(new Date(), { year: 2022, month: 11, date: 18 }),
+    set(new Date(), { year: 2022, month: 11, date: 19 }),
+    set(new Date(), { year: 2022, month: 11, date: 20 }),
+    set(new Date(), { year: 2022, month: 11, date: 21 }),
+    set(new Date(), { year: 2022, month: 11, date: 22 }),
+    set(new Date(), { year: 2022, month: 11, date: 23 }),
+    set(new Date(), { year: 2022, month: 11, date: 24 }),
+    set(new Date(), { year: 2022, month: 11, date: 31 }),
   ];
   return datesToDisplay.some((d) => isSameDay(new Date(), d)) || isClosedForHoliday();
 };
@@ -78,10 +86,28 @@ export default function Overlay() {
     <BlurredBackground onClick={closeModal}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <X onClick={closeModal}>X</X>
-        <WelcomeTitle>Holiday hours 🦃</WelcomeTitle>
-        <p>
-          We will be <b>closed Thanksgiving Day</b> and will reopen <b>Friday from 2-9pm</b>.
-        </p>
+        <WelcomeTitle>Holiday hours 🎄</WelcomeTitle>
+        <ul>
+          <li>
+            <b>December 24th</b>: closing early at 4pm
+          </li>
+          <li>
+            <b>December 25th</b>: closed
+          </li>
+          <li>
+            <b>December 26th</b>: closed
+          </li>
+          <li>
+            <b>December 31st</b>: closing early at 5pm
+          </li>
+          <li>
+            <b>January 1st</b>: closed
+          </li>
+          <li>
+            <b>January 2nd</b>: regular hours resume
+          </li>
+        </ul>
+        <p>Wish you and your family a wonderful holiday!</p>
         <p>
           <i>— Jeff & Isabella Morgia</i>
         </p>
