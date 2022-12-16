@@ -44,6 +44,11 @@ const businessOrderConfig: BusinessOrderOption[] = [
     addr: '2250 Lucien Way',
     deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 0 })],
   },
+  {
+    buildingName: 'Fairwinds Tower',
+    addr: '35 W Central Blvd',
+    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 19, hours: 16, minutes: 0 })],
+  },
 ];
 
 export const getBusinessOrderConfig = () =>
