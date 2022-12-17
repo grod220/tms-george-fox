@@ -46,7 +46,7 @@ const businessOrderConfig: BusinessOrderOption[] = [
   },
   {
     buildingName: 'Fairwinds Tower',
-    addr: '35 W Central Blvd',
+    addr: '135 West Central Boulevar',
     deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 19, hours: 16, minutes: 0 })],
   },
 ];
