@@ -9,14 +9,14 @@ import { getFamilyDeliveryMenu } from '../../utilities/contentful';
 import { MenuVersion } from '../../utilities/contentful-types';
 import OrderApp from '../../components/order-app';
 
-const FamilyDinnerDelivery: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ menus }) => {
+const DinnerDeliveryProgram: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ menus }) => {
   return (
     <>
       <Head>
-        <title>Family Dinner Delivery :: The Meatball Stoppe</title>
+        <title>Dinner Delivery Program :: The Meatball Stoppe</title>
         <meta name="description" content="Delivered straight to your office" />
       </Head>
-      <ShortHero image={DeliveryPicHero} headline="Family Dinner Delivery" />
+      <ShortHero image={DeliveryPicHero} headline="Dinner Delivery Program" />
       <OrderApp type="business" menus={menus} />
     </>
   );
@@ -30,4 +30,4 @@ export const getStaticProps: GetStaticProps<{ menus: MenuVersion[] }> = async (c
   };
 };
 
-export default FamilyDinnerDelivery;
+export default DinnerDeliveryProgram;

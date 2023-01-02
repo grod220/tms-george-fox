@@ -23,4 +23,18 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/family-dinner-delivery',
+        destination: '/dinner-delivery-program',
+        permanent: true,
+      },
+      {
+        source: '/order/family-dinner-delivery',
+        destination: '/order/dinner-delivery-program',
+        permanent: true,
+      },
+    ];
+  },
 };

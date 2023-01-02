@@ -62,7 +62,7 @@ export const FamilyDeliveryContent = () => (
         home for your Family Dinner.
       </div>
       <div>
-        <Link href="/order/family-dinner-delivery">
+        <Link href="/order/dinner-delivery-program">
           <a>
             <OrderButton>Order Now →</OrderButton>
           </a>
