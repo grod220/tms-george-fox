@@ -10,39 +10,29 @@ export interface BusinessOrderOption {
 
 const businessOrderConfig: BusinessOrderOption[] = [
   {
-    buildingName: 'Downtown (South)',
-    addr: '618 East South street',
-    deliveryTimes: [set(new Date(), { year: 2022, month: 11, date: 29, hours: 16, minutes: 0 })],
-  },
-  {
-    buildingName: 'Downtown (Pine)',
-    addr: '100 East Pine Street',
-    deliveryTimes: [set(new Date(), { year: 2022, month: 11, date: 29, hours: 15, minutes: 0 })],
-  },
-  {
     buildingName: 'Maitland Paragon',
     addr: '1060 Maitland Center Commons Blvd',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 11, hours: 16, minutes: 0 })],
+    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 0 })],
   },
   {
     buildingName: 'Maitland American',
     addr: '1051 Winderely Place',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 11, hours: 16, minutes: 0 })],
+    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 5 })],
   },
   {
     buildingName: 'Maitland Alliance',
     addr: '2200 Lucien Way',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 0 })],
+    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 15 })],
   },
   {
     buildingName: 'Maitland Lake Lucien',
     addr: '2201 Lucien Way',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 0 })],
+    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 20 })],
   },
   {
     buildingName: 'Maitland Lucien Green',
     addr: '2250 Lucien Way',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 0 })],
+    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 25 })],
   },
   {
     buildingName: 'Fairwinds Tower',
