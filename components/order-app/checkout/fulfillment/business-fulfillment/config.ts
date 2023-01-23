@@ -10,34 +10,9 @@ export interface BusinessOrderOption {
 
 const businessOrderConfig: BusinessOrderOption[] = [
   {
-    buildingName: 'Maitland Paragon',
-    addr: '1060 Maitland Center Commons Blvd',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 0 })],
-  },
-  {
-    buildingName: 'Maitland American',
-    addr: '1051 Winderely Place',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 5 })],
-  },
-  {
-    buildingName: 'Maitland Alliance',
-    addr: '2200 Lucien Way',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 15 })],
-  },
-  {
-    buildingName: 'Maitland Lake Lucien',
-    addr: '2201 Lucien Way',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 20 })],
-  },
-  {
-    buildingName: 'Maitland Lucien Green',
-    addr: '2250 Lucien Way',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 18, hours: 16, minutes: 25 })],
-  },
-  {
-    buildingName: 'Fairwinds Tower',
-    addr: '135 West Central Boulevar',
-    deliveryTimes: [set(new Date(), { year: 2023, month: 0, date: 19, hours: 16, minutes: 0 })],
+    buildingName: 'CERTUS Memory Care',
+    addr: '11120 Lake Underhill Rd',
+    deliveryTimes: [set(new Date(), { year: 2023, month: 1, date: 9, hours: 15, minutes: 0 })],
   },
 ];
 
