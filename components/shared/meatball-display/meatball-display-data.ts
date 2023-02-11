@@ -67,13 +67,6 @@ export const MeatballDisplayData: MeatballData[] = [
     vegetarian: true,
   },
   {
-    image: SpicyPork,
-    name: 'Spicy Pork',
-    glutenFree: false,
-    vegan: false,
-    vegetarian: false,
-  },
-  {
     image: SausagePepperOnion,
     name: 'Sausage Pepper & Onions',
     glutenFree: true,
@@ -93,13 +86,6 @@ export const MeatballDisplayData: MeatballData[] = [
     glutenFree: true,
     vegan: false,
     vegetarian: false,
-  },
-  {
-    image: Eggplant,
-    name: 'Eggplant Zucchini Quinoa',
-    glutenFree: true,
-    vegan: true,
-    vegetarian: true,
   },
   {
     image: MacAndCheese,
