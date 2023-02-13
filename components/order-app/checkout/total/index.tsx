@@ -37,13 +37,12 @@ const Total = observer(() => {
         <div>${OrderStore.registerStore.subTotal}</div>
         <div>tax (7%)</div>
         <div>${OrderStore.registerStore.tax}</div>
-        {OrderStore.orderType === 'business' &&
-          OrderStore.registerStore.subTotalRaw + OrderStore.registerStore.tip < 35 && (
-            <>
-              <div>Error</div>
-              <Fee error={true}>Minimum order of $35</Fee>
-            </>
-          )}
+        {OrderStore.orderType === 'business' && OrderStore.registerStore.grandTotalRaw < 30 && (
+          <>
+            <div>Error</div>
+            <Fee error={true}>Minimum order of $30</Fee>
+          </>
+        )}
         {OrderStore.fulfillment.option === 'delivery' && OrderStore.orderType !== 'business' && (
           <>
             <div>delivery fee</div>

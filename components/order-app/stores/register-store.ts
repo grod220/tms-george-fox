@@ -26,16 +26,24 @@ class RegisterStore {
     return addZero(parseFloat(this.subTotalRaw.toFixed(2)));
   }
 
-  get tax() {
-    return addZero(parseFloat((Number(this.subTotal) * 0.07).toFixed(2)));
+  get rawTax() {
+    return parseFloat((Number(this.subTotal) * 0.07).toFixed(2));
   }
 
-  get grandTotal() {
-    let total = Number(this.subTotal) + Number(this.tip) + Number(this.tax);
+  get tax() {
+    return addZero(this.rawTax);
+  }
+
+  get grandTotalRaw() {
+    let total = this.subTotalRaw + this.tip + this.rawTax;
     if (this.fulfillmentStore.option === 'delivery' && typeof this.deliveryFee === 'number') {
       total += this.deliveryFee;
     }
-    return addZero(parseFloat(total.toFixed(2)));
+    return parseFloat(total.toFixed(2));
+  }
+
+  get grandTotal() {
+    return addZero(this.grandTotalRaw);
   }
 
   setTip(str: string) {

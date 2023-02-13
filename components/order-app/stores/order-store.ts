@@ -93,7 +93,7 @@ class OrderStore {
         Boolean(this.fulfillment.companyName) &&
         Boolean(this.fulfillment.businessSuite) &&
         Boolean(this.fulfillment.buildingName) &&
-        this.registerStore.subTotalRaw >= 35
+        this.registerStore.grandTotalRaw >= 30
       );
     } else {
       alert('Contact owners about website order bug');
