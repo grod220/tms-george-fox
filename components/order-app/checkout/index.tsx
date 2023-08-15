@@ -21,6 +21,21 @@ const Content = styled.div`
   max-width: 1200px;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  flex-direction: column;
+`;
+
+const ErrorMsg = styled.div`
+  color: #902e2d;
+  font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
 const Checkout = observer(() => {
   return (
     <Container>
@@ -35,10 +50,13 @@ const Checkout = observer(() => {
         {OrderStore.orderType === 'business' && <BusinessFulfillment />}
 
         <OrderSummary />
-        {Boolean(OrderStore.shoppingCart.length) && (
+        {Boolean(OrderStore.shoppingCart.length) || (
           <>
             <Total />
-            <StripeButton />
+            <Wrapper>
+              {OrderStore.registerStore.grandTotalRaw < 1000 && <ErrorMsg>⚠️ Minimum cart total is $1000</ErrorMsg>}
+              <StripeButton />
+            </Wrapper>
           </>
         )}
       </Content>

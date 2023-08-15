@@ -23,7 +23,7 @@ const Button = styled.button<{ error: boolean; spinner: boolean; ready: boolean 
   justify-content: center;
   align-items: center;
   float: right;
-  margin-top: 30px;
+  margin-top: 10px;
 
   ${({ spinner, error, ready }) =>
     !spinner &&

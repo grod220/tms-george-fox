@@ -64,29 +64,13 @@ class RegisterStore {
     }
 
     if (this.fulfillmentStore.deliveryMiles < 10) {
-      if (Number(this.subTotal) >= 200) {
-        return 35;
-      } else {
-        return '⚠️ Minimum cart total for this distance is $200';
-      }
+      return 35;
     } else if (this.fulfillmentStore.deliveryMiles < 20) {
-      if (Number(this.subTotal) >= 300) {
-        return 50;
-      } else {
-        return '⚠️ Minimum cart total for this distance is 300';
-      }
+      return 50;
     } else if (this.fulfillmentStore.deliveryMiles < 30) {
-      if (Number(this.subTotal) >= 400) {
-        return 75;
-      } else {
-        return '⚠️ Minimum cart total for this distance is 400';
-      }
+      return 75;
     } else {
-      if (Number(this.subTotal) >= 500) {
-        return 100;
-      } else {
-        return '⚠️ Minimum cart total for this distance is 500';
-      }
+      return 100;
     }
   }
 }

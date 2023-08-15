@@ -82,7 +82,8 @@ class OrderStore {
         baseQualificationsSatisfied &&
         Boolean(this.fulfillment.deliveryLocation) &&
         typeof this.registerStore.deliveryFee === 'number' &&
-        Number(this.fulfillment.numberOfGuests) > 0
+        Number(this.fulfillment.numberOfGuests) > 0 &&
+        this.registerStore.grandTotalRaw >= 1000
       );
     } else if (this.orderType === 'business') {
       return (
