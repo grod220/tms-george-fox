@@ -50,7 +50,7 @@ const Checkout = observer(() => {
         {OrderStore.orderType === 'business' && <BusinessFulfillment />}
 
         <OrderSummary />
-        {Boolean(OrderStore.shoppingCart.length) || (
+        {Boolean(OrderStore.shoppingCart.length) && (
           <>
             <Total />
             <Wrapper>
