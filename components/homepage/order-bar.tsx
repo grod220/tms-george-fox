@@ -16,7 +16,7 @@ const Container = styled.div`
   width: 80vw;
   display: flex;
   a {
-    width: 25%;
+    width: 33%;
     display: flex;
     ${media.tablet`
       width: 100%;
@@ -25,10 +25,10 @@ const Container = styled.div`
     ${media.phone`
       width: 100%;`};
   }
-  a + a {
-    ${media.tablet`
-      margin-right: 3rem;`};
-  }
+  // a + a {
+  //   ${media.tablet`
+  //     margin-right: 3rem;`};
+  // }
   ${media.tablet`
     width: 100%;
     justify-content: space-evenly;`};
@@ -117,14 +117,14 @@ const OrderBar = () => (
         </Announcement>
       ) : (
         <>
-          <Link href="/order">
-            <a>
-              <WhiteButton>Order Online</WhiteButton>
-            </a>
-          </Link>
+          {/*<Link href="/order">*/}
+          {/*  <a>*/}
+          {/*    <WhiteButton>Order Online</WhiteButton>*/}
+          {/*  </a>*/}
+          {/*</Link>*/}
           <Link href="/order/catering">
             <a>
-              <RedButton>Order Catering</RedButton>
+              <WhiteButton>Order Catering</WhiteButton>
             </a>
           </Link>
         </>
