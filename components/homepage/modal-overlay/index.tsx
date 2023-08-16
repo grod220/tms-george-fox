@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { isSameDay, set } from 'date-fns';
+import Highlight from '../../shared/highlight';
 
 const BlurredBackground = styled.div`
   position: fixed;
@@ -77,15 +78,21 @@ export default function Overlay() {
     <BlurredBackground onClick={closeModal}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <X onClick={closeModal}>X</X>
-        <WelcomeTitle>Happy Fourth! 🇺🇸</WelcomeTitle>
+        <WelcomeTitle>Ciao famiglia! 👋</WelcomeTitle>
         <p>
-          Hello Meatball Stoppe friends, we will be taking a short break for the July 4th weekend. We will close Monday
-          and Tuesday to allow our Staff Family and ourselves some much needed rest and family time. We’ll reopen our
-          regular time Wednesday at 11am.
+          You're not the only one who's gone remote. We've taken our balls and are ready to go. We’re proud and humbled
+          to announce that we’ve sold this location. TMS has always been much more than just meatballs. Over these last
+          9 years, thousands of you have walked through our doors and given us the opportunity to share our passion for
+          food and love for people. It's been a gathering spot for laughter, sharing stories, and an Italian home away
+          from home. As of today, we are changing directions and focusing on{' '}
+          <Highlight b>Catering, Private Cooking Classes and Airbnb dining experiences.</Highlight>
         </p>
-        <p>Thank you for all the support and God Bless America 🇺🇸</p>
         <p>
-          <i>— Jeff & Isabella Morgia</i>
+          We are so grateful for the blessing of having your continued support and loyalty every step of this journey.
+        </p>
+        <p> Salute amici to seeing you again at your table or ours! Con tanto amore,</p>
+        <p>
+          <Highlight i>— Jeff & Isabella Morgia</Highlight>
         </p>
       </Modal>
     </BlurredBackground>

@@ -20,8 +20,8 @@ export default function AboutUs() {
       </Head>
       <ShortHero image={AboutUsHero} headline="About the Stoppe Famiglia" />
       <TopIntro />
-      <LocationInfo />
-      <DiningRoom />
+      {/*<LocationInfo />*/}
+      {/*<DiningRoom />*/}
       <AboutOwners />
       <GivingBack />
     </>
