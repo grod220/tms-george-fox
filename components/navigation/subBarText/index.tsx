@@ -8,12 +8,8 @@ interface SubBarTextProps {
 const SubBarText: FC<SubBarTextProps> = ({ className }) => {
   return (
     <div className={className}>
-      <span>
-        <a href="https://goo.gl/maps/eb4QHbvh3z42" target="_blank" rel="noopener noreferrer">
-          7325 Lake Underhill Road
-        </a>
-      </span>
-      <span>407-270-6505</span>
+      <span>Orlando, Florida</span>
+      <span>407-267-6033</span>
     </div>
   );
 };

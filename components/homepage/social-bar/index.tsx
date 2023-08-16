@@ -82,8 +82,9 @@ const SocialBar = () => (
     <TwoItemHolder>
       <LeftSide>
         <div>
-          We are open <Highlight>Mon-Tues (3pm-9pm)</Highlight>, <Highlight>Wed-Sat (11am-9pm)</Highlight>, and closed
-          on Sundays. Come visit us!
+          Catering, private cooking classes and dining experiences.
+          <br />
+          <Highlight>Be our guest!</Highlight>
         </div>
         <Connect>Connect with us!</Connect>
         <SocialIcons>

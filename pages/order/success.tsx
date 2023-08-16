@@ -34,7 +34,7 @@ export default function Success() {
           </Headline>
           <div>
             Check your email for the receipt. If you have questions about your order, feel free to reach out to us
-            directly at 407-270-6505.
+            directly at 407-267-6033.
           </div>
         </div>
       </Container>

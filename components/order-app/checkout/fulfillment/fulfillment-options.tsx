@@ -78,12 +78,7 @@ const FulfillmentOptions = observer(() => {
         setFunc={(val) => OrderStore.fulfillment.setSpecialInstructions(val)}
       />
       {OrderStore.fulfillment.option !== 'delivery' && (
-        <PickupLocation>
-          You can pick it up at the register at the Meatball Stoppe:{' '}
-          <RedAnchor href="https://goo.gl/maps/RcCxxDcBH1Vfo2Zz7" target="_blank" rel="noopener noreferrer">
-            7325 Lake Underhill Road
-          </RedAnchor>
-        </PickupLocation>
+        <PickupLocation>You can pick it up at the register at the Meatball Stoppe: Orlando, Florida</PickupLocation>
       )}
     </Container>
   );

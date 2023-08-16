@@ -45,12 +45,8 @@ const Footer = () => (
         <NavItem path="/media">Media</NavItem>
       </ul>
       <ul>
-        <li>407-270-6505</li>
-        <li>
-          <a href="https://goo.gl/maps/eb4QHbvh3z42" target="_blank" rel="noopener noreferrer">
-            7325 Lake Underhill Road
-          </a>
-        </li>
+        <li>407-267-6033</li>
+        <li>Orlando, Florida</li>
         <br />
         <li>
           <Link href="/order">Order Online</Link>

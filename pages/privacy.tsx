@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
           <li>
             <p>
               <strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or
-              &quot;Our&quot; in this Agreement) refers to The Meatball Stoppe, 7325 Lake Underhill Road.
+              &quot;Our&quot; in this Agreement) refers to The Meatball Stoppe.
             </p>
           </li>
           <li>

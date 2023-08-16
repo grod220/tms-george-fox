@@ -30,7 +30,7 @@ const MenuSection: FC<{ category: Category }> = ({ category }) => {
       <CategoryTitle>{removeHashes(category?.title)}</CategoryTitle>
       {category?.title === 'Desserts' && (
         <Note>
-          Call 407-270-6505 for daily offerings. Daily house-made artisan cheesecakes & layer cakes - $7.25 each.
+          Call 407-267-6033 for daily offerings. Daily house-made artisan cheesecakes & layer cakes - $7.25 each.
           Speciality layered cakes can be ordered with one week notice.
         </Note>
       )}
