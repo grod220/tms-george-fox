@@ -60,17 +60,17 @@ const MenuWidget: FC<{ menu: Category[] }> = ({ menu }) => {
       <TopTitles>
         {menu.map((section, i) => (
           <SectionToggler
-            name={section.title}
+            name={section.title.replace('#catering', '')}
             activeSection={active}
             key={i}
-            onClick={() => toggleSection(section.title)}
+            onClick={() => toggleSection(section.title.replace('#catering', ''))}
           />
         ))}
       </TopTitles>
       <Descriptions>
         {menu.map((category, i) => (
           <SectionDescription
-            category={category.title}
+            category={category.title.replace('#catering', '')}
             menuItems={category.menuItemsCollection.items}
             activeSection={active}
             opacity={opacity}

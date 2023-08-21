@@ -6,17 +6,21 @@ import FoodPicSquare from './food-pic-square';
 import { Category } from '../../../utilities/contentful-types';
 
 const Container = styled.div`
-  column-width: 35rem;
-  column-gap: 1.5rem;
-  width: 93%;
-  column-fill: auto;
-  margin: 30px auto;
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 
-  > div {
-    break-inside: avoid-column;
-    margin: 0 0.2rem 1.5rem;
-    transition: all 0.5s;
-    -webkit-backface-visibility: hidden;
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width: 600px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 `;
 
@@ -36,7 +40,11 @@ const shuffle = <T extends any>(array: T[]) => {
 
 const interweaveData = (categories: Category[]) => {
   const MenuArr = categories.map((categoryData, i) => (
-    <MenuItem category={categoryData.title} menuItems={categoryData.menuItemsCollection.items} key={i + 100} />
+    <MenuItem
+      category={categoryData.title.replace('#catering', '')}
+      menuItems={categoryData.menuItemsCollection.items}
+      key={i + 100}
+    />
   ));
 
   const filteredCats = categories.filter(

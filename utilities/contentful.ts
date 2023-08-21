@@ -17,7 +17,7 @@ async function fetchGraphQL<T>(query: string): Promise<{ data: T | undefined }> 
 export const getFullMenuPreview = async (): Promise<Category[]> => {
   const fullMenu = await fetchGraphQL<{ menuVersionCollection: Collection<MenuVersion> }>(`
     query {
-      menuVersionCollection(where: { type: "Full menu"}, limit: 1) {
+      menuVersionCollection(where: { type: "Catering Menu"}, limit: 1) {
         items {
           type
           categoriesCollection(limit:20) {
