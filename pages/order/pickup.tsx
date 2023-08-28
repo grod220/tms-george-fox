@@ -7,8 +7,11 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getNormalMenus } from '../../utilities/contentful';
 import { MenuVersion } from '../../utilities/contentful-types';
 import OrderApp from '../../components/order-app';
+import { useRedirectHome } from '../../components/shared/redirect-home';
 
 const Pickup: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ menus }) => {
+  useRedirectHome();
+
   return (
     <>
       <Head>

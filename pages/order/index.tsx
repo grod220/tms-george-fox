@@ -4,8 +4,11 @@ import Head from 'next/head';
 import ShortHero from '../../components/shared/short-hero';
 import MeatballHero from '../../components/order-online/five-ball.jpg';
 import OrderOnline from '../../components/order-online';
+import { useRedirectHome } from '../../components/shared/redirect-home';
 
 export default function OrderIndex() {
+  useRedirectHome();
+
   return (
     <div>
       <Head>
