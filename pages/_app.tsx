@@ -5,6 +5,7 @@ import Head from 'next/head';
 import * as Sentry from '@sentry/browser';
 import App from 'next/app';
 import { GoogleAnalytics } from '../utilities/google-analytics';
+import { Analytics } from '@vercel/analytics/react';
 
 Sentry.init({ dsn: 'https://37c553e6cb9c4d7b91443519ccd448a9@sentry.io/1514998' });
 
@@ -31,6 +32,7 @@ export default class MyApp extends App {
         </Head>
         <Navigation />
         <Component {...pageProps} />
+        <Analytics />
         <GoogleAnalytics />
       </>
     );
