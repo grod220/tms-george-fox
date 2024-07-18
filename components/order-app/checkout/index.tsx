@@ -54,7 +54,7 @@ const Checkout = observer(() => {
           <>
             <Total />
             <Wrapper>
-              {OrderStore.registerStore.grandTotalRaw < 750 && <ErrorMsg>⚠️ Minimum cart total is $750</ErrorMsg>}
+              {OrderStore.registerStore.grandTotalRaw < 500 && <ErrorMsg>⚠️ Minimum cart total is $750</ErrorMsg>}
               <StripeButton />
             </Wrapper>
           </>
